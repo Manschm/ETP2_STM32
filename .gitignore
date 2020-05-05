@@ -50,3 +50,26 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Extra stuff
+*/build
+*/.vs
+*.LOG
+*.crf
+*.uvguix.*
+.mxproject
+*.dbgconf
+*.lst
+*.s
+*.axf
+*.hex
+*.lnp
+*.map
+*.sct
+*.dep
+*.scvd
+*.ipch
+*.tlog
+*.user
+*.otf
+*.iex
