@@ -30,6 +30,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "shtc3.h"
+#include "lcd_st7565.h"
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -64,6 +66,9 @@ uint8_t shtc3TxBuf[2];
 
 // Flags
 uint8_t readSHTC3 = 0;
+
+// LCD buffer
+uint8_t LCD_Buffer[1024];
 
 
 /* USER CODE END PV */
@@ -115,6 +120,7 @@ int main(void)
   MX_I2C2_Init();
   MX_TIM3_Init();
   MX_TIM6_Init();
+  MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
 	HAL_GPIO_WritePin(LEDUP_GPIO_Port, LEDUP_Pin, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(LEDDN_GPIO_Port, LEDDN_Pin, GPIO_PIN_SET);
@@ -130,6 +136,28 @@ int main(void)
 	//HAL_TIM_Base_Start_IT(&htim6);	// Sensor timer
 	
 	//HAL_I2C_Master_Transmit(&hi2c2, SHTC3_ADDR, 
+    
+    st7565_init();
+//================================================
+//Begin program
+
+
+    st7565_backlight_enable(); 
+    st7565_set_brightness(0); 
+    HAL_Delay(100);
+   
+// Show startup screen
+    st7565_clear_buffer(LCD_Buffer);
+    st7565_drawbitmap(LCD_Buffer, 0, 0, atom_symbol, 128, 64, 10);
+    st7565_drawstring(LCD_Buffer, 22, 7, "Moodlight 2020");
+    st7565_drawstring(LCD_Buffer, 0, 0, "Manuel");
+    st7565_drawstring(LCD_Buffer, 0, 1, "Schmid");
+    st7565_drawstring(LCD_Buffer, 85, 0, "Lukas");
+    st7565_drawstring(LCD_Buffer, 85, 1, "Eugster");
+	st7565_write_buffer(LCD_Buffer);
+    
+    HAL_Delay(3000);
+    st7565_clear_buffer(LCD_Buffer);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -139,34 +167,39 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-		if (updateUI)
-		{
-			HAL_GPIO_WritePin(LEDUP_GPIO_Port, LEDUP_Pin, HAL_GPIO_ReadPin(SWUP_GPIO_Port, SWUP_Pin));
-			HAL_GPIO_WritePin(LEDDN_GPIO_Port, LEDDN_Pin, HAL_GPIO_ReadPin(SWDN_GPIO_Port, SWDN_Pin));
-			HAL_GPIO_WritePin(LEDLT_GPIO_Port, LEDLT_Pin, HAL_GPIO_ReadPin(SWLT_GPIO_Port, SWLT_Pin));
-			HAL_GPIO_WritePin(LEDRT_GPIO_Port, LEDRT_Pin, HAL_GPIO_ReadPin(SWRT_GPIO_Port, SWRT_Pin));
-			
-			if (HAL_GPIO_ReadPin(SWSL_GPIO_Port, SWSL_Pin) == GPIO_PIN_RESET)
-			{
-				
-			}
-			
-			updateUI = 0;
-		}
-		
-		if (updateSensor)
-		{
-			if (readSHTC3) {
-				HAL_I2C_Master_Receive(&hi2c2, SHTC3_ADDR, shtc3RxBuf, sizeof(shtc3RxBuf), 1000);
-			}
-			shtc3TxBuf[0] = SHTC3_CMD_NM_CSD_T & 0xFF;
-			shtc3TxBuf[1] = (uint8_t)(SHTC3_CMD_NM_CSD_T >> 8);
-			// Measure temperature first
-			HAL_I2C_Master_Transmit(&hi2c2, SHTC3_ADDR, shtc3TxBuf, sizeof(shtc3TxBuf), 1000);
-			
-			readSHTC3 = 1;
-			updateSensor = 0;
-		}
+		st7565_clear_buffer(LCD_Buffer);
+ 
+// Draw the clock
+      //Time 1
+    st7565_drawfhd(0, LCD_Buffer);
+    st7565_drawshd(6, LCD_Buffer);
+    st7565_drawdts(LCD_Buffer);
+    st7565_drawfmd(5, LCD_Buffer);
+    st7565_drawsmd(7, LCD_Buffer);
+           
+      
+      
+      
+      
+// Draw the temperature
+    uint8_t temp[]= "18";
+    st7565_drawtempsymbol(LCD_Buffer);
+    st7565_drawtemp(temp , LCD_Buffer);
+
+    
+// Draw the humidity
+    uint8_t hum[] = "57";
+    st7565_drawhumidsymbol(LCD_Buffer);
+    st7565_drawhumid(hum, LCD_Buffer);
+
+// Draw alarm symbol
+   st7565_drawalarmsymbol(LCD_Buffer);
+    
+// Draw snooze symbol
+   st7565_drawsnsymbol(LCD_Buffer);
+
+st7565_write_buffer(LCD_Buffer);
+
 		
 		/**** UI LED test
 		HAL_GPIO_TogglePin(LEDUP_GPIO_Port, LEDUP_Pin);

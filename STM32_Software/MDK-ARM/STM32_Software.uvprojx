@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F030x8</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;                  ../Drivers/STM32F0xx_HAL_Driver/Inc;                  ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy;                  ../Drivers/CMSIS/Device/ST/STM32F0xx/Include;                  ../Drivers/CMSIS/Include</IncludePath>
+              <IncludePath>../Core/Inc;                     ../Drivers/STM32F0xx_HAL_Driver/Inc;                     ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy;                     ../Drivers/CMSIS/Device/ST/STM32F0xx/Include;                     ../Drivers/CMSIS/Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -396,6 +396,46 @@
               <FileName>shtc3.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Core\Inc\shtc3.h</FilePath>
+            </File>
+            <File>
+              <FileName>bitmaps.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\Inc\bitmaps.h</FilePath>
+            </File>
+            <File>
+              <FileName>font.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\Inc\font.h</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_st7565.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\Inc\lcd_st7565.h</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_st7565_pinconf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\Inc\lcd_st7565_pinconf.h</FilePath>
+            </File>
+            <File>
+              <FileName>bitmaps.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\bitmaps.c</FilePath>
+            </File>
+            <File>
+              <FileName>font.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\font.c</FilePath>
+            </File>
+            <File>
+              <FileName>lcd_st7565.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\lcd_st7565.c</FilePath>
+            </File>
+            <File>
+              <FileName>event_handler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\event_handler.c</FilePath>
             </File>
             <File>
               <FileName>main.c</FileName>
