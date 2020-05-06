@@ -25,7 +25,11 @@
 
 typedef enum {
     EV_NO_EVENT,
-    EV_WEIGHT_TOO_HIGH
+    EV_BUTTON_UP,
+    EV_BUTTON_DN,
+    EV_BUTTON_LT,
+    EV_BUTTON_RT,
+    EV_BUTTON_SL
 } event_t;
 
 

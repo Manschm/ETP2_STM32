@@ -20,18 +20,19 @@
 #include <stdint.h>
 #include <stdio.h>
 #include "event_handler.h"
+#include "main.h"
 
 
-#define BUTTON_UP_MASK      (0b10000);
-#define BUTTON_DN_MASK      (0b1000);
-#define BUTTON_LT_MASK      (0b100);
-#define BUTTON_RT_MASK      (0b10);
-#define BUTTON_SL_MASK      (0b1);
+#define BUTTON_UP_MASK      (0b10000)
+#define BUTTON_DN_MASK      (0b1000)
+#define BUTTON_LT_MASK      (0b100)
+#define BUTTON_RT_MASK      (0b10)
+#define BUTTON_SL_MASK      (0b1)
 
 static uint8_t  button_value_old =  0xffu;
 
 //==============================================================================
-/*   
+  
 event_t eh_get_event(void)  
 {    
     //detect timer event on timer 14
@@ -42,7 +43,7 @@ event_t eh_get_event(void)
     
     //detect button events 
     
-    uint8_t button_value |= HAL_GPIO_ReadPin (SWUP_GPIO_Port, SWUP_Pin);
+    uint8_t button_value = HAL_GPIO_ReadPin (SWUP_GPIO_Port, SWUP_Pin);
     button_value <<= 1;
     button_value |= HAL_GPIO_ReadPin (SWDN_GPIO_Port, SWDN_Pin);
     button_value <<= 1;
@@ -74,5 +75,5 @@ event_t eh_get_event(void)
     
     return EV_NO_EVENT;
 }
-    */
+
     

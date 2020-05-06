@@ -32,6 +32,9 @@
 #include "shtc3.h"
 #include "lcd_st7565.h"
 #include <string.h>
+
+#include "event_handler.h"
+#include "state_machine.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -138,10 +141,18 @@ int main(void)
 	//HAL_I2C_Master_Transmit(&hi2c2, SHTC3_ADDR, 
     
     st7565_init();
-//================================================
+//=======================================================================
 //Begin program
+//=======================================================================
+
+// Turn on / initialize RTC
+
+//
 
 
+//=======================================================================
+// Show Startup Screen
+//=======================================================================
     st7565_backlight_enable(); 
     st7565_set_brightness(0); 
     HAL_Delay(100);
@@ -158,13 +169,17 @@ int main(void)
     
     HAL_Delay(3000);
     st7565_clear_buffer(LCD_Buffer);
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-    /* USER CODE END WHILE */
+//=======================================================================
+  
+    event_t event;
+    fsm_init();
+    
+    while(1) {
+        event = eh_get_event();
+        if(event != EV_NO_EVENT) {
+            fsm_handle_event(event);
+        }
+    }
 
     /* USER CODE BEGIN 3 */
 		st7565_clear_buffer(LCD_Buffer);

@@ -34,7 +34,7 @@ typedef enum {
 //======================================================
 // Definition of functions
 //======================================================
-void ah_motor(motor_cmd_t motor_cmd);   
+void ah_draw_time();   
 
 
 #endif
