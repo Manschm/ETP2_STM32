@@ -433,11 +433,6 @@
               <FilePath>..\Core\Src\lcd_st7565.c</FilePath>
             </File>
             <File>
-              <FileName>event_handler.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\event_handler.c</FilePath>
-            </File>
-            <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Core/Src/main.c</FilePath>
@@ -483,9 +478,34 @@
               <FilePath>../Core/Src/stm32f0xx_hal_msp.c</FilePath>
             </File>
             <File>
+              <FileName>action_handler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\action_handler.c</FilePath>
+            </File>
+            <File>
+              <FileName>event_handler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\event_handler.c</FilePath>
+            </File>
+            <File>
+              <FileName>action_handler.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\Inc\action_handler.h</FilePath>
+            </File>
+            <File>
+              <FileName>event_handler.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Core\Inc\event_handler.h</FilePath>
+            </File>
+            <File>
               <FileName>state_machine.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\state_machine.h</FilePath>
+              <FilePath>..\Core\Inc\state_machine.h</FilePath>
+            </File>
+            <File>
+              <FileName>state_machine.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\state_machine.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -17,24 +17,25 @@
              |___/                                                                               
 */
 //============================================================================================================
+#ifndef _EVENT_HANDLER_H
+#define _EVENT_HANDLER_H
 
-#ifndef _ACTION_HANDLER_H
-#define _ACTION_HANDLER_H
 #include <stdint.h>
+#include <stdbool.h>
 
-//======================================================
-// Typedef for functions
-//======================================================
 typedef enum {
-    MOTOR_OFF,
-    MOTOR_DOWN,
-    MOTOR_UP
-} motor_cmd_t;
+    EV_NO_EVENT,
+    EV_BUTTON_UP,
+    EV_BUTTON_DN,
+    EV_BUTTON_LT,
+    EV_BUTTON_RT,
+    EV_BUTTON_SL
+} event_t;
 
-//======================================================
-// Definition of functions
-//======================================================
-void ah_draw_time();   
 
+
+//Check all event sources and return resulting events
+
+event_t eh_get_event(void);
 
 #endif

@@ -59,3 +59,5 @@ extern const uint8_t atom_symbol[1024];
 
 extern const uint8_t symbol_deg[1024];
 
+extern const uint8_t cursor[1024];
+

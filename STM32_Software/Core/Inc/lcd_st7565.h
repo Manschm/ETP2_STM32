@@ -32,6 +32,15 @@
 #include <stdlib.h>
 #include "bitmaps.h"
 
+typedef enum {
+    main_m,
+    clock,
+    moodlight,
+    bluetooth,
+    music
+} menu_t;
+
+
 // Commands from Datasheet
 #define ST7565_CMD_DISPLAY_OFF            0xAE
 #define ST7565_CMD_DISPLAY_ON             0xAF
@@ -119,7 +128,9 @@ void st7565_drawhumid(uint8_t hum[], uint8_t* LCD_Buffer);
 void st7565_drawalarmsymbol(uint8_t* LCD_Buffer);
 void st7565_drawsnsymbol(uint8_t* LCD_Buffer);
 
+void st7565_drawcursor(uint8_t* LCD_Buffer, uint8_t position);
+void sz7565_drawdate(uint8_t* LCD_Buffer);
 
-
+void st7565_drawmenu(uint8_t* LCD_Buffer, menu_t type);
 
 #endif

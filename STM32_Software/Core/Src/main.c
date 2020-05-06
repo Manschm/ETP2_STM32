@@ -32,7 +32,6 @@
 #include "shtc3.h"
 #include "lcd_st7565.h"
 #include <string.h>
-
 #include "event_handler.h"
 #include "state_machine.h"
 /* USER CODE END Includes */
@@ -60,8 +59,8 @@
 /* USER CODE BEGIN PV */
 
 // Interrupt variables
-static uint8_t updateUI = 0;
-static uint8_t updateSensor = 0;
+//static uint8_t updateUI = 0;
+//static uint8_t updateSensor = 0;
 
 // Data buffer
 uint8_t shtc3RxBuf[6];
@@ -182,6 +181,7 @@ int main(void)
     }
 
     /* USER CODE BEGIN 3 */
+    /*
 		st7565_clear_buffer(LCD_Buffer);
  
 // Draw the clock
@@ -193,28 +193,10 @@ int main(void)
     st7565_drawsmd(7, LCD_Buffer);
            
       
-      
-      
-      
-// Draw the temperature
-    uint8_t temp[]= "18";
-    st7565_drawtempsymbol(LCD_Buffer);
-    st7565_drawtemp(temp , LCD_Buffer);
-
-    
-// Draw the humidity
-    uint8_t hum[] = "57";
-    st7565_drawhumidsymbol(LCD_Buffer);
-    st7565_drawhumid(hum, LCD_Buffer);
-
-// Draw alarm symbol
-   st7565_drawalarmsymbol(LCD_Buffer);
-    
-// Draw snooze symbol
-   st7565_drawsnsymbol(LCD_Buffer);
+   
 
 st7565_write_buffer(LCD_Buffer);
-
+*/
 		
 		/**** UI LED test
 		HAL_GPIO_TogglePin(LEDUP_GPIO_Port, LEDUP_Pin);
@@ -232,7 +214,7 @@ st7565_write_buffer(LCD_Buffer);
 		*/
   }
   /* USER CODE END 3 */
-}
+
 
 /**
   * @brief System Clock Configuration
@@ -286,14 +268,14 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+/*void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if (htim->Instance == TIM3)	{
 		updateUI = 1;
 	} else if (htim->Instance == TIM6) {
 		updateSensor = 1;
 	}
-}
+}*/
 /* USER CODE END 4 */
 
 /**

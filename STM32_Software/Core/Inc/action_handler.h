@@ -17,35 +17,27 @@
              |___/                                                                               
 */
 //============================================================================================================
+
+#ifndef _ACTION_HANDLER_H
+#define _ACTION_HANDLER_H
 #include <stdint.h>
-#include <stdbool.h>
-#include "action_handler.h"
-#include "event_handler.h"
+#include "main.h"
 #include "lcd_st7565.h"
 
+//======================================================
+// Typedef for functions
+//======================================================
 
-/* Public function definitions
- * ------------------------------------------------------------------------- */
 
+//======================================================
+// Definition of functions
+//======================================================
+void ah_draw_time(void);   
+void ah_draw_date(void);
+void ah_draw_sensor(void);
+void ah_draw_snooze(void);
+void ah_draw_alarm(void);
+void ah_draw_cursor(uint8_t position);
+void ah_menu(menu_t type);
 
-void ah_draw_time()
-{  
-    uint8_t fhd;  
-    uint8_t shd;
-    uint8_t fmd;
-    uint8_t smd;
-    
-    // GET TIME FROM RTC, safe time in given variables or change
-    
-    st7565_drawfhd(fhd, LCD_Buffer);
-    st7565_drawshd(shd, LCD_Buffer);
-    st7565_drawdts(LCD_Buffer);
-    st7565_drawfmd(fmd, LCD_Buffer);
-    st7565_drawsmd(smd, LCD_Buffer);
-}    
- 
-void ah_menu_main()
-{
-
-}
-
+#endif

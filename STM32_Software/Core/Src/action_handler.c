@@ -1,0 +1,92 @@
+ //============================================================================================================
+ /*
+ __  __                 _ _ _       _     _     ___   ___ ___   ___                             
+ |  \/  |               | | (_)     | |   | |   |__ \ / _ \__ \ / _ \                            
+ | \  / | ___   ___   __| | |_  __ _| |__ | |_     ) | | | | ) | | | |                           
+ | |\/| |/ _ \ / _ \ / _` | | |/ _` | '_ \| __|   / /| | | |/ /| | | |                           
+ | |  | | (_) | (_) | (_| | | | (_| | | | | |_   / /_| |_| / /_| |_| |                           
+ |_|  |_|\___/ \___/ \__,_|_|_|\__, |_| |_|\__| |____|\___/____|\___/                            
+                                __/ |                                                            
+                       _   _   |___/          __           _               _             __ ___  
+                      | | | |     | |        / /          | |             (_)           / /|__ \ 
+   ___ _   _  __ _ ___| |_| |_   _| | __    / /   ___  ___| |__  _ __ ___  _ _ __ ___  / /_   ) |
+  / _ \ | | |/ _` / __| __| | | | | |/ /   / /   / __|/ __| '_ \| '_ ` _ \| | '_ ` _ \| '_ \ / / 
+ |  __/ |_| | (_| \__ \ |_| | |_| |   <   / /    \__ \ (__| | | | | | | | | | | | | | | (_) / /_ 
+  \___|\__,_|\__, |___/\__|_|\__,_|_|\_\ /_/     |___/\___|_| |_|_| |_| |_|_|_| |_| |_|\___/____|
+              __/ |                                                                              
+             |___/                                                                               
+*/
+//============================================================================================================
+#include <stdint.h>
+#include <stdbool.h>
+#include "action_handler.h"
+#include "event_handler.h"
+#include "lcd_st7565.h"
+
+
+//=================================================
+//Public function definitions
+//=================================================
+
+// Home screen actions
+//------------------------------------
+void ah_draw_time()
+{  
+    uint8_t fhd;  
+    uint8_t shd;
+    uint8_t fmd;
+    uint8_t smd;
+    
+    // GET TIME FROM RTC, safe time in given variables or change
+    
+    st7565_drawfhd(fhd, LCD_Buffer);
+    st7565_drawshd(shd, LCD_Buffer);
+    st7565_drawdts(LCD_Buffer);
+    st7565_drawfmd(fmd, LCD_Buffer);
+    st7565_drawsmd(smd, LCD_Buffer);
+}    
+
+void ah_draw_date()
+{
+    //void st7565_drawdate(LCD_Buffer);
+}
+
+void ah_draw_sensor()
+{
+// Draw the temperatre
+    uint8_t temp[]= "18";   // Should be changed to read from sensor here
+    st7565_drawtempsymbol(LCD_Buffer);
+    st7565_drawtemp(temp , LCD_Buffer);
+
+// Draw the humidity
+    uint8_t hum[] = "57";   // Should be changed to read from sensor here
+    st7565_drawhumidsymbol(LCD_Buffer);
+    st7565_drawhumid(hum, LCD_Buffer);    
+}
+
+void ah_draw_snooze()
+{
+// Draw snooze symbol
+   st7565_drawsnsymbol(LCD_Buffer);
+}
+
+void ah_draw_alarm()
+{
+// Draw alarm symbol
+   st7565_drawalarmsymbol(LCD_Buffer);
+}
+
+
+
+// Menu screen actions
+//------------------------------------
+void ah_draw_cursor(uint8_t position)
+{
+    st7565_drawcursor(LCD_Buffer, position);
+}
+
+void ah_menu(menu_t type)
+{
+    st7565_drawmenu(LCD_Buffer, type);
+}
+

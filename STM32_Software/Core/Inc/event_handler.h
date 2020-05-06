@@ -17,22 +17,25 @@
              |___/                                                                               
 */
 //============================================================================================================
-// Re-definition guard
-#ifndef _STATE_MACHINE_H
-#define _STATE_MACHINE_H
+#ifndef _EVENT_HANDLER_H
+#define _EVENT_HANDLER_H
 
-// Standard includes
 #include <stdint.h>
-#include "event_handler.h"
+#include <stdbool.h>
+
+typedef enum {
+    EV_NO_EVENT,
+    EV_BUTTON_UP,
+    EV_BUTTON_DN,
+    EV_BUTTON_LT,
+    EV_BUTTON_RT,
+    EV_BUTTON_SL
+} event_t;
 
 
-// Initialize state machine
-void fsm_init(void);
 
+//Check all event sources and return resulting events
 
-
-// Process the given event, based on actual state.
-
-void fsm_handle_event(event_t event);
+event_t eh_get_event(void);
 
 #endif

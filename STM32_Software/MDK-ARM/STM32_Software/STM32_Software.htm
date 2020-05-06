@@ -3,11 +3,11 @@
 <title>Static Call Graph - [STM32_Software\STM32_Software.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image STM32_Software\STM32_Software.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Tue May 05 17:40:46 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed May 06 18:32:52 2020
 <BR><P>
 <H3>Maximum Stack Usage =        232 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod &rArr; __aeabi_llsr
+main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod &rArr; __aeabi_llsl
 <P>
 <H3>
 Mutually Recursive functions
@@ -62,7 +62,7 @@ Global Symbols
 <P><STRONG><a name="[21]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x8.o(.text)
 </UL>
-<P><STRONG><a name="[ab]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[b8]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[24]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -72,15 +72,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[25]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[ac]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[b9]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[ad]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[ba]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[ae]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[bb]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[af]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[bc]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[b0]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[bd]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f030x8.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x8.o(RESET)
@@ -149,7 +149,7 @@ Global Symbols
 <P><STRONG><a name="[6]"></a>WWDG_IRQHandler</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, startup_stm32f030x8.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x8.o(RESET)
 </UL>
-<P><STRONG><a name="[b1]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
+<P><STRONG><a name="[be]"></a>__aeabi_uidiv</STRONG> (Thumb, 0 bytes, Stack size 12 bytes, uidiv.o(.text), UNUSED)
 
 <P><STRONG><a name="[33]"></a>__aeabi_uidivmod</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, uidiv.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = __aeabi_uidivmod
@@ -160,10 +160,10 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[26]"></a>__aeabi_uldivmod</STRONG> (Thumb, 96 bytes, Stack size 48 bytes, uldiv.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = __aeabi_uldivmod &rArr; __aeabi_llsr
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = __aeabi_uldivmod &rArr; __aeabi_llsl
 </UL>
-<BR>[Calls]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
-<LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
+<BR>[Calls]<UL><LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
+<LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
 </UL>
@@ -174,21 +174,21 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
-<P><STRONG><a name="[b2]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llushr.o(.text), UNUSED)
+<P><STRONG><a name="[bf]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llushr.o(.text), UNUSED)
 
 <P><STRONG><a name="[2a]"></a>__aeabi_memset</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset$wrapper
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 
-<P><STRONG><a name="[b3]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[c0]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
-<P><STRONG><a name="[b4]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[c1]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[29]"></a>__aeabi_memclr</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_clear_buffer
+<BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_clear_buffer
 </UL>
 
 <P><STRONG><a name="[39]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))
@@ -202,7 +202,7 @@ Global Symbols
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
 </UL>
 
-<P><STRONG><a name="[b5]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[c2]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[2b]"></a>_memset$wrapper</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
@@ -214,7 +214,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
-<P><STRONG><a name="[b6]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llshl.o(.text), UNUSED)
+<P><STRONG><a name="[c3]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 8 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[25]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[2c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
@@ -222,7 +222,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[b7]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[c4]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[10]"></a>ADC1_IRQHandler</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, stm32f0xx_it.o(i.ADC1_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = ADC1_IRQHandler &rArr; HAL_ADC_IRQHandler
@@ -237,10 +237,10 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_sendbyte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_write_buffer
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_set_brightness
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_init
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_clear_screen
+<BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_write_buffer
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_set_brightness
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_init
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_clear_screen
 </UL>
 
 <P><STRONG><a name="[31]"></a>DATA</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, lcd_st7565.o(i.DATA))
@@ -249,8 +249,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_sendbyte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_write_buffer
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_clear_screen
+<BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_write_buffer
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_clear_screen
 </UL>
 
 <P><STRONG><a name="[82]"></a>Error_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, main.o(i.Error_Handler))
@@ -326,7 +326,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_init
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_init
 </UL>
 
 <P><STRONG><a name="[3a]"></a>HAL_GPIO_Init</STRONG> (Thumb, 302 bytes, Stack size 24 bytes, stm32f0xx_hal_gpio.o(i.HAL_GPIO_Init))
@@ -339,12 +339,16 @@ Global Symbols
 <LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
 </UL>
 
+<P><STRONG><a name="[a9]"></a>HAL_GPIO_ReadPin</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f0xx_hal_gpio.o(i.HAL_GPIO_ReadPin))
+<BR><BR>[Called By]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eh_get_event
+</UL>
+
 <P><STRONG><a name="[2f]"></a>HAL_GPIO_WritePin</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, stm32f0xx_hal_gpio.o(i.HAL_GPIO_WritePin))
 <BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_sendbyte
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_init
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_backlight_enable
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_init
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_backlight_enable
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DATA
 <LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CMD
 </UL>
@@ -492,7 +496,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[49]"></a>HAL_RCC_ClockConfig</STRONG> (Thumb, 242 bytes, Stack size 24 bytes, stm32f0xx_hal_rcc.o(i.HAL_RCC_ClockConfig))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod &rArr; __aeabi_llsr
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod &rArr; __aeabi_llsl
 </UL>
 <BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
@@ -506,7 +510,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[4a]"></a>HAL_RCC_GetSysClockFreq</STRONG> (Thumb, 84 bytes, Stack size 40 bytes, stm32f0xx_hal_rcc.o(i.HAL_RCC_GetSysClockFreq))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod &rArr; __aeabi_llsr
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod &rArr; __aeabi_llsl
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_ll_muluu
 <LI><a href="#[26]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
@@ -639,8 +643,8 @@ Global Symbols
 <P><STRONG><a name="[5c]"></a>HAL_TIM_IRQHandler</STRONG> (Thumb, 354 bytes, Stack size 16 bytes, stm32f0xx_hal_tim.o(i.HAL_TIM_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = HAL_TIM_IRQHandler
 </UL>
-<BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PeriodElapsedCallback
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_TriggerCallback
+<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_TriggerCallback
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PeriodElapsedCallback
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_PWM_PulseFinishedCallback
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_OC_DelayElapsedCallback
 <LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IC_CaptureCallback
@@ -701,7 +705,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[60]"></a>HAL_TIM_PeriodElapsedCallback</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, main.o(i.HAL_TIM_PeriodElapsedCallback))
+<P><STRONG><a name="[60]"></a>HAL_TIM_PeriodElapsedCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f0xx_hal_tim.o(i.HAL_TIM_PeriodElapsedCallback))
 <BR><BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_IRQHandler
 </UL>
 
@@ -710,7 +714,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[6e]"></a>HAL_UART_Init</STRONG> (Thumb, 106 bytes, Stack size 8 bytes, stm32f0xx_hal_uart.o(i.HAL_UART_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = HAL_UART_Init &rArr; UART_SetConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod &rArr; __aeabi_llsr
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = HAL_UART_Init &rArr; UART_SetConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod &rArr; __aeabi_llsl
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
 <LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
@@ -844,7 +848,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[8f]"></a>MX_USART1_UART_Init</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, usart.o(i.MX_USART1_UART_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = MX_USART1_UART_Init &rArr; HAL_UART_Init &rArr; UART_SetConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod &rArr; __aeabi_llsr
+<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = MX_USART1_UART_Init &rArr; HAL_UART_Init &rArr; UART_SetConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod &rArr; __aeabi_llsl
 </UL>
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_Handler
 <LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Init
@@ -884,7 +888,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f030x8.o(RESET)
 </UL>
 <P><STRONG><a name="[91]"></a>SystemClock_Config</STRONG> (Thumb, 118 bytes, Stack size 96 bytes, main.o(i.SystemClock_Config))
-<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod &rArr; __aeabi_llsr
+<BR><BR>[Stack]<UL><LI>Max Depth = 216<LI>Call Chain = SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod &rArr; __aeabi_llsl
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
 <LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
@@ -960,7 +964,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[70]"></a>UART_SetConfig</STRONG> (Thumb, 300 bytes, Stack size 16 bytes, stm32f0xx_hal_uart.o(i.UART_SetConfig))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = UART_SetConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod &rArr; __aeabi_llsr
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = UART_SetConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod &rArr; __aeabi_llsl
 </UL>
 <BR>[Calls]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetPCLK1Freq
@@ -983,24 +987,129 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
 </UL>
 
-<P><STRONG><a name="[a9]"></a>__ARM_common_switch8</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, lcd_st7565.o(i.__ARM_common_switch8))
+<P><STRONG><a name="[ab]"></a>__ARM_common_switch8</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, lcd_st7565.o(i.__ARM_common_switch8))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = __ARM_common_switch8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawsmd
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawshd
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawfmd
+<BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_handle_event
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawsmd
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawshd
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawmenu
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawfmd
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawcursor
 </UL>
 
-<P><STRONG><a name="[b8]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[c5]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[b9]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[c6]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[ba]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[c7]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[1f]"></a>main</STRONG> (Thumb, 340 bytes, Stack size 16 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod &rArr; __aeabi_llsr
+<P><STRONG><a name="[95]"></a>ah_draw_alarm</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, action_handler.o(i.ah_draw_alarm))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = ah_draw_alarm &rArr; st7565_drawalarmsymbol &rArr; st7565_drawbitmap &rArr; st7565_setpixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
+<BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawalarmsymbol
+</UL>
+<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_init
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_handle_event
+</UL>
+
+<P><STRONG><a name="[97]"></a>ah_draw_cursor</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, action_handler.o(i.ah_draw_cursor))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = ah_draw_cursor &rArr; st7565_drawcursor &rArr; st7565_drawbitmap &rArr; st7565_setpixel
+</UL>
+<BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawcursor
+</UL>
+<BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_handle_event
+</UL>
+
+<P><STRONG><a name="[ac]"></a>ah_draw_date</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, action_handler.o(i.ah_draw_date))
+<BR><BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_init
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_handle_event
+</UL>
+
+<P><STRONG><a name="[99]"></a>ah_draw_sensor</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, action_handler.o(i.ah_draw_sensor))
+<BR><BR>[Stack]<UL><LI>Max Depth = 92<LI>Call Chain = ah_draw_sensor &rArr; st7565_drawtemp &rArr; st7565_drawbitmap &rArr; st7565_setpixel
+</UL>
+<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawtempsymbol
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawtemp
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawhumidsymbol
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawhumid
+</UL>
+<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_init
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_handle_event
+</UL>
+
+<P><STRONG><a name="[9e]"></a>ah_draw_snooze</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, action_handler.o(i.ah_draw_snooze))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = ah_draw_snooze &rArr; st7565_drawsnsymbol &rArr; st7565_drawbitmap &rArr; st7565_setpixel
+</UL>
+<BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawsnsymbol
+</UL>
+<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_init
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_handle_event
+</UL>
+
+<P><STRONG><a name="[a0]"></a>ah_draw_time</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, action_handler.o(i.ah_draw_time))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = ah_draw_time &rArr; st7565_drawsmd &rArr; st7565_drawbitmap &rArr; st7565_setpixel
+</UL>
+<BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawsmd
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawshd
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawfmd
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawfhd
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawdts
+</UL>
+<BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_init
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_handle_event
+</UL>
+
+<P><STRONG><a name="[a6]"></a>ah_menu</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, action_handler.o(i.ah_menu))
+<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = ah_menu &rArr; st7565_drawmenu &rArr; st7565_drawstring &rArr; st7565_drawchar
+</UL>
+<BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawmenu
+</UL>
+<BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_handle_event
+</UL>
+
+<P><STRONG><a name="[a8]"></a>eh_get_event</STRONG> (Thumb, 120 bytes, Stack size 16 bytes, event_handler.o(i.eh_get_event))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = eh_get_event
+</UL>
+<BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[aa]"></a>fsm_handle_event</STRONG> (Thumb, 1426 bytes, Stack size 24 bytes, state_machine.o(i.fsm_handle_event))
+<BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = fsm_handle_event &rArr; ah_draw_sensor &rArr; st7565_drawtemp &rArr; st7565_drawbitmap &rArr; st7565_setpixel
+</UL>
+<BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
+<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_menu
+<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_time
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_snooze
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_sensor
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_date
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_cursor
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_alarm
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[ad]"></a>fsm_init</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, state_machine.o(i.fsm_init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = fsm_init &rArr; ah_draw_sensor &rArr; st7565_drawtemp &rArr; st7565_drawbitmap &rArr; st7565_setpixel
+</UL>
+<BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_time
+<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_snooze
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_sensor
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_date
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_alarm
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[1f]"></a>main</STRONG> (Thumb, 254 bytes, Stack size 16 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 232<LI>Call Chain = main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_RCC_GetSysClockFreq &rArr; __aeabi_uldivmod &rArr; __aeabi_llsl
+</UL>
+<BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_init
+<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fsm_handle_event
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eh_get_event
+<LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM6_Init
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM3_Init
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
@@ -1015,28 +1124,17 @@ Global Symbols
 <LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_write_buffer
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_set_brightness
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_init
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawtempsymbol
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawtemp
-<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawstring
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawsnsymbol
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawsmd
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawshd
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawhumidsymbol
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawhumid
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawfmd
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawfhd
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawdts
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawalarmsymbol
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_clear_buffer
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_backlight_enable
+<LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_write_buffer
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_set_brightness
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_init
+<LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawstring
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
+<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_clear_buffer
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_backlight_enable
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[96]"></a>st7565_backlight_enable</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, lcd_st7565.o(i.st7565_backlight_enable))
+<P><STRONG><a name="[af]"></a>st7565_backlight_enable</STRONG> (Thumb, 16 bytes, Stack size 8 bytes, lcd_st7565.o(i.st7565_backlight_enable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = st7565_backlight_enable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
@@ -1044,7 +1142,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[98]"></a>st7565_clear_buffer</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, lcd_st7565.o(i.st7565_clear_buffer))
+<P><STRONG><a name="[b1]"></a>st7565_clear_buffer</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, lcd_st7565.o(i.st7565_clear_buffer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = st7565_clear_buffer
 </UL>
 <BR>[Calls]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
@@ -1052,148 +1150,168 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a7]"></a>st7565_clear_screen</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, lcd_st7565.o(i.st7565_clear_screen))
+<P><STRONG><a name="[b5]"></a>st7565_clear_screen</STRONG> (Thumb, 56 bytes, Stack size 16 bytes, lcd_st7565.o(i.st7565_clear_screen))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = st7565_clear_screen &rArr; DATA &rArr; st7565_sendbyte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DATA
 <LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CMD
 </UL>
-<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_init
+<BR>[Called By]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_init
 </UL>
 
-<P><STRONG><a name="[a5]"></a>st7565_drawalarmsymbol</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, lcd_st7565.o(i.st7565_drawalarmsymbol))
+<P><STRONG><a name="[96]"></a>st7565_drawalarmsymbol</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, lcd_st7565.o(i.st7565_drawalarmsymbol))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = st7565_drawalarmsymbol &rArr; st7565_drawbitmap &rArr; st7565_setpixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_alarm
 </UL>
 
-<P><STRONG><a name="[99]"></a>st7565_drawbitmap</STRONG> (Thumb, 86 bytes, Stack size 44 bytes, lcd_st7565.o(i.st7565_drawbitmap))
+<P><STRONG><a name="[b2]"></a>st7565_drawbitmap</STRONG> (Thumb, 86 bytes, Stack size 44 bytes, lcd_st7565.o(i.st7565_drawbitmap))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = st7565_drawbitmap &rArr; st7565_setpixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_setpixel
+<BR>[Calls]<UL><LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_setpixel
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawtempsymbol
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawtemp
-<LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawsnsymbol
-<LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawsmd
-<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawshd
-<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawhumidsymbol
-<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawfmd
-<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawfhd
-<LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawdts
-<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawalarmsymbol
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawtempsymbol
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawtemp
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawsnsymbol
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawsmd
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawshd
+<LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawhumidsymbol
+<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawfmd
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawfhd
+<LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawdts
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawcursor
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawalarmsymbol
 </UL>
 
-<P><STRONG><a name="[aa]"></a>st7565_drawchar</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, lcd_st7565.o(i.st7565_drawchar))
+<P><STRONG><a name="[b7]"></a>st7565_drawchar</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, lcd_st7565.o(i.st7565_drawchar))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = st7565_drawchar
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawstring
+<BR>[Called By]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawstring
 </UL>
 
-<P><STRONG><a name="[9e]"></a>st7565_drawdts</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, lcd_st7565.o(i.st7565_drawdts))
+<P><STRONG><a name="[98]"></a>st7565_drawcursor</STRONG> (Thumb, 126 bytes, Stack size 24 bytes, lcd_st7565.o(i.st7565_drawcursor))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = st7565_drawcursor &rArr; st7565_drawbitmap &rArr; st7565_setpixel
+</UL>
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
+</UL>
+<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_cursor
+</UL>
+
+<P><STRONG><a name="[a3]"></a>st7565_drawdts</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, lcd_st7565.o(i.st7565_drawdts))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = st7565_drawdts &rArr; st7565_drawbitmap &rArr; st7565_setpixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_time
 </UL>
 
-<P><STRONG><a name="[9c]"></a>st7565_drawfhd</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, lcd_st7565.o(i.st7565_drawfhd))
+<P><STRONG><a name="[a1]"></a>st7565_drawfhd</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, lcd_st7565.o(i.st7565_drawfhd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = st7565_drawfhd &rArr; st7565_drawbitmap &rArr; st7565_setpixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_time
 </UL>
 
-<P><STRONG><a name="[9f]"></a>st7565_drawfmd</STRONG> (Thumb, 102 bytes, Stack size 24 bytes, lcd_st7565.o(i.st7565_drawfmd))
+<P><STRONG><a name="[a4]"></a>st7565_drawfmd</STRONG> (Thumb, 102 bytes, Stack size 24 bytes, lcd_st7565.o(i.st7565_drawfmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = st7565_drawfmd &rArr; st7565_drawbitmap &rArr; st7565_setpixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_time
 </UL>
 
-<P><STRONG><a name="[a4]"></a>st7565_drawhumid</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, lcd_st7565.o(i.st7565_drawhumid))
+<P><STRONG><a name="[9d]"></a>st7565_drawhumid</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, lcd_st7565.o(i.st7565_drawhumid))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = st7565_drawhumid &rArr; st7565_drawstring &rArr; st7565_drawchar
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawstring
+<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawstring
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_sensor
 </UL>
 
-<P><STRONG><a name="[a3]"></a>st7565_drawhumidsymbol</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, lcd_st7565.o(i.st7565_drawhumidsymbol))
+<P><STRONG><a name="[9c]"></a>st7565_drawhumidsymbol</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, lcd_st7565.o(i.st7565_drawhumidsymbol))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = st7565_drawhumidsymbol &rArr; st7565_drawbitmap &rArr; st7565_setpixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_sensor
 </UL>
 
-<P><STRONG><a name="[9d]"></a>st7565_drawshd</STRONG> (Thumb, 144 bytes, Stack size 24 bytes, lcd_st7565.o(i.st7565_drawshd))
+<P><STRONG><a name="[a7]"></a>st7565_drawmenu</STRONG> (Thumb, 194 bytes, Stack size 8 bytes, lcd_st7565.o(i.st7565_drawmenu))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = st7565_drawmenu &rArr; st7565_drawstring &rArr; st7565_drawchar
+</UL>
+<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawstring
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
+</UL>
+<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_menu
+</UL>
+
+<P><STRONG><a name="[a2]"></a>st7565_drawshd</STRONG> (Thumb, 144 bytes, Stack size 24 bytes, lcd_st7565.o(i.st7565_drawshd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = st7565_drawshd &rArr; st7565_drawbitmap &rArr; st7565_setpixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_time
 </UL>
 
-<P><STRONG><a name="[a0]"></a>st7565_drawsmd</STRONG> (Thumb, 144 bytes, Stack size 24 bytes, lcd_st7565.o(i.st7565_drawsmd))
+<P><STRONG><a name="[a5]"></a>st7565_drawsmd</STRONG> (Thumb, 144 bytes, Stack size 24 bytes, lcd_st7565.o(i.st7565_drawsmd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = st7565_drawsmd &rArr; st7565_drawbitmap &rArr; st7565_setpixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_common_switch8
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_time
 </UL>
 
-<P><STRONG><a name="[a6]"></a>st7565_drawsnsymbol</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, lcd_st7565.o(i.st7565_drawsnsymbol))
+<P><STRONG><a name="[9f]"></a>st7565_drawsnsymbol</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, lcd_st7565.o(i.st7565_drawsnsymbol))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = st7565_drawsnsymbol &rArr; st7565_drawbitmap &rArr; st7565_setpixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_snooze
 </UL>
 
-<P><STRONG><a name="[9a]"></a>st7565_drawstring</STRONG> (Thumb, 52 bytes, Stack size 20 bytes, lcd_st7565.o(i.st7565_drawstring))
+<P><STRONG><a name="[b3]"></a>st7565_drawstring</STRONG> (Thumb, 52 bytes, Stack size 20 bytes, lcd_st7565.o(i.st7565_drawstring))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = st7565_drawstring &rArr; st7565_drawchar
 </UL>
-<BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawchar
+<BR>[Calls]<UL><LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawchar
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawtemp
-<LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawhumid
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawtemp
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawmenu
+<LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawhumid
 </UL>
 
-<P><STRONG><a name="[a2]"></a>st7565_drawtemp</STRONG> (Thumb, 42 bytes, Stack size 20 bytes, lcd_st7565.o(i.st7565_drawtemp))
+<P><STRONG><a name="[9b]"></a>st7565_drawtemp</STRONG> (Thumb, 42 bytes, Stack size 20 bytes, lcd_st7565.o(i.st7565_drawtemp))
 <BR><BR>[Stack]<UL><LI>Max Depth = 76<LI>Call Chain = st7565_drawtemp &rArr; st7565_drawbitmap &rArr; st7565_setpixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawstring
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
+<BR>[Calls]<UL><LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawstring
+<LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_sensor
 </UL>
 
-<P><STRONG><a name="[a1]"></a>st7565_drawtempsymbol</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, lcd_st7565.o(i.st7565_drawtempsymbol))
+<P><STRONG><a name="[9a]"></a>st7565_drawtempsymbol</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, lcd_st7565.o(i.st7565_drawtempsymbol))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = st7565_drawtempsymbol &rArr; st7565_drawbitmap &rArr; st7565_setpixel
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ah_draw_sensor
 </UL>
 
-<P><STRONG><a name="[95]"></a>st7565_init</STRONG> (Thumb, 194 bytes, Stack size 8 bytes, lcd_st7565.o(i.st7565_init))
+<P><STRONG><a name="[ae]"></a>st7565_init</STRONG> (Thumb, 194 bytes, Stack size 8 bytes, lcd_st7565.o(i.st7565_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = st7565_init &rArr; st7565_clear_screen &rArr; DATA &rArr; st7565_sendbyte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_WritePin
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_set_brightness
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_clear_screen
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_set_brightness
+<LI><a href="#[b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_clear_screen
 <LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CMD
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1208,22 +1326,22 @@ Global Symbols
 <LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CMD
 </UL>
 
-<P><STRONG><a name="[97]"></a>st7565_set_brightness</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, lcd_st7565.o(i.st7565_set_brightness))
+<P><STRONG><a name="[b0]"></a>st7565_set_brightness</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, lcd_st7565.o(i.st7565_set_brightness))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = st7565_set_brightness &rArr; CMD &rArr; st7565_sendbyte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CMD
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_init
+<LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_init
 </UL>
 
-<P><STRONG><a name="[a8]"></a>st7565_setpixel</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, lcd_st7565.o(i.st7565_setpixel))
+<P><STRONG><a name="[b6]"></a>st7565_setpixel</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, lcd_st7565.o(i.st7565_setpixel))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = st7565_setpixel
 </UL>
-<BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
+<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st7565_drawbitmap
 </UL>
 
-<P><STRONG><a name="[9b]"></a>st7565_write_buffer</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, lcd_st7565.o(i.st7565_write_buffer))
+<P><STRONG><a name="[b4]"></a>st7565_write_buffer</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, lcd_st7565.o(i.st7565_write_buffer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = st7565_write_buffer &rArr; DATA &rArr; st7565_sendbyte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DATA

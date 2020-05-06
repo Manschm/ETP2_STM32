@@ -42,7 +42,7 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
-
+extern uint8_t LCD_Buffer[1024];
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
