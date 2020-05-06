@@ -544,6 +544,7 @@ void st7565_drawalarmsymbol(uint8_t* LCD_Buffer)
 void st7565_drawsnsymbol(uint8_t* LCD_Buffer)
     {
     st7565_drawbitmap(LCD_Buffer, 113, 5, symbol_snooze, 128, 64, 10);
+
     }
  
 //==========================================================
@@ -568,14 +569,13 @@ void st7565_drawsnsymbol(uint8_t* LCD_Buffer)
 void st7565_drawcursor(uint8_t* LCD_Buffer, uint8_t position)
     {
     switch (position) {
-        case 0: st7565_drawbitmap(LCD_Buffer, 2, 2 , cursor, 128, 64, 10); break;
-        case 1: st7565_drawbitmap(LCD_Buffer, 2, 10, cursor, 128, 64, 10); break;
-        case 2: st7565_drawbitmap(LCD_Buffer, 2, 18, cursor, 128, 64, 10); break;
-        case 3: st7565_drawbitmap(LCD_Buffer, 2, 26, cursor, 128, 64, 10); break;
-        case 4: st7565_drawbitmap(LCD_Buffer, 2, 34, cursor, 128, 64, 10); break;
-        case 5: st7565_drawbitmap(LCD_Buffer, 2, 42, cursor, 128, 64, 10); break;
-        case 6: st7565_drawbitmap(LCD_Buffer, 2, 50, cursor, 128, 64, 10); break;
-        case 7: st7565_drawbitmap(LCD_Buffer, 2, 58, cursor, 128, 64, 10); break;
+        case 1: st7565_drawbitmap(LCD_Buffer, 2, 7, cursor, 128, 64, 10); break;
+        case 2: st7565_drawbitmap(LCD_Buffer, 2, 15, cursor, 128, 64, 10); break;
+        case 3: st7565_drawbitmap(LCD_Buffer, 2, 23, cursor, 128, 64, 10); break;
+        case 4: st7565_drawbitmap(LCD_Buffer, 2, 31, cursor, 128, 64, 10); break;
+        case 5: st7565_drawbitmap(LCD_Buffer, 2, 39, cursor, 128, 64, 10); break;
+        case 6: st7565_drawbitmap(LCD_Buffer, 2, 47, cursor, 128, 64, 10); break;
+        case 7: st7565_drawbitmap(LCD_Buffer, 2, 55, cursor, 128, 64, 10); break;
         }
     }
 
@@ -586,42 +586,41 @@ void st7565_drawmenu(uint8_t* LCD_Buffer, menu_t type)
     {
     switch (type) {
         case main_m:
-            st7565_drawstring(LCD_Buffer, 30, 0, "MAIN MENU");
-            st7565_drawstring(LCD_Buffer, 8, 1, "Clock Settings");
-            st7565_drawstring(LCD_Buffer, 8, 2, "Moodlight");
-            st7565_drawstring(LCD_Buffer, 8, 2, "Bluetooth");
-            st7565_drawstring(LCD_Buffer, 8, 2, "Music");
-            st7565_drawstring(LCD_Buffer, 8, 2, "Return");
+            st7565_drawstring(LCD_Buffer, 40, 0, "MAIN MENU");
+            st7565_drawstring(LCD_Buffer, 8, 1, " Clock Settings");
+            st7565_drawstring(LCD_Buffer, 8, 2, " Moodlight");
+            st7565_drawstring(LCD_Buffer, 8, 3, " Bluetooth");
+            st7565_drawstring(LCD_Buffer, 8, 4, " Music");
+            st7565_drawstring(LCD_Buffer, 8, 5, " Return");
             break;
 
         case clock:
-            st7565_drawstring(LCD_Buffer, 30, 2, "CLOCK");
-            st7565_drawstring(LCD_Buffer, 8, 2, "Time & Date");
-            st7565_drawstring(LCD_Buffer, 8, 2, "Alarm");
-            st7565_drawstring(LCD_Buffer, 8, 2, "Return");
+            st7565_drawstring(LCD_Buffer, 50, 0, "CLOCK");
+            st7565_drawstring(LCD_Buffer, 8, 1, " Time & Date");
+            st7565_drawstring(LCD_Buffer, 8, 2, " Alarm");
+            st7565_drawstring(LCD_Buffer, 8, 3, " Return");
             break;
 
         case moodlight:
-            st7565_drawstring(LCD_Buffer, 30, 2, "MOODLIGHT");
-            st7565_drawstring(LCD_Buffer, 8, 2, "Colors");
-            st7565_drawstring(LCD_Buffer, 8, 2, "Custom");
-            st7565_drawstring(LCD_Buffer, 8, 2, "Return");
+            st7565_drawstring(LCD_Buffer, 40, 0, "MOODLIGHT");
+            st7565_drawstring(LCD_Buffer, 8, 1, " Colors");
+            st7565_drawstring(LCD_Buffer, 8, 2, " Custom");
+            st7565_drawstring(LCD_Buffer, 8, 3, " Return");
             break;
         
         case bluetooth:
-            st7565_drawstring(LCD_Buffer, 30, 2, "BLUETOOTH");
-            st7565_drawstring(LCD_Buffer, 8, 2, "Pair");
-            st7565_drawstring(LCD_Buffer, 8, 2, "Settings");
-            st7565_drawstring(LCD_Buffer, 8, 2, "Return");
+            st7565_drawstring(LCD_Buffer, 50, 0, "BLUETOOTH");
+            st7565_drawstring(LCD_Buffer, 8, 1, " Pair");
+            st7565_drawstring(LCD_Buffer, 8, 2, " Settings");
+            st7565_drawstring(LCD_Buffer, 8, 3, " Return");
             break;
         
         case music:
-            st7565_drawstring(LCD_Buffer, 30, 2, "MUSIC");
-            st7565_drawstring(LCD_Buffer, 8, 2, "Player");
-            st7565_drawstring(LCD_Buffer, 8, 2, "Volume");
-            st7565_drawstring(LCD_Buffer, 8, 2, "Return");
+            st7565_drawstring(LCD_Buffer, 50, 0, "MUSIC");
+            st7565_drawstring(LCD_Buffer, 8, 1, " Player");
+            st7565_drawstring(LCD_Buffer, 8, 2, " Volume");
+            st7565_drawstring(LCD_Buffer, 8, 3, " Return");
             break;
-                
         }
     }
 
