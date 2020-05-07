@@ -43,11 +43,46 @@ typedef enum {
     MENU_BT_RETURN,
     MENU_MUSIC_VOLUME,
     MENU_MUSIC_PLAYER,
-    MENU_MUSIC_RETURN
+    MENU_MUSIC_RETURN,
+	MENU_CUSTOM_WHITE,
+	MENU_CUSTOM_RED,
+	MENU_CUSTOM_GREEN,
+	MENU_CUSTOM_BLUE,
+	MENU_CUSTOM_RETURN,
+	MENU_SETTIME_HOUR,
+	MENU_SETTIME_MINUTE,
+	MENU_SETTIME_DAY,
+	MENU_SETTIME_MONTH,
+	MENU_SETTIME_YEAR,
+	MENU_SETTIME_RETURN,
+	MENU_ALARM_HOUR,
+	MENU_ALARM_MINUTE,
+	MENU_ALARM_RETURN,
+	MENU_COLORS_WHITE,
+	MENU_COLORS_RED,
+	MENU_COLORS_GREEN,
+	MENU_COLORS_BLUE,
+	MENU_COLORS_YELLOW,
+	MENU_COLORS_PURPLE,
+	MENU_COLORS_RETURN
 } state_t;
 
-/* Module-wide variables & constants
- * ------------------------------------------------------------------------- */
+//========================================
+// Module-wide variables & constants
+//========================================
+uint8_t led_intens_w	= 50;
+uint8_t led_intens_r	= 50;
+uint8_t led_intens_g	= 50;
+uint8_t led_intens_b	= 50;
+uint8_t set_hour		= 0;
+uint8_t set_min 		= 0;
+uint8_t set_day 		= 1;
+uint8_t set_mon 	 	= 1;
+uint8_t set_year 		= 20;
+uint8_t set_al_hr 		= 0;
+uint8_t set_al_min	 	= 0;
+
+color_preset_t color_preset = white;
 
 // current FSM state 
 static state_t state = HOME_SCREEN;
@@ -249,8 +284,12 @@ void fsm_handle_event(event_t event)
         
         case MENU_CLOCK_TIME:
             switch (event) {
-                case EV_BUTTON_SL:          
-                    state = MENU_CLOCK_TIME;            // To be continued ********************************************************
+                case EV_BUTTON_SL:
+                	st7565_clear_buffer(LCD_Buffer);
+                	st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+                    ah_draw_cursor(1);
+                	st7565_write_buffer(LCD_Buffer);
+                	state = MENU_SETTIME_HOUR;
                     break;
                 
                 case EV_BUTTON_UP:
@@ -277,8 +316,11 @@ void fsm_handle_event(event_t event)
         case MENU_CLOCK_ALARM:  
             switch (event) {
                 case EV_BUTTON_SL:              
-          
-                    state = MENU_CLOCK_ALARM;           // To be continued ********************************************************
+                	st7565_clear_buffer(LCD_Buffer);
+                	st7565_drawmenu_setalarm(LCD_Buffer, set_al_hr, set_al_min);
+                    ah_draw_cursor(1);
+                	st7565_write_buffer(LCD_Buffer);
+                    state = MENU_ALARM_HOUR;
                     break;
                 
                 case EV_BUTTON_UP:
@@ -335,8 +377,12 @@ void fsm_handle_event(event_t event)
         
         case MENU_MOODL_PRESETS:
             switch (event) {
-                case EV_BUTTON_SL:          
-                    state = MENU_MOODL_PRESETS;         // To be continued ********************************************************
+                case EV_BUTTON_SL:
+                	st7565_clear_buffer(LCD_Buffer);
+                	ah_menu(colors);
+                	ah_draw_cursor(1);
+                	st7565_write_buffer(LCD_Buffer);
+                    state = MENU_COLORS_WHITE;
                     break;
                 
                 case EV_BUTTON_UP:
@@ -363,7 +409,11 @@ void fsm_handle_event(event_t event)
         case MENU_MOODL_CUSTOM:
             switch (event) {
                 case EV_BUTTON_SL:
-                    state = MENU_MOODL_CUSTOM;          // To be continued ********************************************************
+                	st7565_clear_buffer(LCD_Buffer);
+                	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                	ah_draw_cursor(1);
+                	st7565_write_buffer(LCD_Buffer);
+                    state = MENU_CUSTOM_WHITE;
                     break;
                 
                 case EV_BUTTON_UP:
@@ -588,6 +638,865 @@ void fsm_handle_event(event_t event)
                     state = MENU_MUSIC_PLAYER;
             }
             break;
+
+//=======================================================================================================================
+// Menu - Moodlight - Custom Colors (Set individual values for RGBW)
+//=======================================================================================================================
+
+        case MENU_CUSTOM_WHITE:
+            switch (event) {
+                case EV_BUTTON_LT:
+                	st7565_clear_buffer(LCD_Buffer);
+                	if (led_intens_w > 0) {
+                		led_intens_w -= 5;
+                	}
+                	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                    ah_draw_cursor(1);
+                    st7565_write_buffer(LCD_Buffer);
+                    state = MENU_CUSTOM_WHITE ;
+                    break;
+
+                case EV_BUTTON_RT:
+                	st7565_clear_buffer(LCD_Buffer);
+                	if (led_intens_w < 100) {
+                		led_intens_w += 5;
+                	}
+                	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                    ah_draw_cursor(1);
+                    st7565_write_buffer(LCD_Buffer);
+                    state = MENU_CUSTOM_WHITE;
+                    break;
+
+                case EV_BUTTON_UP:
+                	st7565_clear_buffer(LCD_Buffer);
+                	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                    ah_draw_cursor(5);
+                    st7565_write_buffer(LCD_Buffer);
+                    state = MENU_CUSTOM_RETURN;
+                    break;
+
+                case EV_BUTTON_DN:
+                	st7565_clear_buffer(LCD_Buffer);
+                	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                    ah_draw_cursor(2);
+                    st7565_write_buffer(LCD_Buffer);
+                    state = MENU_CUSTOM_RED;
+                    break;
+
+                default:
+                	state = MENU_CUSTOM_WHITE ;
+                }
+            	break;
+
+            case MENU_CUSTOM_RED:
+                switch (event) {
+                    case EV_BUTTON_LT:
+                    	st7565_clear_buffer(LCD_Buffer);
+                    	if (led_intens_r > 0) {
+                    		led_intens_r -= 5;
+                    	}
+                    	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                        ah_draw_cursor(2);
+                        st7565_write_buffer(LCD_Buffer);
+                        state = MENU_CUSTOM_RED ;
+                        break;
+
+                    case EV_BUTTON_RT:
+                    	st7565_clear_buffer(LCD_Buffer);
+                    	if (led_intens_r < 100) {
+                    		led_intens_r += 5;
+                    	}
+                    	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                        ah_draw_cursor(2);
+                        st7565_write_buffer(LCD_Buffer);
+                        state = MENU_CUSTOM_RED;
+                        break;
+
+                    case EV_BUTTON_UP:
+                    	st7565_clear_buffer(LCD_Buffer);
+                    	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                        ah_draw_cursor(1);
+                        st7565_write_buffer(LCD_Buffer);
+                        state = MENU_CUSTOM_WHITE;
+                        break;
+
+                    case EV_BUTTON_DN:
+                    	st7565_clear_buffer(LCD_Buffer);
+                    	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                        ah_draw_cursor(3);
+                        st7565_write_buffer(LCD_Buffer);
+                        state = MENU_CUSTOM_GREEN;
+                        break;
+
+                    default:
+                    	state = MENU_CUSTOM_RED;
+                    }
+                	break;
+
+            case MENU_CUSTOM_GREEN:
+                switch (event) {
+                    case EV_BUTTON_LT:
+                    	st7565_clear_buffer(LCD_Buffer);
+                    	if (led_intens_g > 0) {
+                    		led_intens_g -= 5;
+                    	}
+                    	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                        ah_draw_cursor(3);
+                        st7565_write_buffer(LCD_Buffer);
+                        state = MENU_CUSTOM_GREEN;
+                        break;
+
+                    case EV_BUTTON_RT:
+                    	st7565_clear_buffer(LCD_Buffer);
+                    	if (led_intens_g < 100) {
+                    		led_intens_g += 5;
+                    	}
+                    	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                        ah_draw_cursor(3);
+                        st7565_write_buffer(LCD_Buffer);
+                        state = MENU_CUSTOM_GREEN;
+                        break;
+
+                    case EV_BUTTON_UP:
+                    	st7565_clear_buffer(LCD_Buffer);
+                    	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                        ah_draw_cursor(2);
+                        st7565_write_buffer(LCD_Buffer);
+                        state = MENU_CUSTOM_RED;
+                        break;
+
+                    case EV_BUTTON_DN:
+                    	st7565_clear_buffer(LCD_Buffer);
+                    	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                        ah_draw_cursor(4);
+                        st7565_write_buffer(LCD_Buffer);
+                        state = MENU_CUSTOM_BLUE;
+                        break;
+
+                    default:
+                    	state = MENU_CUSTOM_GREEN;
+                    }
+                	break;
+
+            case MENU_CUSTOM_BLUE:
+                switch (event) {
+                    case EV_BUTTON_LT:
+                    	st7565_clear_buffer(LCD_Buffer);
+                    	if (led_intens_b > 0) {
+                    		led_intens_b -= 5;
+                    	}
+                    	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                        ah_draw_cursor(4);
+                        st7565_write_buffer(LCD_Buffer);
+                        state = MENU_CUSTOM_BLUE;
+                        break;
+
+                    case EV_BUTTON_RT:
+                    	st7565_clear_buffer(LCD_Buffer);
+                    	if (led_intens_b < 100) {
+                    		led_intens_b += 5;
+                    	}
+                    	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                        ah_draw_cursor(4);
+                        st7565_write_buffer(LCD_Buffer);
+                        state = MENU_CUSTOM_BLUE;
+                        break;
+
+                    case EV_BUTTON_UP:
+                    	st7565_clear_buffer(LCD_Buffer);
+                    	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                        ah_draw_cursor(3);
+                        st7565_write_buffer(LCD_Buffer);
+                        state = MENU_CUSTOM_GREEN;
+                        break;
+
+                    case EV_BUTTON_DN:
+                    	st7565_clear_buffer(LCD_Buffer);
+                    	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+                        ah_draw_cursor(5);
+                        st7565_write_buffer(LCD_Buffer);
+                        state = MENU_CUSTOM_RETURN;
+                        break;
+
+                    default:
+                    	state = MENU_CUSTOM_BLUE;
+                    }
+                	break;
+
+            case MENU_CUSTOM_RETURN:
+            	switch (event) {
+        			case EV_BUTTON_SL:
+        				st7565_clear_buffer(LCD_Buffer);
+        				ah_menu(moodlight);
+        				ah_draw_cursor(1);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_MOODL_PRESETS;
+        				break;
+        			case EV_BUTTON_UP:
+        				st7565_clear_buffer(LCD_Buffer);
+        				st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+        				ah_draw_cursor(4);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_CUSTOM_BLUE;
+        				break;
+        			case EV_BUTTON_DN:
+        				st7565_clear_buffer(LCD_Buffer);
+        				st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
+        				ah_draw_cursor(1);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_CUSTOM_WHITE;
+        				break;
+        			default:
+        				state = MENU_CUSTOM_RETURN ;
+                }
+            	break;
+
+//=======================================================================================================================
+// Menu - Clock - Set Time & Date (Set Date and Time values/ variables for RTC)
+//=======================================================================================================================
+
+            case MENU_SETTIME_HOUR:
+            	switch (event) {
+        			case EV_BUTTON_LT:
+        				st7565_clear_buffer(LCD_Buffer);
+        				if (set_hour > 0) {
+        					set_hour -= 1;
+        				} else if (set_hour == 0) {
+        					set_hour = 23;
+        				}
+        				ah_draw_cursor(1);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_HOUR;
+        				break;
+
+        			case EV_BUTTON_RT:
+        				st7565_clear_buffer(LCD_Buffer);
+        				if (set_hour < 23) {
+        					set_hour += 1;
+        				} else if (set_hour == 23) {
+        					set_hour = 0;
+        				}
+        				ah_draw_cursor(1);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_HOUR;
+        				break;
+
+        			case EV_BUTTON_UP:
+        				st7565_clear_buffer(LCD_Buffer);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				ah_draw_cursor(6);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_RETURN;
+        				break;
+
+        			case EV_BUTTON_DN:
+        				st7565_clear_buffer(LCD_Buffer);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				ah_draw_cursor(2);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_MINUTE;
+        				break;
+
+        			default:
+        				state = MENU_SETTIME_HOUR;
+                }
+            	break;
+
+            case MENU_SETTIME_MINUTE:
+            	switch (event) {
+        			case EV_BUTTON_LT:
+        				st7565_clear_buffer(LCD_Buffer);
+        				if (set_min > 0) {
+        					set_min -= 1;
+        				} else if (set_min == 0) {
+        					set_min = 59;
+        				}
+        				ah_draw_cursor(2);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_MINUTE;
+        				break;
+
+        			case EV_BUTTON_RT:
+        				st7565_clear_buffer(LCD_Buffer);
+        				if (set_min < 59) {
+        					set_min += 1;
+        				} else if (set_min == 59) {
+        					set_min = 0;
+        				}
+        				ah_draw_cursor(2);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_MINUTE;
+        				break;
+
+        			case EV_BUTTON_UP:
+        				st7565_clear_buffer(LCD_Buffer);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				ah_draw_cursor(1);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_HOUR;
+        				break;
+
+        			case EV_BUTTON_DN:
+        				st7565_clear_buffer(LCD_Buffer);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				ah_draw_cursor(3);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_DAY;
+        				break;
+
+        			default:
+        				state = MENU_SETTIME_MINUTE;
+                }
+            	break;
+
+            case MENU_SETTIME_DAY:
+            	switch (event) {
+        			case EV_BUTTON_LT:
+        				st7565_clear_buffer(LCD_Buffer);
+        				if (set_day > 1) {
+        					set_day -= 1;
+        				} else if (set_day == 1) {
+        					set_day = 31;
+        				}
+        				ah_draw_cursor(3);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_DAY;
+        				break;
+
+        			case EV_BUTTON_RT:
+        				st7565_clear_buffer(LCD_Buffer);
+        				if (set_day < 31) {
+        					set_day += 1;
+        				} else if (set_min == 31) {
+        					set_day = 1;
+        				}
+        				ah_draw_cursor(3);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_DAY;
+        				break;
+
+        			case EV_BUTTON_UP:
+        				st7565_clear_buffer(LCD_Buffer);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				ah_draw_cursor(2);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_MINUTE;
+        				break;
+
+        			case EV_BUTTON_DN:
+        				st7565_clear_buffer(LCD_Buffer);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				ah_draw_cursor(4);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_MONTH;
+        				break;
+
+        			default:
+        				state = MENU_SETTIME_DAY;
+                }
+            	break;
+
+            case MENU_SETTIME_MONTH:
+            	switch (event) {
+        			case EV_BUTTON_LT:
+        				st7565_clear_buffer(LCD_Buffer);
+        				if (set_mon > 1) {
+        					set_mon -= 1;
+        				} else if (set_mon == 1) {
+        					set_mon = 12;
+        				}
+        				ah_draw_cursor(4);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_MONTH;
+        				break;
+
+        			case EV_BUTTON_RT:
+        				st7565_clear_buffer(LCD_Buffer);
+        				if (set_mon < 12) {
+        					set_mon += 1;
+        				} else if (set_min == 12) {
+        					set_mon = 1;
+        				}
+        				ah_draw_cursor(4);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_MONTH;
+        				break;
+
+        			case EV_BUTTON_UP:
+        				st7565_clear_buffer(LCD_Buffer);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				ah_draw_cursor(3);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_DAY;
+        				break;
+
+        			case EV_BUTTON_DN:
+        				st7565_clear_buffer(LCD_Buffer);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				ah_draw_cursor(5);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_YEAR;
+        				break;
+
+        			default:
+        				state = MENU_SETTIME_MONTH;
+                }
+            	break;
+
+
+            case MENU_SETTIME_YEAR:
+            	switch (event) {
+        			case EV_BUTTON_LT:
+        				st7565_clear_buffer(LCD_Buffer);
+        				if (set_year > 10) {
+        					set_year -= 1;
+        				} else if (set_year == 10) {
+        					set_year = 99;
+        				}
+        				ah_draw_cursor(5);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_YEAR;
+        				break;
+
+        			case EV_BUTTON_RT:
+        				st7565_clear_buffer(LCD_Buffer);
+        				if (set_year < 2100) {
+        					set_year += 1;
+        				} else if (set_year == 2100) {
+        					set_year = 2010;
+        				}
+        				ah_draw_cursor(5);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_YEAR;
+        				break;
+
+        			case EV_BUTTON_UP:
+        				st7565_clear_buffer(LCD_Buffer);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				ah_draw_cursor(4);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_MONTH;
+        				break;
+
+        			case EV_BUTTON_DN:
+        				st7565_clear_buffer(LCD_Buffer);
+        				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+        				ah_draw_cursor(6);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_SETTIME_RETURN;
+        				break;
+
+        			default:
+        				state = MENU_SETTIME_YEAR;
+                }
+            	break;
+
+
+            case MENU_SETTIME_RETURN:
+            	switch (event) {
+        		case EV_BUTTON_SL:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(clock);
+        			ah_draw_cursor(1);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_CLOCK_TIME;
+        			break;
+        		case EV_BUTTON_UP:
+        			st7565_clear_buffer(LCD_Buffer);
+    				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+    				ah_draw_cursor(5);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_SETTIME_YEAR;
+        			break;
+
+        		case EV_BUTTON_DN:
+        			st7565_clear_buffer(LCD_Buffer);
+    				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
+    				ah_draw_cursor(1);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_SETTIME_HOUR;
+        			break;
+
+                default:
+                	state = MENU_SETTIME_RETURN;
+                }
+            	break;
+
+//=======================================================================================================================
+// Menu - Clock - Alarm   (Set Alarm Time)
+//=======================================================================================================================
+
+            case MENU_ALARM_HOUR:
+            	switch (event) {
+        			case EV_BUTTON_LT:
+        				st7565_clear_buffer(LCD_Buffer);
+        				if (set_al_hr > 0) {
+        					set_al_hr -= 1;
+        				} else if (set_al_hr == 0) {
+        					set_al_hr = 23;
+        				}
+        				ah_draw_cursor(1);
+        				st7565_drawmenu_setalarm(LCD_Buffer, set_al_hr, set_al_min);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_ALARM_HOUR;
+        				break;
+
+        			case EV_BUTTON_RT:
+        				st7565_clear_buffer(LCD_Buffer);
+        				if (set_al_hr < 23) {
+        					set_al_hr += 1;
+        				} else if (set_al_hr == 23) {
+        					set_al_hr = 0;
+        				}
+        				ah_draw_cursor(1);
+        				st7565_drawmenu_setalarm(LCD_Buffer, set_al_hr, set_al_min);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_ALARM_HOUR;
+        				break;
+
+        			case EV_BUTTON_UP:
+        				st7565_clear_buffer(LCD_Buffer);
+        				st7565_drawmenu_setalarm(LCD_Buffer, set_al_hr, set_al_min);
+        				ah_draw_cursor(3);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_ALARM_RETURN;
+        				break;
+
+        			case EV_BUTTON_DN:
+        				st7565_clear_buffer(LCD_Buffer);
+        				st7565_drawmenu_setalarm(LCD_Buffer, set_al_hr, set_al_min);
+        				ah_draw_cursor(2);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_ALARM_MINUTE;
+        				break;
+
+        			default:
+        				state = MENU_ALARM_HOUR;
+                }
+            	break;
+
+            case MENU_ALARM_MINUTE:
+            	switch (event) {
+        			case EV_BUTTON_LT:
+        				st7565_clear_buffer(LCD_Buffer);
+        				if (set_al_min > 0) {
+        					set_al_min -= 1;
+        				} else if (set_al_min == 0) {
+        					set_al_min = 59;
+        				}
+        				ah_draw_cursor(2);
+        				st7565_drawmenu_setalarm(LCD_Buffer, set_al_hr, set_al_min);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_ALARM_MINUTE;
+        				break;
+
+        			case EV_BUTTON_RT:
+        				st7565_clear_buffer(LCD_Buffer);
+        				if (set_al_min < 59) {
+        					set_al_min += 1;
+        				} else if (set_al_min == 59) {
+        					set_al_min = 0;
+        				}
+        				ah_draw_cursor(2);
+        				st7565_drawmenu_setalarm(LCD_Buffer, set_al_hr, set_al_min);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_ALARM_MINUTE;
+        				break;
+
+        			case EV_BUTTON_UP:
+        				st7565_clear_buffer(LCD_Buffer);
+        				st7565_drawmenu_setalarm(LCD_Buffer, set_al_hr, set_al_min);
+        				ah_draw_cursor(1);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_ALARM_HOUR;
+        				break;
+
+        			case EV_BUTTON_DN:
+        				st7565_clear_buffer(LCD_Buffer);
+        				st7565_drawmenu_setalarm(LCD_Buffer, set_al_hr, set_al_min);
+        				ah_draw_cursor(3);
+        				st7565_write_buffer(LCD_Buffer);
+        				state = MENU_ALARM_RETURN;
+        				break;
+
+        			default:
+        				state = MENU_ALARM_MINUTE;
+                }
+            	break;
+
+            case MENU_ALARM_RETURN:
+            	switch (event) {
+        		case EV_BUTTON_SL:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(clock);
+        			ah_draw_cursor(1);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_CLOCK_TIME;
+        			break;
+
+        		case EV_BUTTON_UP:
+        			st7565_clear_buffer(LCD_Buffer);
+    				st7565_drawmenu_setalarm(LCD_Buffer, set_al_hr, set_al_min);
+    				ah_draw_cursor(2);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_ALARM_MINUTE;
+        			break;
+
+        		case EV_BUTTON_DN:
+        			st7565_clear_buffer(LCD_Buffer);
+    				st7565_drawmenu_setalarm(LCD_Buffer, set_al_hr, set_al_min);
+    				ah_draw_cursor(1);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_ALARM_HOUR;
+        			break;
+
+                default:
+                	state = MENU_ALARM_RETURN;
+                }
+            	break;
+
+//=======================================================================================================================
+// Menu - Moodlight - Colors (Choose Color presets)
+//=======================================================================================================================
+
+            case MENU_COLORS_WHITE:
+            	switch (event) {
+        		case EV_BUTTON_SL:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(1);
+        			ah_setcolor(white);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_WHITE;
+        			break;
+
+        		case EV_BUTTON_UP:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(7);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_RETURN;
+        			break;
+
+        		case EV_BUTTON_DN:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(2);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_RED;
+        			break;
+
+                default:
+                	state = MENU_COLORS_WHITE;
+                }
+            	break;
+
+
+            case MENU_COLORS_RED:
+            	switch (event) {
+        		case EV_BUTTON_SL:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(2);
+        			ah_setcolor(red);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_RED;
+        			break;
+
+        		case EV_BUTTON_UP:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(1);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_WHITE;
+        			break;
+
+        		case EV_BUTTON_DN:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(3);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_GREEN;
+        			break;
+
+                default:
+                	state = MENU_COLORS_RED;
+                }
+            	break;
+
+
+            case MENU_COLORS_GREEN:
+            	switch (event) {
+        		case EV_BUTTON_SL:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(3);
+        			ah_setcolor(green);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_GREEN;
+        			break;
+
+        		case EV_BUTTON_UP:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(2);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_RED;
+        			break;
+
+        		case EV_BUTTON_DN:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(4);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_BLUE;
+        			break;
+
+                default:
+                	state = MENU_COLORS_GREEN;
+                }
+            	break;
+
+
+            case MENU_COLORS_BLUE:
+            	switch (event) {
+        		case EV_BUTTON_SL:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(4);
+        			ah_setcolor(blue);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_BLUE;
+        			break;
+
+        		case EV_BUTTON_UP:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(3);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_GREEN;
+        			break;
+
+        		case EV_BUTTON_DN:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(5);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_YELLOW;
+        			break;
+
+                default:
+                	state = MENU_COLORS_BLUE;
+                }
+            	break;
+
+
+            case MENU_COLORS_YELLOW:
+            	switch (event) {
+        		case EV_BUTTON_SL:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(5);
+        			ah_setcolor(yellow);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_YELLOW;
+        			break;
+
+        		case EV_BUTTON_UP:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(4);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_BLUE;
+        			break;
+
+        		case EV_BUTTON_DN:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(6);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_PURPLE;
+        			break;
+
+                default:
+                	state = MENU_COLORS_YELLOW;
+                }
+            	break;
+
+
+            case MENU_COLORS_PURPLE:
+            	switch (event) {
+        		case EV_BUTTON_SL:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(6);
+        			ah_setcolor(purple);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_PURPLE;
+        			break;
+
+        		case EV_BUTTON_UP:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(5);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_YELLOW;
+        			break;
+
+        		case EV_BUTTON_DN:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(7);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_RETURN;
+        			break;
+
+                default:
+                	state = MENU_COLORS_PURPLE;
+                }
+            	break;
+
+            case MENU_COLORS_RETURN:
+            	switch (event) {
+        		case EV_BUTTON_SL:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(moodlight);
+        			ah_draw_cursor(1);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_MOODL_PRESETS;
+        			break;
+
+        		case EV_BUTTON_UP:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(6);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_PURPLE;
+        			break;
+
+        		case EV_BUTTON_DN:
+        			st7565_clear_buffer(LCD_Buffer);
+        			ah_menu(colors);
+        			ah_draw_cursor(1);
+        			st7565_write_buffer(LCD_Buffer);
+        			state = MENU_COLORS_WHITE;
+        			break;
+
+                default:
+                	state = MENU_COLORS_RETURN;
+                }
+            	break;
+
         }            
 }
 

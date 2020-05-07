@@ -37,9 +37,9 @@ typedef enum {
     clock,
     moodlight,
     bluetooth,
-    music
+    music,
+	colors,
 } menu_t;
-
 
 // Commands from Datasheet
 #define ST7565_CMD_DISPLAY_OFF            0xAE
@@ -101,14 +101,7 @@ void st7565_drawchar(uint8_t *buff, uint8_t x, uint8_t line, uint8_t c);
 void st7565_setpixel(uint8_t *buff, uint8_t x, uint8_t y, uint8_t color);
 void st7565_clearpixel(uint8_t *buff, uint8_t x, uint8_t y);
 
-void st7565_drawline(uint8_t *buff, uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1,uint8_t color);
-void st7565_fillrect(uint8_t *buff, uint8_t x, uint8_t y, uint8_t w, uint8_t h,uint8_t color);
-void st7565_drawrect(uint8_t *buff, uint8_t x, uint8_t y, uint8_t w, uint8_t h,uint8_t color);
-void st7565_drawcircle(uint8_t *buff, uint8_t x0, uint8_t y0, uint8_t r, uint8_t color);
-void st7565_fillcircle(uint8_t *buff, uint8_t x0, uint8_t y0, uint8_t r, uint8_t color);
-
 //special "draw"-prototypes
-void st7565_drawfallingbitmap(uint8_t *buff, const uint8_t *bitmap, uint8_t w, uint8_t h);
 void st7565_drawbitmap(uint8_t *buff, uint8_t x, uint8_t y, const uint8_t *bitmap,uint8_t w, uint8_t h, uint8_t color);
 
 
@@ -132,5 +125,8 @@ void st7565_drawcursor(uint8_t* LCD_Buffer, uint8_t position);
 void sz7565_drawdate(uint8_t* LCD_Buffer);
 
 void st7565_drawmenu(uint8_t* LCD_Buffer, menu_t type);
+void st7565_drawmenu_custom(uint8_t* LCD_Buffer, uint8_t led_intens_w, uint8_t led_intens_r, uint8_t led_intens_g, uint8_t led_intens_b);
+void st7565_drawmenu_settime(uint8_t* LCD_Buffer, uint8_t set_hour, uint8_t set_min, uint8_t set_day, uint8_t set_mon, uint8_t set_year);
+void st7565_drawmenu_setalarm(uint8_t* LCD_Buffer, uint8_t set_al_hr, uint8_t set_al_min);
 
 #endif

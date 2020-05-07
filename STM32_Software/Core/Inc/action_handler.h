@@ -27,7 +27,14 @@
 //======================================================
 // Typedef for functions
 //======================================================
-
+typedef enum {
+    white,
+    red,
+    green,
+    blue,
+    yellow,
+	purple,
+} color_preset_t;
 
 //======================================================
 // Definition of functions
@@ -39,5 +46,6 @@ void ah_draw_snooze(void);
 void ah_draw_alarm(void);
 void ah_draw_cursor(uint8_t position);
 void ah_menu(menu_t type);
+void ah_setcolor(color_preset_t color_preset);
 
 #endif

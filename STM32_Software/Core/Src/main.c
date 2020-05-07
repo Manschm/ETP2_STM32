@@ -154,7 +154,7 @@ int main(void)
 //=======================================================================
     st7565_backlight_enable(); 
     st7565_set_brightness(0); 
-    HAL_Delay(100);
+    HAL_Delay(10);
    
 // Show startup screen
     st7565_clear_buffer(LCD_Buffer);
@@ -180,20 +180,9 @@ int main(void)
         }
     }
 
-    /* USER CODE BEGIN 3 */
+
     /*
-		st7565_clear_buffer(LCD_Buffer);
- 
-// Draw the clock
-      //Time 1
-    st7565_drawfhd(0, LCD_Buffer);
-    st7565_drawshd(6, LCD_Buffer);
-    st7565_drawdts(LCD_Buffer);
-    st7565_drawfmd(5, LCD_Buffer);
-    st7565_drawsmd(7, LCD_Buffer);
-           
-      
-   
+
 
 st7565_write_buffer(LCD_Buffer);
 */

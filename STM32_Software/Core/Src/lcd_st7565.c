@@ -187,39 +187,6 @@ void st7565_clear_buffer(uint8_t *buff) {
 #define XPOS 0
 #define YPOS 1
 #define DELTAY 2
-void st7565_drawfallingbitmap(uint8_t *buff, const uint8_t *bitmap, uint8_t w, uint8_t h) {
-	uint8_t icons[ANZAHL][3];
-	srand(buff[666]);
-// initialize
-	uint8_t f = 0;
-	for (f = 0; f < ANZAHL; f++) {
-		icons[f][XPOS] = rand() % 128;
-		icons[f][YPOS] = 0;
-		icons[f][DELTAY] = rand() % 5 + 1;
-	}
-	while (1) {
-// draw each icon
-		for (f = 0; f < ANZAHL; f++) {
-			st7565_drawbitmap(buffer, icons[f][XPOS], icons[f][YPOS], bitmap, w,
-					h, 1);
-		}
-		DELAY(200);
-		st7565_write_buffer(buffer);
-// then erase it + move it
-		for (f = 0; f < ANZAHL; f++) {
-			st7565_drawbitmap(buffer, icons[f][XPOS], icons[f][YPOS], bitmap, w,
-					h, 0);
-// move it
-			icons[f][YPOS] += icons[f][DELTAY];
-// if its gone, reinit
-			if (icons[f][YPOS] > 64) {
-				icons[f][XPOS] = rand() % 128;
-				icons[f][YPOS] = 0;
-				icons[f][DELTAY] = rand() % 5 + 1;
-			}
-		}
-	}
-}
 
 //set *pixel on *x/*y with *color
 void st7565_setpixel(uint8_t *buff, uint8_t x, uint8_t y, uint8_t color) {
@@ -275,155 +242,6 @@ void st7565_clearpixel(uint8_t *buff, uint8_t x, uint8_t y) {
 // x is which column
 	buff[x + (y / 8) * 128] &= ~(1 << (7 - (y % 8)));
 }
-
-// Draw a line, based on bresenham's algorithm
-void st7565_drawline(uint8_t *buff, uint8_t x0, uint8_t y0, uint8_t x1,
-		uint8_t y1, uint8_t color) {
-	uint8_t tmp, swap = 0;
-	uint8_t x, y;
-	uint8_t dx, dy;
-	int8_t ystep, err;
-
-	if (x0 > x1)
-		dx = x0 - x1;
-	else
-		dx = x1 - x0;
-	if (y0 > y1)
-		dy = y0 - y1;
-	else
-		dy = y1 - y0;
-
-	if (dy > dx) {
-		swap = 1;
-		tmp = dx;
-		dx = dy;
-		dy = tmp;
-		tmp = x0;
-		x0 = y0;
-		y0 = tmp;
-		tmp = x1;
-		x1 = y1;
-		y1 = tmp;
-	}
-	if (x0 > x1) {
-		tmp = x0;
-		x0 = x1;
-		x1 = tmp;
-		tmp = y0;
-		y0 = y1;
-		y1 = tmp;
-	}
-
-	err = dx >> 1;
-	if (y1 > y0)
-		ystep = 1;
-	else
-		ystep = -1;
-	y = y0;
-	for (x = x0; x <= x1; x++) {
-		if (swap == 0)
-			st7565_setpixel(buff, x, y, color);
-		else
-			st7565_setpixel(buff, y, x, color);
-		err -= (uint8_t) dy;
-		if (err < 0) {
-			y += (uint8_t) ystep;
-			err += (uint8_t) dx;
-		}
-	}
-}
-
-// draw a filled rectangle
-void st7565_fillrect(uint8_t *buff, uint8_t x, uint8_t y, uint8_t w, uint8_t h,
-		uint8_t color) {
-// stupidest version - just pixels - but fast with internal buffer!
-	uint8_t i, j;
-	for (i = x; i < x + w; i++) {
-		for (j = y; j < y + h; j++) {
-			st7565_setpixel(buff, i, j, color);
-		}
-	}
-}
-
-// draw a rectangle
-void st7565_drawrect(uint8_t *buff, uint8_t x, uint8_t y, uint8_t w, uint8_t h,
-		uint8_t color) {
-// stupidest version - just pixels - but fast with internal buffer!
-	uint8_t i;
-	for (i = x; i < x + w; i++) {
-		st7565_setpixel(buff, i, y, color);
-		st7565_setpixel(buff, i, y + h - 1, color);
-	}
-	for (i = y; i < y + h; i++) {
-		st7565_setpixel(buff, x, i, color);
-		st7565_setpixel(buff, x + w - 1, i, color);
-	}
-}
-
-// draw a circle
-void st7565_drawcircle(uint8_t *buff, uint8_t x0, uint8_t y0, uint8_t r,
-		uint8_t color) {
-	int8_t f = 1 - r;
-	int8_t ddF_x = 1;
-	int8_t ddF_y = -2 * r;
-	int8_t x = 0;
-	int8_t y = r;
-	st7565_setpixel(buff, x0, y0 + r, color);
-	st7565_setpixel(buff, x0, y0 - r, color);
-	st7565_setpixel(buff, x0 + r, y0, color);
-	st7565_setpixel(buff, x0 - r, y0, color);
-	while (x < y) {
-		if (f >= 0) {
-			y--;
-			ddF_y += 2;
-			f += ddF_y;
-		}
-		x++;
-		ddF_x += 2;
-		f += ddF_x;
-		st7565_setpixel(buff, x0 + x, y0 + y, color);
-		st7565_setpixel(buff, x0 - x, y0 + y, color);
-		st7565_setpixel(buff, x0 + x, y0 - y, color);
-		st7565_setpixel(buff, x0 - x, y0 - y, color);
-		st7565_setpixel(buff, x0 + y, y0 + x, color);
-		st7565_setpixel(buff, x0 - y, y0 + x, color);
-		st7565_setpixel(buff, x0 + y, y0 - x, color);
-		st7565_setpixel(buff, x0 - y, y0 - x, color);
-	}
-}
-
-// draw a filled circle
-void st7565_fillcircle(uint8_t *buff, uint8_t x0, uint8_t y0, uint8_t r,
-		uint8_t color) {
-	int8_t f = 1 - r;
-	int8_t ddF_x = 1;
-	int8_t ddF_y = -2 * r;
-	int8_t x = 0;
-	int8_t y = r;
-	uint8_t i;
-	for (i = y0 - r; i <= y0 + r; i++) {
-		st7565_setpixel(buff, x0, i, color);
-	}
-	while (x < y) {
-		if (f >= 0) {
-			y--;
-			ddF_y += 2;
-			f += ddF_y;
-		}
-		x++;
-		ddF_x += 2;
-		f += ddF_x;
-		for (i = y0 - y; i <= y0 + y; i++) {
-			st7565_setpixel(buff, x0 + x, i, color);
-			st7565_setpixel(buff, x0 - x, i, color);
-		}
-		for (i = y0 - x; i <= y0 + x; i++) {
-			st7565_setpixel(buff, x0 + y, i, color);
-			st7565_setpixel(buff, x0 - y, i, color);
-		}
-	}
-}
-
 
 
 //=============================================================================================
@@ -621,11 +439,103 @@ void st7565_drawmenu(uint8_t* LCD_Buffer, menu_t type)
             st7565_drawstring(LCD_Buffer, 8, 2, " Volume");
             st7565_drawstring(LCD_Buffer, 8, 3, " Return");
             break;
+
+        case colors:
+        	st7565_drawstring(LCD_Buffer, 40, 0, " COLORS");
+        	st7565_drawstring(LCD_Buffer, 8, 1, " White");
+        	st7565_drawstring(LCD_Buffer, 8, 2, " Red");
+        	st7565_drawstring(LCD_Buffer, 8, 3, " Green");
+        	st7565_drawstring(LCD_Buffer, 8, 4, " Blue");
+        	st7565_drawstring(LCD_Buffer, 8, 5, " Yellow");
+        	st7565_drawstring(LCD_Buffer, 8, 6, " Purple");
+        	st7565_drawstring(LCD_Buffer, 8, 7, " Return");
+        	break;
         }
     }
 
 //==========================================================
-// 
+// Function to change variable numbers into chars
 //==========================================================
 
+//==========================================================
+// Draw custom menu
+//==========================================================
+void st7565_drawmenu_custom(uint8_t* LCD_Buffer, uint8_t led_intens_w, uint8_t led_intens_r, uint8_t led_intens_g, uint8_t led_intens_b)
+    {
 
+			uint8_t intens_w[1];
+			uint8_t intens_r[1];
+			uint8_t intens_g[1];
+			uint8_t intens_b[1];
+
+			itoa(led_intens_w, intens_w, 10);
+			itoa(led_intens_r, intens_r, 10);
+			itoa(led_intens_g, intens_g, 10);
+			itoa(led_intens_b, intens_b, 10);
+
+			st7565_drawstring(LCD_Buffer, 40, 0, "CUSTOM COLOR");
+        	st7565_drawstring(LCD_Buffer, 8,  1, " White:");
+        	st7565_drawstring(LCD_Buffer, 50, 1, intens_w);
+        	st7565_drawstring(LCD_Buffer, 70, 1, " %");
+        	st7565_drawstring(LCD_Buffer, 8,  2, " Red:");
+        	st7565_drawstring(LCD_Buffer, 50, 2, intens_r);
+        	st7565_drawstring(LCD_Buffer, 70, 2, " %");
+        	st7565_drawstring(LCD_Buffer, 8,  3, " Green:");
+        	st7565_drawstring(LCD_Buffer, 50, 3, intens_g);
+        	st7565_drawstring(LCD_Buffer, 70, 3, " %");
+        	st7565_drawstring(LCD_Buffer, 8,  4, " Blue:");
+        	st7565_drawstring(LCD_Buffer, 50, 4, intens_b);
+        	st7565_drawstring(LCD_Buffer, 70, 4, " %");
+        	st7565_drawstring(LCD_Buffer, 8,  5, " Return");
+    }
+
+//==========================================================
+// Draw set time menu
+//==========================================================
+void st7565_drawmenu_settime(uint8_t* LCD_Buffer, uint8_t set_hour, uint8_t set_min, uint8_t set_day, uint8_t set_mon, uint8_t set_year)
+{
+	uint8_t hour[1];
+	uint8_t min[1];
+	uint8_t day[1];
+	uint8_t mon[1];
+	uint8_t year[1];
+
+	itoa(set_hour, hour, 10);
+	itoa(set_min, min, 10);
+	itoa(set_day, day, 10);
+	itoa(set_mon, mon, 10);
+	itoa(set_year, year, 10);
+
+	st7565_drawstring(LCD_Buffer, 40, 0, "SET TIME");
+	st7565_drawstring(LCD_Buffer, 8,  1, " Set hour:");
+	st7565_drawstring(LCD_Buffer, 80, 1, hour);
+	st7565_drawstring(LCD_Buffer, 8,  2, " Set minute:");
+	st7565_drawstring(LCD_Buffer, 80, 2, min);
+	st7565_drawstring(LCD_Buffer, 8,  3, " Set Day:");
+	st7565_drawstring(LCD_Buffer, 80, 3, day);
+	st7565_drawstring(LCD_Buffer, 8,  4, " Set Month:");
+	st7565_drawstring(LCD_Buffer, 80, 4, mon);
+	st7565_drawstring(LCD_Buffer, 8,  5, " Set Year:");
+	st7565_drawstring(LCD_Buffer, 80,  5, "20");
+	st7565_drawstring(LCD_Buffer, 92, 5, year);
+	st7565_drawstring(LCD_Buffer, 8,  6, " Return");
+}
+
+//==========================================================
+// Draw alarm menu
+//==========================================================
+void st7565_drawmenu_setalarm(uint8_t* LCD_Buffer, uint8_t set_al_hr, uint8_t set_al_min)
+{
+	uint8_t al_hr[1];
+	uint8_t al_min[1];
+
+	itoa(set_al_hr, al_hr, 10);
+	itoa(set_al_min, al_min, 10);
+
+	st7565_drawstring(LCD_Buffer, 40, 0, "SET ALARM");
+	st7565_drawstring(LCD_Buffer, 8,  1, " Set Hour:");
+	st7565_drawstring(LCD_Buffer, 80, 1, al_hr);
+	st7565_drawstring(LCD_Buffer, 8,  2, " Set Minute:");
+	st7565_drawstring(LCD_Buffer, 80, 2, al_min);
+	st7565_drawstring(LCD_Buffer, 8,  3, " Return");
+}

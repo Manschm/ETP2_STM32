@@ -89,7 +89,7 @@ void ah_draw_alarm()
 
 
 // Menu screen actions
-//------------------------------------
+//=======================================
 void ah_draw_cursor(uint8_t position)
 {
 	st7565_drawcursor(LCD_Buffer, position);
@@ -100,4 +100,12 @@ void ah_menu(menu_t type)
 {
 	st7565_drawmenu(LCD_Buffer, type);
 }
+
+// LED Actions
+//=======================================
+void ah_setcolor(color_preset_t color_preset)
+{
+	// TO BE CODED****** Set led color and PWM. Color presets. Feel free.
+}
+
 
