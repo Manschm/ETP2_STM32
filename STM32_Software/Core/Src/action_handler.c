@@ -70,14 +70,29 @@ void ah_set_time(uint8_t set_hour,uint8_t set_min)
 
 void ah_set_date(uint8_t set_day, uint8_t set_mon, uint8_t set_year)
 {
+
 	RTC_DateTypeDef sDate = {0};
-
 	sDate.WeekDay = RTC_WEEKDAY_MONDAY;
-	sDate.Month = RTC_MONTH_JANUARY;
-	sDate.Date = 0x1;
-	sDate.Year = 0x0;
 
-		    HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD);
+	switch(set_mon) {
+		case 1: sDate.Month = RTC_MONTH_JANUARY; break;
+		case 2: sDate.Month = RTC_MONTH_FEBRUARY; break;
+		case 3: sDate.Month = RTC_MONTH_MARCH; break;
+		case 4: sDate.Month = RTC_MONTH_APRIL; break;
+		case 5: sDate.Month = RTC_MONTH_MAY; break;
+		case 6: sDate.Month = RTC_MONTH_JUNE; break;
+		case 7: sDate.Month = RTC_MONTH_JULY; break;
+		case 8: sDate.Month = RTC_MONTH_AUGUST; break;
+		case 9: sDate.Month = RTC_MONTH_SEPTEMBER; break;
+		case 10: sDate.Month = RTC_MONTH_OCTOBER; break;
+		case 11: sDate.Month = RTC_MONTH_NOVEMBER; break;
+		case 12: sDate.Month = RTC_MONTH_DECEMBER; break;
+	}
+
+	sDate.Date = set_day;
+	sDate.Year = set_year;
+
+	HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD);
 }
 
 
