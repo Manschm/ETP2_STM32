@@ -864,6 +864,7 @@ void fsm_handle_event(event_t event)
         				} else if (set_hour == 0) {
         					set_hour = 23;
         				}
+        				ah_set_time(set_hour, set_min);
         				ah_draw_cursor(1);
         				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
         				st7565_write_buffer(LCD_Buffer);
@@ -877,6 +878,7 @@ void fsm_handle_event(event_t event)
         				} else if (set_hour == 23) {
         					set_hour = 0;
         				}
+        				ah_set_time(set_hour, set_min);
         				ah_draw_cursor(1);
         				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
         				st7565_write_buffer(LCD_Buffer);
@@ -913,6 +915,7 @@ void fsm_handle_event(event_t event)
         				} else if (set_min == 0) {
         					set_min = 59;
         				}
+        				ah_set_time(set_hour, set_min);
         				ah_draw_cursor(2);
         				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
         				st7565_write_buffer(LCD_Buffer);
@@ -926,6 +929,7 @@ void fsm_handle_event(event_t event)
         				} else if (set_min == 59) {
         					set_min = 0;
         				}
+        				ah_set_time(set_hour, set_min);
         				ah_draw_cursor(2);
         				st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
         				st7565_write_buffer(LCD_Buffer);

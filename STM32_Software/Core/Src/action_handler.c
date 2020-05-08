@@ -22,6 +22,8 @@
 #include "action_handler.h"
 #include "event_handler.h"
 #include "lcd_st7565.h"
+#include "main.h"
+#include "rtc.h"
 
 
 //=================================================
@@ -52,6 +54,33 @@ void ah_draw_date()
 {
     //void st7565_drawdate(LCD_Buffer);
 }
+
+void ah_set_time(uint8_t set_hour,uint8_t set_min)
+{
+	RTC_TimeTypeDef sTime = {0};
+
+	sTime.Hours = set_hour;
+	sTime.Minutes  = set_min;
+	sTime.Seconds = 0;
+	sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+	sTime.StoreOperation = RTC_STOREOPERATION_RESET;
+
+	HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
+}
+
+void ah_set_date(uint8_t set_day, uint8_t set_mon, uint8_t set_year)
+{
+	RTC_DateTypeDef sDate = {0};
+
+	sDate.WeekDay = RTC_WEEKDAY_MONDAY;
+	sDate.Month = RTC_MONTH_JANUARY;
+	sDate.Date = 0x1;
+	sDate.Year = 0x0;
+
+		    HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BCD);
+}
+
+
 
 void ah_draw_sensor()
 {
