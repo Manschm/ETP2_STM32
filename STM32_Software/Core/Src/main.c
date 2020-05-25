@@ -124,6 +124,8 @@ int main(void)
   MX_TIM6_Init();
   MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
+  HAL_RTC_DeactivateAlarm(&hrtc, RTC_ALARM_A);
+
 	HAL_GPIO_WritePin(LEDUP_GPIO_Port, LEDUP_Pin, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(LEDDN_GPIO_Port, LEDDN_Pin, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(LEDLT_GPIO_Port, LEDLT_Pin, GPIO_PIN_RESET);
@@ -173,7 +175,14 @@ int main(void)
     event_t event;
     fsm_init();
     
+    RTC_AlarmTypeDef sAlarm;
+    HAL_RTC_GetAlarm(&hrtc, &sAlarm, RTC_ALARM_A, RTC_FORMAT_BCD);
+    HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BCD);
+
     while(1) {
+        //HAL_RTC_GetAlarm(&hrtc, &sAlarm, RTC_ALARM_A, RTC_FORMAT_BCD);
+        //HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BCD);
+
         event = eh_get_event();
         if(event != EV_NO_EVENT) {
             fsm_handle_event(event);
@@ -265,15 +274,21 @@ void SystemClock_Config(void)
 		updateSensor = 1;
 	}
 }*/
-
+	static uint8_t counter = 0;
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc) {
-	if (state == HOME_SCREEN) {
-		st7565_clear_buffer(LCD_Buffer);
-		ah_draw_time();
-		ah_draw_date();
-	    ah_draw_sensor();
-	    ah_draw_snooze();
-	    ah_draw_alarm();
+	if (state == HOME_SCREEN){
+		if (counter<4) {
+			counter += 1;
+		}
+		else {
+			st7565_clear_buffer(LCD_Buffer);
+			ah_draw_time();
+			ah_draw_date();
+			ah_draw_sensor();
+			ah_draw_snooze();
+			ah_draw_alarm();
+			counter = 0;
+		}
 	}
 }
 /* USER CODE END 4 */

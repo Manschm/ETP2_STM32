@@ -379,9 +379,9 @@ void st7565_drawdate(uint8_t *LCD_Buffer,uint8_t day,uint8_t month,uint8_t year)
 	itoa(year, year_s, 10);
 
     st7565_drawstring(LCD_Buffer, 40, 5, day_s);
-    st7565_drawstring(LCD_Buffer, 50, 5, "/");
+    st7565_drawstring(LCD_Buffer, 52, 5, "/");
     st7565_drawstring(LCD_Buffer, 60, 5, month_s);
-    st7565_drawstring(LCD_Buffer, 70, 5, "/");
+    st7565_drawstring(LCD_Buffer, 72, 5, "/");
     st7565_drawstring(LCD_Buffer, 80, 5, "20");
     st7565_drawstring(LCD_Buffer, 92, 5, year_s);
     }
