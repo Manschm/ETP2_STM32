@@ -21,7 +21,7 @@
 #include "state_machine.h"
 #include "action_handler.h"
 #include "lcd_st7565.h"
-
+#include "tim.h"
 
 // Definition of FSM states
 
@@ -37,6 +37,7 @@ typedef enum {
     MENU_CLOCK_RETURN,
     MENU_MOODL_CUSTOM,
     MENU_MOODL_PRESETS,
+	MENU_MOODL_OFF,
     MENU_MOODL_RETURN,
     MENU_BT_PAIR,
     MENU_BT_SETTINGS,
@@ -74,13 +75,13 @@ uint8_t led_intens_w	= 50;
 uint8_t led_intens_r	= 50;
 uint8_t led_intens_g	= 50;
 uint8_t led_intens_b	= 50;
-uint8_t set_hour		= 0;
-uint8_t set_min 		= 0;
-uint8_t set_day 		= 1;
-uint8_t set_mon 	 	= 1;
-uint8_t set_year 		= 20;
-uint8_t set_al_hr 		= 0;
-uint8_t set_al_min	 	= 0;
+uint8_t set_hour;
+uint8_t set_min;
+uint8_t set_day;
+uint8_t set_mon;
+uint8_t set_year;
+uint8_t set_al_hr;
+uint8_t set_al_min;
 
 color_preset_t color_preset = white;
 
@@ -91,6 +92,7 @@ static state_t state = HOME_SCREEN;
 void fsm_init(void)
 {
     state = HOME_SCREEN;
+	st7565_clear_buffer(LCD_Buffer);
     ah_draw_time();
     ah_draw_date();
     ah_draw_sensor();
@@ -429,13 +431,45 @@ void fsm_handle_event(event_t event)
                     ah_menu(moodlight);
                     ah_draw_cursor(3);
                     st7565_write_buffer(LCD_Buffer);
-                    state = MENU_MOODL_RETURN;  
+                    state = MENU_MOODL_OFF;
                     break;
                         
                 default:
                     state = MENU_MOODL_CUSTOM;
             }
             break;
+
+            case MENU_MOODL_OFF:
+                switch (event) {
+                    case EV_BUTTON_SL:
+                    	st7565_clear_buffer(LCD_Buffer);
+                    	ah_menu(moodlight);
+                    	ah_draw_cursor(3);
+                    	st7565_write_buffer(LCD_Buffer);
+                    	ah_stop_led(&htim1);
+                        state = MENU_MOODL_OFF;
+                        break;
+
+                    case EV_BUTTON_UP:
+                    	st7565_clear_buffer(LCD_Buffer);
+                        ah_menu(moodlight);
+                        ah_draw_cursor(2);
+                        st7565_write_buffer(LCD_Buffer);
+                        state = MENU_MOODL_CUSTOM;
+                        break;
+
+                    case EV_BUTTON_DN:
+                    	st7565_clear_buffer(LCD_Buffer);
+                        ah_menu(moodlight);
+                        ah_draw_cursor(4);
+                        st7565_write_buffer(LCD_Buffer);
+                        state = MENU_MOODL_RETURN;
+                        break;
+
+                    default:
+                        state = MENU_MOODL_OFF;
+                }
+                break;
         
         case MENU_MOODL_RETURN:
             switch (event) {
@@ -450,9 +484,9 @@ void fsm_handle_event(event_t event)
                 case EV_BUTTON_UP:
                 	st7565_clear_buffer(LCD_Buffer);
                     ah_menu(moodlight);
-                    ah_draw_cursor(2);
+                    ah_draw_cursor(3);
                     st7565_write_buffer(LCD_Buffer);
-                    state = MENU_MOODL_CUSTOM;  
+                    state = MENU_MOODL_OFF;
                     break;
                 
                 case EV_BUTTON_DN:
@@ -653,6 +687,7 @@ void fsm_handle_event(event_t event)
                 	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
                     ah_draw_cursor(1);
                     st7565_write_buffer(LCD_Buffer);
+                    ah_set_custom(led_intens_r, led_intens_g, led_intens_b, led_intens_w);
                     state = MENU_CUSTOM_WHITE ;
                     break;
 
@@ -664,6 +699,7 @@ void fsm_handle_event(event_t event)
                 	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
                     ah_draw_cursor(1);
                     st7565_write_buffer(LCD_Buffer);
+                    ah_set_custom(led_intens_r, led_intens_g, led_intens_b, led_intens_w);
                     state = MENU_CUSTOM_WHITE;
                     break;
 
@@ -698,6 +734,7 @@ void fsm_handle_event(event_t event)
                     	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
                         ah_draw_cursor(2);
                         st7565_write_buffer(LCD_Buffer);
+                        ah_set_custom(led_intens_r, led_intens_g, led_intens_b, led_intens_w);
                         state = MENU_CUSTOM_RED ;
                         break;
 
@@ -709,6 +746,7 @@ void fsm_handle_event(event_t event)
                     	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
                         ah_draw_cursor(2);
                         st7565_write_buffer(LCD_Buffer);
+                        ah_set_custom(led_intens_r, led_intens_g, led_intens_b, led_intens_w);
                         state = MENU_CUSTOM_RED;
                         break;
 
@@ -743,6 +781,7 @@ void fsm_handle_event(event_t event)
                     	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
                         ah_draw_cursor(3);
                         st7565_write_buffer(LCD_Buffer);
+                        ah_set_custom(led_intens_r, led_intens_g, led_intens_b, led_intens_w);
                         state = MENU_CUSTOM_GREEN;
                         break;
 
@@ -754,6 +793,7 @@ void fsm_handle_event(event_t event)
                     	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
                         ah_draw_cursor(3);
                         st7565_write_buffer(LCD_Buffer);
+                        ah_set_custom(led_intens_r, led_intens_g, led_intens_b, led_intens_w);
                         state = MENU_CUSTOM_GREEN;
                         break;
 
@@ -788,6 +828,7 @@ void fsm_handle_event(event_t event)
                     	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
                         ah_draw_cursor(4);
                         st7565_write_buffer(LCD_Buffer);
+                        ah_set_custom(led_intens_r, led_intens_g, led_intens_b, led_intens_w);
                         state = MENU_CUSTOM_BLUE;
                         break;
 
@@ -799,6 +840,7 @@ void fsm_handle_event(event_t event)
                     	st7565_drawmenu_custom(LCD_Buffer, led_intens_w, led_intens_r, led_intens_g, led_intens_b);
                         ah_draw_cursor(4);
                         st7565_write_buffer(LCD_Buffer);
+                        ah_set_custom(led_intens_r, led_intens_g, led_intens_b, led_intens_w);
                         state = MENU_CUSTOM_BLUE;
                         break;
 
@@ -1109,6 +1151,7 @@ void fsm_handle_event(event_t event)
             case MENU_SETTIME_RETURN:
             	switch (event) {
         		case EV_BUTTON_SL:
+        			ah_set_date(set_day, set_mon, set_year);
         			st7565_clear_buffer(LCD_Buffer);
         			ah_menu(clock);
         			ah_draw_cursor(1);

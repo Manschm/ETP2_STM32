@@ -322,14 +322,14 @@ void st7565_drawsmd(uint8_t smd, uint8_t* LCD_Buffer)
 // Draw temperature symbol
 void st7565_drawtempsymbol(uint8_t* LCD_Buffer)
     {
-    st7565_drawbitmap(LCD_Buffer, 15, 42, symbol_temp, 128, 64, 10);
+    st7565_drawbitmap(LCD_Buffer, 15, 47, symbol_temp, 128, 64, 10);
     }
     
 //Draw temperature 
 void st7565_drawtemp(uint8_t temp[] , uint8_t* LCD_Buffer)
     {
-    st7565_drawstring(LCD_Buffer, 30, 6, temp);
-    st7565_drawbitmap(LCD_Buffer, 42, 47, symbol_deg, 128, 64, 10);
+    st7565_drawstring(LCD_Buffer, 30, 7, temp);
+    st7565_drawbitmap(LCD_Buffer, 42, 53, symbol_deg, 128, 64, 10);
     }
     
 //==========================================================
@@ -338,14 +338,14 @@ void st7565_drawtemp(uint8_t temp[] , uint8_t* LCD_Buffer)
 // Draw humidity symbol
 void st7565_drawhumidsymbol(uint8_t* LCD_Buffer)
     {
-    st7565_drawbitmap(LCD_Buffer, 65, 42, symbol_humid, 128, 64, 10);
+    st7565_drawbitmap(LCD_Buffer, 65, 47, symbol_humid, 128, 64, 10);
     }
 
 // Draw humidity level
 void st7565_drawhumid(uint8_t hum[], uint8_t* LCD_Buffer)
     {
-    st7565_drawstring(LCD_Buffer, 82, 6, hum);
-    st7565_drawstring(LCD_Buffer, 95, 6, "%");
+    st7565_drawstring(LCD_Buffer, 82, 7, hum);
+    st7565_drawstring(LCD_Buffer, 95, 7, "%");
     }
 
   
@@ -368,19 +368,24 @@ void st7565_drawsnsymbol(uint8_t* LCD_Buffer)
 //==========================================================
 // Draw date 
 //========================================================== 
-/*void st7565_drawdate(uint8_t *LCD_Buffer)
+void st7565_drawdate(uint8_t *LCD_Buffer,uint8_t day,uint8_t month,uint8_t year)
     {
-    uint8_t day     = get from RTC;
-    uint8_t month   = get from RTC;
-    uint8_t year    = get from RTC;
-    
-    st7565_drawstring(LCD_Buffer, xy, line, day);
-    st7565_drawstring(LCD_Buffer, xy, line, month);
-    st7565_drawstring(LCD_Buffer, xy, line, year);
+	uint8_t day_s[1];
+	uint8_t month_s[1];
+	uint8_t year_s[1];
+
+	itoa(day, day_s, 10);
+	itoa(month, month_s, 10);
+	itoa(year, year_s, 10);
+
+    st7565_drawstring(LCD_Buffer, 40, 5, day_s);
+    st7565_drawstring(LCD_Buffer, 50, 5, "/");
+    st7565_drawstring(LCD_Buffer, 60, 5, month_s);
+    st7565_drawstring(LCD_Buffer, 70, 5, "/");
+    st7565_drawstring(LCD_Buffer, 80, 5, "20");
+    st7565_drawstring(LCD_Buffer, 92, 5, year_s);
     }
- 
-*/
-   
+
 //==========================================================
 // Draw cursor
 //========================================================== 
@@ -423,7 +428,8 @@ void st7565_drawmenu(uint8_t* LCD_Buffer, menu_t type)
             st7565_drawstring(LCD_Buffer, 40, 0, "MOODLIGHT");
             st7565_drawstring(LCD_Buffer, 8, 1, " Colors");
             st7565_drawstring(LCD_Buffer, 8, 2, " Custom");
-            st7565_drawstring(LCD_Buffer, 8, 3, " Return");
+            st7565_drawstring(LCD_Buffer, 8, 3, " Lights OFF");
+            st7565_drawstring(LCD_Buffer, 8, 4, " Return");
             break;
         
         case bluetooth:
@@ -516,8 +522,7 @@ void st7565_drawmenu_settime(uint8_t* LCD_Buffer, uint8_t set_hour, uint8_t set_
 	st7565_drawstring(LCD_Buffer, 8,  4, " Set Month:");
 	st7565_drawstring(LCD_Buffer, 80, 4, mon);
 	st7565_drawstring(LCD_Buffer, 8,  5, " Set Year:");
-	st7565_drawstring(LCD_Buffer, 80,  5, "20");
-	st7565_drawstring(LCD_Buffer, 92, 5, year);
+	st7565_drawstring(LCD_Buffer, 80, 5, year);
 	st7565_drawstring(LCD_Buffer, 8,  6, " Return");
 }
 
