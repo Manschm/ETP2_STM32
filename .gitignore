@@ -54,6 +54,7 @@ dkms.conf
 # Extra stuff
 */build
 */.vs
+*/.settings
 *.LOG
 *.crf
 *.uvguix.*
@@ -73,3 +74,8 @@ dkms.conf
 *.user
 *.otf
 *.iex
+*.mk
+STM32_Software/STM32CubeIDE/Debug/makefile
+*.bin
+*.list
+STM32_Software/STM32CubeIDE/.settings/language.settings.xml
