@@ -124,14 +124,14 @@ int main(void)
   MX_TIM6_Init();
   MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
-	HAL_GPIO_WritePin(LEDUP_GPIO_Port, LEDUP_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(LEDDN_GPIO_Port, LEDDN_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(LEDLT_GPIO_Port, LEDLT_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(LEDRT_GPIO_Port, LEDRT_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(LEDUP_GPIO_Port, LEDUP_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LEDDN_GPIO_Port, LEDDN_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LEDLT_GPIO_Port, LEDLT_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(LEDRT_GPIO_Port, LEDRT_Pin, GPIO_PIN_RESET);
 	
 	
-	__HAL_TIM_SET_COMPARE(&htim1, PWM_CH_R, 200);
-	HAL_TIM_PWM_Start(&htim1, PWM_CH_R);
+	//__HAL_TIM_SET_COMPARE(&htim1, PWM_CH_R, 200);
+	//HAL_TIM_PWM_Start(&htim1, PWM_CH_R);
 	
 	
 	//HAL_TIM_Base_Start_IT(&htim3);	// UI timer
@@ -265,6 +265,17 @@ void SystemClock_Config(void)
 		updateSensor = 1;
 	}
 }*/
+
+void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc) {
+	if (state == HOME_SCREEN) {
+		st7565_clear_buffer(LCD_Buffer);
+		ah_draw_time();
+		ah_draw_date();
+	    ah_draw_sensor();
+	    ah_draw_snooze();
+	    ah_draw_alarm();
+	}
+}
 /* USER CODE END 4 */
 
 /**

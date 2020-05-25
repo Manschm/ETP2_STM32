@@ -81,16 +81,24 @@ void ah_draw_date()
 //=================================================
 void ah_set_time(uint8_t set_hour,uint8_t set_min)
 {
-	RTC_TimeTypeDef sTime = {0};
-	HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
+	//RTC_TimeTypeDef sTime = {0};
+	//HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
+	RTC_AlarmTypeDef sAlarm;
+	HAL_RTC_GetAlarm(&hrtc, &sAlarm, RTC_ALARM_A, RTC_FORMAT_BCD);
+	HAL_RTC_DeactivateAlarm(&hrtc,  RTC_ALARM_A);
 
-	sTime.Hours = set_hour;
-	sTime.Minutes  = set_min;
-	sTime.Seconds = 0;
-	sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
-	sTime.StoreOperation = RTC_STOREOPERATION_RESET;
+	sAlarm.AlarmTime.Hours = set_hour;
+	sAlarm.AlarmTime.Minutes = set_min;
+	sAlarm.AlarmTime.Seconds = 0;
 
-	HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
+	//sTime.Hours = set_hour;
+	//sTime.Minutes  = set_min;
+	//sTime.Seconds = 0;
+	//sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+	//sTime.StoreOperation = RTC_STOREOPERATION_RESET;
+
+	//HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
+	HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BCD);
 }
 
 //=================================================

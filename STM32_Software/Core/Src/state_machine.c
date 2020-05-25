@@ -23,50 +23,6 @@
 #include "lcd_st7565.h"
 #include "tim.h"
 
-// Definition of FSM states
-
-typedef enum {
-    HOME_SCREEN,
-    MENU_MAIN_CLOCK,
-    MENU_MAIN_MOODLIGHT,
-    MENU_MAIN_BLUETOOTH,
-    MENU_MAIN_MUSIC,
-    MENU_MAIN_RETURN,
-    MENU_CLOCK_TIME,
-    MENU_CLOCK_ALARM,
-    MENU_CLOCK_RETURN,
-    MENU_MOODL_CUSTOM,
-    MENU_MOODL_PRESETS,
-	MENU_MOODL_OFF,
-    MENU_MOODL_RETURN,
-    MENU_BT_PAIR,
-    MENU_BT_SETTINGS,
-    MENU_BT_RETURN,
-    MENU_MUSIC_VOLUME,
-    MENU_MUSIC_PLAYER,
-    MENU_MUSIC_RETURN,
-	MENU_CUSTOM_WHITE,
-	MENU_CUSTOM_RED,
-	MENU_CUSTOM_GREEN,
-	MENU_CUSTOM_BLUE,
-	MENU_CUSTOM_RETURN,
-	MENU_SETTIME_HOUR,
-	MENU_SETTIME_MINUTE,
-	MENU_SETTIME_DAY,
-	MENU_SETTIME_MONTH,
-	MENU_SETTIME_YEAR,
-	MENU_SETTIME_RETURN,
-	MENU_ALARM_HOUR,
-	MENU_ALARM_MINUTE,
-	MENU_ALARM_RETURN,
-	MENU_COLORS_WHITE,
-	MENU_COLORS_RED,
-	MENU_COLORS_GREEN,
-	MENU_COLORS_BLUE,
-	MENU_COLORS_YELLOW,
-	MENU_COLORS_PURPLE,
-	MENU_COLORS_RETURN
-} state_t;
 
 //========================================
 // Module-wide variables & constants
@@ -85,8 +41,8 @@ uint8_t set_al_min;
 
 color_preset_t color_preset = white;
 
-// current FSM state 
-static state_t state = HOME_SCREEN;
+// current FSM state
+state_t state = HOME_SCREEN;
 
 
 void fsm_init(void)
@@ -390,7 +346,7 @@ void fsm_handle_event(event_t event)
                 case EV_BUTTON_UP:
                 	st7565_clear_buffer(LCD_Buffer);
                     ah_menu(moodlight);
-                    ah_draw_cursor(3);
+                    ah_draw_cursor(4);
                     st7565_write_buffer(LCD_Buffer);
                     state = MENU_MOODL_RETURN;  
                     break;
