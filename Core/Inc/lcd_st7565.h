@@ -141,7 +141,7 @@ void st7565_drawsnsymbol(uint8_t *LCD_Buffer);
 
 void st7565_drawcursor(uint8_t *LCD_Buffer, uint8_t position);
 
-void sz7565_drawdate(uint8_t *LCD_Buffer);
+void st7565_drawdate(uint8_t *LCD_Buffer, uint8_t day, uint8_t month, uint8_t year);
 
 void st7565_drawmenu(uint8_t *LCD_Buffer, menu_t type);
 
