@@ -1,1 +1,1 @@
-# ETP2_Code
+# ETP2_STM32
