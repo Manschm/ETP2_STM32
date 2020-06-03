@@ -1,20 +1,20 @@
- //============================================================================================================
- /*
- __  __                 _ _ _       _     _     ___   ___ ___   ___                             
- |  \/  |               | | (_)     | |   | |   |__ \ / _ \__ \ / _ \                            
- | \  / | ___   ___   __| | |_  __ _| |__ | |_     ) | | | | ) | | | |                           
- | |\/| |/ _ \ / _ \ / _` | | |/ _` | '_ \| __|   / /| | | |/ /| | | |                           
- | |  | | (_) | (_) | (_| | | | (_| | | | | |_   / /_| |_| / /_| |_| |                           
- |_|  |_|\___/ \___/ \__,_|_|_|\__, |_| |_|\__| |____|\___/____|\___/                            
-                                __/ |                                                            
-                       _   _   |___/          __           _               _             __ ___  
-                      | | | |     | |        / /          | |             (_)           / /|__ \ 
-   ___ _   _  __ _ ___| |_| |_   _| | __    / /   ___  ___| |__  _ __ ___  _ _ __ ___  / /_   ) |
-  / _ \ | | |/ _` / __| __| | | | | |/ /   / /   / __|/ __| '_ \| '_ ` _ \| | '_ ` _ \| '_ \ / / 
- |  __/ |_| | (_| \__ \ |_| | |_| |   <   / /    \__ \ (__| | | | | | | | | | | | | | | (_) / /_ 
-  \___|\__,_|\__, |___/\__|_|\__,_|_|\_\ /_/     |___/\___|_| |_|_| |_| |_|_|_| |_| |_|\___/____|
-              __/ |                                                                              
-             |___/                                                                               
+//============================================================================================================
+/*
+__  __                 _ _ _       _     _     ___   ___ ___   ___
+|  \/  |               | | (_)     | |   | |   |__ \ / _ \__ \ / _ \
+| \  / | ___   ___   __| | |_  __ _| |__ | |_     ) | | | | ) | | | |
+| |\/| |/ _ \ / _ \ / _` | | |/ _` | '_ \| __|   / /| | | |/ /| | | |
+| |  | | (_) | (_) | (_| | | | (_| | | | | |_   / /_| |_| / /_| |_| |
+|_|  |_|\___/ \___/ \__,_|_|_|\__, |_| |_|\__| |____|\___/____|\___/
+                               __/ |
+                      _   _   |___/          __           _               _             __ ___
+                     | | | |     | |        / /          | |             (_)           / /|__ \
+  ___ _   _  __ _ ___| |_| |_   _| | __    / /   ___  ___| |__  _ __ ___  _ _ __ ___  / /_   ) |
+ / _ \ | | |/ _` / __| __| | | | | |/ /   / /   / __|/ __| '_ \| '_ ` _ \| | '_ ` _ \| '_ \ / /
+|  __/ |_| | (_| \__ \ |_| | |_| |   <   / /    \__ \ (__| | | | | | | | | | | | | | | (_) / /_
+ \___|\__,_|\__, |___/\__|_|\__,_|_|\_\ /_/     |___/\___|_| |_|_| |_| |_|_|_| |_| |_|\___/____|
+             __/ |
+            |___/
 */
 //============================================================================================================
 /*******
@@ -38,7 +38,7 @@ typedef enum {
     moodlight,
     bluetooth,
     music,
-	colors,
+    colors,
 } menu_t;
 
 // Commands from Datasheet
@@ -83,50 +83,74 @@ typedef enum {
 
 // Initialisation/Config Prototypes
 void st7565_init(void);
+
 void st7565_set_brightness(uint8_t val);
+
 void st7565_fade_out(uint8_t level);
+
 void st7565_fade_in(uint8_t level);
+
 void st7565_backlight_disable(void);
+
 void st7565_backlight_enable(void);
 
 //Work with LCD Prototypes
 void st7565_sendbyte(uint8_t c);
+
 void st7565_clear_screen(void);
+
 void st7565_clear_buffer(uint8_t *buffer);
+
 void st7565_write_buffer(uint8_t *buffer);;
 
 //higher "draw"-prototypes
 void st7565_drawstring(uint8_t *buff, uint8_t x, uint8_t line, uint8_t *c);
+
 void st7565_drawchar(uint8_t *buff, uint8_t x, uint8_t line, uint8_t c);
+
 void st7565_setpixel(uint8_t *buff, uint8_t x, uint8_t y, uint8_t color);
+
 void st7565_clearpixel(uint8_t *buff, uint8_t x, uint8_t y);
 
 //special "draw"-prototypes
-void st7565_drawbitmap(uint8_t *buff, uint8_t x, uint8_t y, const uint8_t *bitmap,uint8_t w, uint8_t h, uint8_t color);
+void st7565_drawbitmap(uint8_t *buff, uint8_t x, uint8_t y, const uint8_t *bitmap, uint8_t w, uint8_t h, uint8_t color);
 
 
 // Added functions by Lukas Eugster
 void st7565_drawfhd(uint8_t fhd, uint8_t *LCD_Buffer);
-void st7565_drawshd(uint8_t shd, uint8_t* LCD_Buffer);
-void st7565_drawdts(uint8_t* LCD_Buffer);
-void st7565_drawfmd(uint8_t fmd, uint8_t* LCD_Buffer);
-void st7565_drawsmd(uint8_t smd, uint8_t* LCD_Buffer);
 
-void st7565_drawtempsymbol(uint8_t* LCD_Buffer);
-void st7565_drawtemp(uint8_t temp[] , uint8_t* LCD_Buffer);
+void st7565_drawshd(uint8_t shd, uint8_t *LCD_Buffer);
 
-void st7565_drawhumidsymbol(uint8_t* LCD_Buffer);
-void st7565_drawhumid(uint8_t hum[], uint8_t* LCD_Buffer);
+void st7565_drawdts(uint8_t *LCD_Buffer);
 
-void st7565_drawalarmsymbol(uint8_t* LCD_Buffer);
-void st7565_drawsnsymbol(uint8_t* LCD_Buffer);
+void st7565_drawfmd(uint8_t fmd, uint8_t *LCD_Buffer);
 
-void st7565_drawcursor(uint8_t* LCD_Buffer, uint8_t position);
-void sz7565_drawdate(uint8_t* LCD_Buffer);
+void st7565_drawsmd(uint8_t smd, uint8_t *LCD_Buffer);
 
-void st7565_drawmenu(uint8_t* LCD_Buffer, menu_t type);
-void st7565_drawmenu_custom(uint8_t* LCD_Buffer, uint8_t led_intens_w, uint8_t led_intens_r, uint8_t led_intens_g, uint8_t led_intens_b);
-void st7565_drawmenu_settime(uint8_t* LCD_Buffer, uint8_t set_hour, uint8_t set_min, uint8_t set_day, uint8_t set_mon, uint8_t set_year);
-void st7565_drawmenu_setalarm(uint8_t* LCD_Buffer, uint8_t set_al_hr, uint8_t set_al_min);
+void st7565_drawtempsymbol(uint8_t *LCD_Buffer);
+
+void st7565_drawtemp(uint8_t temp[], uint8_t *LCD_Buffer);
+
+void st7565_drawhumidsymbol(uint8_t *LCD_Buffer);
+
+void st7565_drawhumid(uint8_t hum[], uint8_t *LCD_Buffer);
+
+void st7565_drawalarmsymbol(uint8_t *LCD_Buffer);
+
+void st7565_drawsnsymbol(uint8_t *LCD_Buffer);
+
+void st7565_drawcursor(uint8_t *LCD_Buffer, uint8_t position);
+
+void sz7565_drawdate(uint8_t *LCD_Buffer);
+
+void st7565_drawmenu(uint8_t *LCD_Buffer, menu_t type);
+
+void st7565_drawmenu_custom(uint8_t *LCD_Buffer, uint8_t led_intens_w, uint8_t led_intens_r, uint8_t led_intens_g,
+                            uint8_t led_intens_b);
+
+void st7565_drawmenu_settime(uint8_t *LCD_Buffer, uint8_t set_hour, uint8_t set_min, uint8_t set_day, uint8_t set_mon,
+                             uint8_t set_year);
+
+void st7565_drawmenu_setalarm(uint8_t *LCD_Buffer, uint8_t set_al_hr, uint8_t set_al_min);
 
 #endif

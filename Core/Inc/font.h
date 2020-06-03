@@ -42,11 +42,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 #define ZEILE_8 56
 
 struct FONT_DEF {
-	uint8_t u8Width; /* Character width for storage         */
-	uint8_t u8Height; /* Character height for storage        */
-	uint8_t u8FirstChar; /* The first character available       */
-	uint8_t u8LastChar; /* The last character available        */
-	const uint8_t *au8FontTable; /* Font table start address in memory  */
+    uint8_t u8Width; /* Character width for storage         */
+    uint8_t u8Height; /* Character height for storage        */
+    uint8_t u8FirstChar; /* The first character available       */
+    uint8_t u8LastChar; /* The last character available        */
+    const uint8_t *au8FontTable; /* Font table start address in memory  */
 };
 
 extern const struct FONT_DEF Font_5x7;
