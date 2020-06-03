@@ -68,5 +68,3 @@ event_t eh_get_event(void) {
 
     return EV_NO_EVENT;
 }
-
-

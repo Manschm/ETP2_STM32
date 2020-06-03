@@ -77,7 +77,7 @@ void ah_draw_date() {
 //=================================================
 // SET RTC Time
 //=================================================
-void ah_set_time(uint8_t set_hour, uint8_t set_min) {
+void ah_set_time(uint8_t hour, uint8_t minute) {
     RTC_TimeTypeDef sTime;
     RTC_AlarmTypeDef sAlarm;
 
@@ -85,12 +85,12 @@ void ah_set_time(uint8_t set_hour, uint8_t set_min) {
     HAL_RTC_GetAlarm(&hrtc, &sAlarm, RTC_ALARM_A, RTC_FORMAT_BCD);
     HAL_RTC_DeactivateAlarm(&hrtc, RTC_ALARM_A);
 
-    sAlarm.AlarmTime.Hours = set_hour;
-    sAlarm.AlarmTime.Minutes = set_min;
+    sAlarm.AlarmTime.Hours = hour;
+    sAlarm.AlarmTime.Minutes = minute;
     sAlarm.AlarmTime.Seconds = 0;
 
-    sTime.Hours = set_hour;
-    sTime.Minutes = set_min;
+    sTime.Hours = hour;
+    sTime.Minutes = minute;
     sTime.Seconds = 0;
     //sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
     //sTime.StoreOperation = RTC_STOREOPERATION_RESET;
@@ -102,12 +102,11 @@ void ah_set_time(uint8_t set_hour, uint8_t set_min) {
 //=================================================
 // Set RTC Date
 //=================================================
-void ah_set_date(uint8_t set_day, uint8_t set_mon, uint8_t set_year) {
-
+void ah_set_date(uint8_t day, uint8_t month, uint8_t year) {
     RTC_DateTypeDef sDate = {0};
     sDate.WeekDay = RTC_WEEKDAY_MONDAY;
 
-    switch (set_mon) {
+    switch (month) {
         case 1:
             sDate.Month = RTC_MONTH_JANUARY;
             break;
@@ -146,22 +145,21 @@ void ah_set_date(uint8_t set_day, uint8_t set_mon, uint8_t set_year) {
             break;
     }
 
-    sDate.Date = set_day;
-    sDate.Year = set_year;
+    sDate.Date = day;
+    sDate.Year = year;
 
     HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BIN);
 }
 
 
 void ah_draw_sensor() {
-// Draw the temperature
+    // Draw the temperature
     uint8_t temp[] = "18";   // Should be changed to read from sensor here
     st7565_drawtempsymbol(LCD_Buffer);
     st7565_drawtemp(temp, LCD_Buffer);
     st7565_write_buffer(LCD_Buffer);
 
-
-// Draw the humidity
+    // Draw the humidity
     uint8_t hum[] = "57";   // Should be changed to read from sensor here
     st7565_drawhumidsymbol(LCD_Buffer);
     st7565_drawhumid(hum, LCD_Buffer);
@@ -170,25 +168,22 @@ void ah_draw_sensor() {
 }
 
 void ah_draw_snooze() {
-// Draw snooze symbol
+    // Draw snooze symbol
     st7565_drawsnsymbol(LCD_Buffer);
     st7565_write_buffer(LCD_Buffer);
 
 }
 
 void ah_draw_alarm() {
-// Draw alarm symbol
+    // Draw alarm symbol
     st7565_drawalarmsymbol(LCD_Buffer);
     st7565_write_buffer(LCD_Buffer);
-
 }
-
 
 // Menu screen actions
 //=======================================
 void ah_draw_cursor(uint8_t position) {
     st7565_drawcursor(LCD_Buffer, position);
-
 }
 
 void ah_menu(menu_t type) {
@@ -200,42 +195,42 @@ void ah_menu(menu_t type) {
 //=================================================================================================
 // Set Color Preset
 //================================
-void ah_setPWM(TIM_HandleTypeDef *htim, uint8_t r, uint8_t g, uint8_t b, uint8_t w) {
-    if (r == 0) {
+void ah_setPWM(TIM_HandleTypeDef *htim, uint8_t red, uint8_t green, uint8_t blue, uint8_t white) {
+    if (red == 0) {
         HAL_TIM_PWM_Stop(htim, PWM_CH_R);
         __HAL_TIM_SET_COMPARE(&htim1, PWM_CH_R, 0);
     } else {
-        __HAL_TIM_SET_COMPARE(&htim1, PWM_CH_R, r);
+        __HAL_TIM_SET_COMPARE(&htim1, PWM_CH_R, red);
         HAL_TIM_PWM_Start(htim, PWM_CH_R);
     }
 
-    if (g == 0) {
+    if (green == 0) {
         HAL_TIM_PWM_Stop(htim, PWM_CH_G);
         __HAL_TIM_SET_COMPARE(&htim1, PWM_CH_G, 0);
     } else {
-        __HAL_TIM_SET_COMPARE(&htim1, PWM_CH_G, g);
+        __HAL_TIM_SET_COMPARE(&htim1, PWM_CH_G, green);
         HAL_TIM_PWM_Start(htim, PWM_CH_G);
     }
 
-    if (b == 0) {
+    if (blue == 0) {
         HAL_TIM_PWM_Stop(htim, PWM_CH_B);
         __HAL_TIM_SET_COMPARE(&htim1, PWM_CH_B, 0);
     } else {
-        __HAL_TIM_SET_COMPARE(&htim1, PWM_CH_B, b);
+        __HAL_TIM_SET_COMPARE(&htim1, PWM_CH_B, blue);
         HAL_TIM_PWM_Start(htim, PWM_CH_B);
     }
 
-    if (w == 0) {
+    if (white == 0) {
         HAL_TIM_PWM_Stop(htim, PWM_CH_W);
         __HAL_TIM_SET_COMPARE(&htim1, PWM_CH_W, 0);
     } else {
-        __HAL_TIM_SET_COMPARE(&htim1, PWM_CH_W, w);
+        __HAL_TIM_SET_COMPARE(&htim1, PWM_CH_W, white);
         HAL_TIM_PWM_Start(htim, PWM_CH_W);
     }
 }
 
-void ah_setcolor(color_preset_t color_preset) {
-    switch (color_preset) {
+void ah_setcolor(color_preset_t color) {
+    switch (color) {
         case white:
             ah_setPWM(&htim1, 0, 0, 0, 20);
             break;
@@ -270,7 +265,6 @@ void ah_setcolor(color_preset_t color_preset) {
 // Set Color Custom
 //=================================================
 void ah_set_custom(uint8_t red, uint8_t green, uint8_t blue, uint8_t white) {
-
     ah_setPWM(&htim1, red, green, blue, white);
 }
 
@@ -283,7 +277,3 @@ void ah_stop_led(TIM_HandleTypeDef *htim) {
     HAL_TIM_PWM_Stop(htim, PWM_CH_B);
     HAL_TIM_PWM_Stop(htim, PWM_CH_W);
 }
-
-
-
-

@@ -73,6 +73,8 @@ uint8_t readSHTC3 = 0;
 // LCD buffer
 uint8_t LCD_Buffer[1024];
 
+// RTC ISR
+static uint8_t counter = 0;
 
 /* USER CODE END PV */
 
@@ -184,6 +186,8 @@ int main(void) {
 
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "EndlessLoop"
     while (1) {
         /* USER CODE END WHILE */
 
@@ -196,26 +200,7 @@ int main(void) {
         }
         /* USER CODE BEGIN 3 */
     }
-
-
-    /*
-st7565_write_buffer(LCD_Buffer);
-*/
-
-    /**** UI LED test
-    HAL_GPIO_TogglePin(LEDUP_GPIO_Port, LEDUP_Pin);
-    HAL_Delay(200);
-    HAL_GPIO_TogglePin(LEDUP_GPIO_Port, LEDUP_Pin);
-    HAL_GPIO_TogglePin(LEDLT_GPIO_Port, LEDLT_Pin);
-    HAL_Delay(200);
-    HAL_GPIO_TogglePin(LEDLT_GPIO_Port, LEDLT_Pin);
-    HAL_GPIO_TogglePin(LEDDN_GPIO_Port, LEDDN_Pin);
-    HAL_Delay(200);
-    HAL_GPIO_TogglePin(LEDDN_GPIO_Port, LEDDN_Pin);
-    HAL_GPIO_TogglePin(LEDRT_GPIO_Port, LEDRT_Pin);
-    HAL_Delay(200);
-    HAL_GPIO_TogglePin(LEDRT_GPIO_Port, LEDRT_Pin);
-    */
+#pragma clang diagnostic pop
 }
 /* USER CODE END 3 */
 
@@ -276,8 +261,6 @@ void SystemClock_Config(void) {
 		updateSensor = 1;
 	}
 }*/
-static uint8_t counter = 0;
-
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc) {
     if (state == HOME_SCREEN) {
         if (counter < 4) {

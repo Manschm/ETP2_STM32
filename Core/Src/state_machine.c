@@ -1056,9 +1056,9 @@ void fsm_handle_event(event_t event) {
             switch (event) {
                 case EV_BUTTON_LT:
                     st7565_clear_buffer(LCD_Buffer);
-                    if (set_year > 10) {
+                    if (set_year > 0) {
                         set_year -= 1;
-                    } else if (set_year == 10) {
+                    } else if (set_year <= 0) {
                         set_year = 99;
                     }
                     ah_draw_cursor(5);
@@ -1069,10 +1069,10 @@ void fsm_handle_event(event_t event) {
 
                 case EV_BUTTON_RT:
                     st7565_clear_buffer(LCD_Buffer);
-                    if (set_year < 2100) {
+                    if (set_year < 99) {
                         set_year += 1;
-                    } else if (set_year == 2100) {
-                        set_year = 2010;
+                    } else if (set_year >= 99) {
+                        set_year = 0;
                     }
                     ah_draw_cursor(5);
                     st7565_drawmenu_settime(LCD_Buffer, set_hour, set_min, set_day, set_mon, set_year);
@@ -1500,6 +1500,3 @@ void fsm_handle_event(event_t event) {
 
     }
 }
-
-
-
