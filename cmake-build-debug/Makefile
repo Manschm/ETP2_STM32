@@ -203,6 +203,33 @@ Core/Src/bitmaps.c.s:
 	$(MAKE) -f CMakeFiles\ETP2_STM32.elf.dir\build.make CMakeFiles/ETP2_STM32.elf.dir/Core/Src/bitmaps.c.s
 .PHONY : Core/Src/bitmaps.c.s
 
+Core/Src/dma.obj: Core/Src/dma.c.obj
+
+.PHONY : Core/Src/dma.obj
+
+# target to build an object file
+Core/Src/dma.c.obj:
+	$(MAKE) -f CMakeFiles\ETP2_STM32.elf.dir\build.make CMakeFiles/ETP2_STM32.elf.dir/Core/Src/dma.c.obj
+.PHONY : Core/Src/dma.c.obj
+
+Core/Src/dma.i: Core/Src/dma.c.i
+
+.PHONY : Core/Src/dma.i
+
+# target to preprocess a source file
+Core/Src/dma.c.i:
+	$(MAKE) -f CMakeFiles\ETP2_STM32.elf.dir\build.make CMakeFiles/ETP2_STM32.elf.dir/Core/Src/dma.c.i
+.PHONY : Core/Src/dma.c.i
+
+Core/Src/dma.s: Core/Src/dma.c.s
+
+.PHONY : Core/Src/dma.s
+
+# target to generate assembly for a file
+Core/Src/dma.c.s:
+	$(MAKE) -f CMakeFiles\ETP2_STM32.elf.dir\build.make CMakeFiles/ETP2_STM32.elf.dir/Core/Src/dma.c.s
+.PHONY : Core/Src/dma.c.s
+
 Core/Src/event_handler.obj: Core/Src/event_handler.c.obj
 
 .PHONY : Core/Src/event_handler.obj
@@ -1202,6 +1229,9 @@ help:
 	@echo ... Core/Src/bitmaps.obj
 	@echo ... Core/Src/bitmaps.i
 	@echo ... Core/Src/bitmaps.s
+	@echo ... Core/Src/dma.obj
+	@echo ... Core/Src/dma.i
+	@echo ... Core/Src/dma.s
 	@echo ... Core/Src/event_handler.obj
 	@echo ... Core/Src/event_handler.i
 	@echo ... Core/Src/event_handler.s

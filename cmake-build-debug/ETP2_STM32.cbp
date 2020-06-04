@@ -105,6 +105,9 @@
 		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Inc/bitmaps.h">
 			<Option target="ETP2_STM32.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Inc/dma.h">
+			<Option target="ETP2_STM32.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Inc/event_handler.h">
 			<Option target="ETP2_STM32.elf"/>
 		</Unit>
@@ -154,6 +157,9 @@
 			<Option target="ETP2_STM32.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/bitmaps.c">
+			<Option target="ETP2_STM32.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/dma.c">
 			<Option target="ETP2_STM32.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/event_handler.c">

@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ETP2_STM32.elf.dir/Core/Src/action_handler.c.obj"
   "CMakeFiles/ETP2_STM32.elf.dir/Core/Src/adc.c.obj"
   "CMakeFiles/ETP2_STM32.elf.dir/Core/Src/bitmaps.c.obj"
+  "CMakeFiles/ETP2_STM32.elf.dir/Core/Src/dma.c.obj"
   "CMakeFiles/ETP2_STM32.elf.dir/Core/Src/event_handler.c.obj"
   "CMakeFiles/ETP2_STM32.elf.dir/Core/Src/font.c.obj"
   "CMakeFiles/ETP2_STM32.elf.dir/Core/Src/gpio.c.obj"

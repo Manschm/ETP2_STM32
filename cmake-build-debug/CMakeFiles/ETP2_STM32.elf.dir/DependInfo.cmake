@@ -28,6 +28,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/action_handler.c" "C:/Users/Manuel/Documents/GitHub/ETP2_STM32/cmake-build-debug/CMakeFiles/ETP2_STM32.elf.dir/Core/Src/action_handler.c.obj"
   "C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/adc.c" "C:/Users/Manuel/Documents/GitHub/ETP2_STM32/cmake-build-debug/CMakeFiles/ETP2_STM32.elf.dir/Core/Src/adc.c.obj"
   "C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/bitmaps.c" "C:/Users/Manuel/Documents/GitHub/ETP2_STM32/cmake-build-debug/CMakeFiles/ETP2_STM32.elf.dir/Core/Src/bitmaps.c.obj"
+  "C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/dma.c" "C:/Users/Manuel/Documents/GitHub/ETP2_STM32/cmake-build-debug/CMakeFiles/ETP2_STM32.elf.dir/Core/Src/dma.c.obj"
   "C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/event_handler.c" "C:/Users/Manuel/Documents/GitHub/ETP2_STM32/cmake-build-debug/CMakeFiles/ETP2_STM32.elf.dir/Core/Src/event_handler.c.obj"
   "C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/font.c" "C:/Users/Manuel/Documents/GitHub/ETP2_STM32/cmake-build-debug/CMakeFiles/ETP2_STM32.elf.dir/Core/Src/font.c.obj"
   "C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/gpio.c" "C:/Users/Manuel/Documents/GitHub/ETP2_STM32/cmake-build-debug/CMakeFiles/ETP2_STM32.elf.dir/Core/Src/gpio.c.obj"
