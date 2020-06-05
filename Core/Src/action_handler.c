@@ -26,11 +26,6 @@ __  __                 _ _ _       _     _     ___   ___ ___   ___
 #include "rtc.h"
 #include "tim.h"
 
-#define PWM_CH_R    TIM_CHANNEL_1
-#define PWM_CH_G    TIM_CHANNEL_2
-#define PWM_CH_B    TIM_CHANNEL_3
-#define PWM_CH_W    TIM_CHANNEL_4
-
 //=================================================
 //Public function definitions
 //=================================================

@@ -45,11 +45,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-// PWM defines
-#define PWM_CH_R    TIM_CHANNEL_1
-#define PWM_CH_G    TIM_CHANNEL_2
-#define PWM_CH_B    TIM_CHANNEL_3
-#define PWM_CH_W    TIM_CHANNEL_4
 
 // UART defines
 #define UART_DATA_LEN   5U
@@ -69,6 +64,10 @@
 
 // UART variables
 uint8_t uartRxData[UART_DATA_LEN];
+uint8_t previousRxData[UART_DATA_LEN];
+
+// LED variables
+uint16_t rgbwValues[4];
 
 /*===== Interrupt flags
  * Bit | Description
@@ -106,49 +105,59 @@ void SystemClock_Config(void);
   * @brief  The application entry point.
   * @retval int
   */
-int main(void) {
-    /* USER CODE BEGIN 1 */
+int main(void)
+{
+  /* USER CODE BEGIN 1 */
 
-    /* USER CODE END 1 */
+  /* USER CODE END 1 */
 
-    /* MCU Configuration--------------------------------------------------------*/
+  /* MCU Configuration--------------------------------------------------------*/
 
-    /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-    HAL_Init();
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  HAL_Init();
 
-    /* USER CODE BEGIN Init */
+  /* USER CODE BEGIN Init */
 
-    /* USER CODE END Init */
+  /* USER CODE END Init */
 
-    /* Configure the system clock */
-    SystemClock_Config();
+  /* Configure the system clock */
+  SystemClock_Config();
 
-    /* USER CODE BEGIN SysInit */
+  /* USER CODE BEGIN SysInit */
 
-    /* USER CODE END SysInit */
+  /* USER CODE END SysInit */
 
-    /* Initialize all configured peripherals */
-    MX_GPIO_Init();
-    MX_DMA_Init();
-    MX_RTC_Init();
-    MX_TIM1_Init();
-    MX_TIM15_Init();
-    MX_USART1_UART_Init();
-    MX_ADC_Init();
-    MX_I2C2_Init();
-    MX_TIM3_Init();
-    MX_TIM6_Init();
-    MX_TIM14_Init();
-    /* USER CODE BEGIN 2 */
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+  MX_DMA_Init();
+  MX_RTC_Init();
+  MX_TIM1_Init();
+  MX_TIM15_Init();
+  MX_USART1_UART_Init();
+  MX_ADC_Init();
+  MX_I2C2_Init();
+  MX_TIM3_Init();
+  MX_TIM6_Init();
+  MX_TIM14_Init();
+  /* USER CODE BEGIN 2 */
 
     HAL_UART_Receive_DMA(&huart1, uartRxData, UART_DATA_LEN);
 
     HAL_RTC_DeactivateAlarm(&hrtc, RTC_ALARM_A);
 
-    HAL_GPIO_WritePin(LEDUP_GPIO_Port, LEDUP_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(LEDDN_GPIO_Port, LEDDN_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(LEDLT_GPIO_Port, LEDLT_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(LEDRT_GPIO_Port, LEDRT_Pin, GPIO_PIN_RESET);
+    //HAL_GPIO_WritePin(LEDUP_GPIO_Port, LEDUP_Pin, GPIO_PIN_RESET);
+    //HAL_GPIO_WritePin(LEDDN_GPIO_Port, LEDDN_Pin, GPIO_PIN_RESET);
+    //HAL_GPIO_WritePin(LEDLT_GPIO_Port, LEDLT_Pin, GPIO_PIN_RESET);
+    //HAL_GPIO_WritePin(LEDRT_GPIO_Port, LEDRT_Pin, GPIO_PIN_RESET);
+
+    __HAL_TIM_SET_COMPARE(&htim3, LED_CH_UP, 900);
+    HAL_TIM_PWM_Start(&htim3, LED_CH_UP);
+    __HAL_TIM_SET_COMPARE(&htim3, LED_CH_DN, 900);
+    HAL_TIM_PWM_Start(&htim3, LED_CH_DN);
+    __HAL_TIM_SET_COMPARE(&htim3, LED_CH_LT, 900);
+    HAL_TIM_PWM_Start(&htim3, LED_CH_LT);
+    __HAL_TIM_SET_COMPARE(&htim3, LED_CH_RT, 900);
+    HAL_TIM_PWM_Start(&htim3, LED_CH_RT);
 
 
     //__HAL_TIM_SET_COMPARE(&htim1, PWM_CH_R, 200);
@@ -159,25 +168,14 @@ int main(void) {
     //HAL_TIM_Base_Start_IT(&htim6);	// Sensor timer
 
     //HAL_I2C_Master_Transmit(&hi2c2, SHTC3_ADDR,
-
+/*
     st7565_init();
-//=======================================================================
-//Begin program
-//=======================================================================
-
-// Turn on / initialize RTC
-
-//
-
-
-//=======================================================================
-// Show Startup Screen
-//=======================================================================
     st7565_backlight_enable();
     st7565_set_brightness(0);
+
     HAL_Delay(10);
 
-// Show startup screen
+    // Show startup screen
     st7565_clear_buffer(LCD_Buffer);
     st7565_drawbitmap(LCD_Buffer, 0, 0, atom_symbol, 128, 64, 10);
     st7565_drawstring(LCD_Buffer, 22, 7, "Moodlight 2020");
@@ -189,7 +187,6 @@ int main(void) {
 
     HAL_Delay(3000);
     st7565_clear_buffer(LCD_Buffer);
-//=======================================================================
 
     event_t event;
     fsm_init();
@@ -197,113 +194,129 @@ int main(void) {
     RTC_AlarmTypeDef sAlarm;
     HAL_RTC_GetAlarm(&hrtc, &sAlarm, RTC_ALARM_A, RTC_FORMAT_BCD);
     HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BCD);
+*/
+  /* USER CODE END 2 */
 
-    /* USER CODE END 2 */
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
 
-    /* Infinite loop */
-    /* USER CODE BEGIN WHILE */
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "EndlessLoop"
     while (1) {
-
+        /*
         event = eh_get_event();
         if (event != EV_NO_EVENT) {
             fsm_handle_event(event);
         }
-
-        if (updateFlags & (1<<FLAG_UART)) {
-            float brightness = uartRxData[0] / 100.0f;
+*/
+        if (updateFlags & (1U<<FLAG_UART)) {
             uint8_t lightSwitch = uartRxData[1];
-            uint8_t red = uartRxData[2];
-            uint8_t green = uartRxData[3];
-            uint8_t blue = uartRxData[4];
-            uint8_t white;
 
-            uint16_t rgbwValues[4];
-            uint8_t i;
+            if ((previousRxData[0] != uartRxData[0]) || (previousRxData[2] != uartRxData[2]) || (previousRxData[3] != uartRxData[3])) {
+                float brightness = (float)uartRxData[0] / 100.0f;
+                uint8_t red = uartRxData[4];
+                uint8_t green = uartRxData[3];
+                uint8_t blue = uartRxData[2];
+                uint8_t white;
 
-            //===== Convert RGB to RGBW
-            if (red <= green) {
-                if (red <= blue) {          // red <= (green && blue)
-                    white = red;
-                } else {                    // blue < red <= green
+                // Convert RGB to RGBW
+                if (red <= green) {
+                    if (red <= blue) {          // red <= (green && blue)
+                        white = red;
+                    } else {                    // blue < red <= green
+                        white = blue;
+                    }
+                } else if (green <= blue) {     // green <= (red && blue)
+                    white = green;
+                } else {                        // blue < green < red
                     white = blue;
                 }
-            } else if (green <= blue) {     // green <= (red && blue)
-                white = green;
-            } else {                        // blue < green < red
-                white = blue;
+
+                rgbwValues[0] = red - white;
+                rgbwValues[1] = green - white;
+                rgbwValues[2] = blue - white;
+                rgbwValues[3] = white;
+
+                // Adjust brightness
+                uint8_t i;
+                for (i = 0; i < 4; i++) {
+                    //rgbwValues[i] = (rgbwValues[i] * 5U) >> 1U;  // Adjust scale (max. value 255 becomes 637)
+                    rgbwValues[i] = rgbwValues[i] << 1U;    // Adjust scale (max. value 255 becomes 510)
+                    rgbwValues[i] *= brightness;            // Scale with brightness
+                }
+
+                previousRxData[0] = uartRxData[0];
+                previousRxData[2] = uartRxData[2];
+                previousRxData[3] = uartRxData[3];
+                previousRxData[4] = uartRxData[4];
             }
 
-            rgbwValues[0] = red - white;
-            rgbwValues[1] = green - white;
-            rgbwValues[2] = blue - white;
-            rgbwValues[3] = white;
-
-            //===== Adjust brightness
-
-            for (i=0; i<4; i++) {
-                rgbwValues[i] = (rgbwValues * 5) >> 1;  // Adjust scale (max. value 255 becomes 637)
-                rgbwValues[i] *= brightness;            // Scale with brightness
+            if (lightSwitch) {
+                ah_setPWM(&htim1, rgbwValues[0], rgbwValues[1], rgbwValues[2], rgbwValues[3]);
+            } else {
+                ah_setPWM(&htim1, 0, 0, 0, 0);
             }
+
+            updateFlags &= ~(1U<<FLAG_UART);
         }
 
+    /* USER CODE END WHILE */
 
-
-        /* USER CODE END WHILE */
-
-        /* USER CODE BEGIN 3 */
+    /* USER CODE BEGIN 3 */
     }
 #pragma clang diagnostic pop
-}
-/* USER CODE END 3 */
+  /* USER CODE END 3 */
 }
 
 /**
   * @brief System Clock Configuration
   * @retval None
   */
-void SystemClock_Config(void) {
-    RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-    RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
-    RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
+void SystemClock_Config(void)
+{
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
-    /** Configure LSE Drive Capability
-    */
-    HAL_PWR_EnableBkUpAccess();
-    __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_HIGH);
-    /** Initializes the CPU, AHB and APB busses clocks
-    */
-    RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI14 | RCC_OSCILLATORTYPE_HSE
-                                       | RCC_OSCILLATORTYPE_LSE;
-    RCC_OscInitStruct.HSEState = RCC_HSE_ON;
-    RCC_OscInitStruct.LSEState = RCC_LSE_ON;
-    RCC_OscInitStruct.HSI14State = RCC_HSI14_ON;
-    RCC_OscInitStruct.HSI14CalibrationValue = 16;
-    RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-    RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-    RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL6;
-    RCC_OscInitStruct.PLL.PREDIV = RCC_PREDIV_DIV1;
-    if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
-        Error_Handler();
-    }
-    /** Initializes the CPU, AHB and APB busses clocks
-    */
-    RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK
-                                  | RCC_CLOCKTYPE_PCLK1;
-    RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-    RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-    RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  /** Configure LSE Drive Capability 
+  */
+  HAL_PWR_EnableBkUpAccess();
+  __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_HIGH);
+  /** Initializes the CPU, AHB and APB busses clocks 
+  */
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI14|RCC_OSCILLATORTYPE_HSE
+                              |RCC_OSCILLATORTYPE_LSE;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.LSEState = RCC_LSE_ON;
+  RCC_OscInitStruct.HSI14State = RCC_HSI14_ON;
+  RCC_OscInitStruct.HSI14CalibrationValue = 16;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+  RCC_OscInitStruct.PLL.PLLMUL = RCC_PLL_MUL6;
+  RCC_OscInitStruct.PLL.PREDIV = RCC_PREDIV_DIV1;
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Initializes the CPU, AHB and APB busses clocks 
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
 
-    if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK) {
-        Error_Handler();
-    }
-    PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1 | RCC_PERIPHCLK_RTC;
-    PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK1;
-    PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
-    if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK) {
-        Error_Handler();
-    }
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_RTC;
+  PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK1;
+  PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSE;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
+  {
+    Error_Handler();
+  }
 }
 
 /* USER CODE BEGIN 4 */
@@ -331,10 +344,8 @@ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc) {
     }
 }
 
-void UART_DMAReceiveCplt(DMA_HandleTypeDef *hdma) {
-    if (hdma->Instance == USART1) {
-        updateFlags |= (1<<FLAG_UART);
-    }
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
+    updateFlags |= (1U<<FLAG_UART);
 }
 /* USER CODE END 4 */
 
@@ -342,11 +353,12 @@ void UART_DMAReceiveCplt(DMA_HandleTypeDef *hdma) {
   * @brief  This function is executed in case of error occurrence.
   * @retval None
   */
-void Error_Handler(void) {
-    /* USER CODE BEGIN Error_Handler_Debug */
+void Error_Handler(void)
+{
+  /* USER CODE BEGIN Error_Handler_Debug */
     /* User can add his own implementation to report the HAL error return state */
 
-    /* USER CODE END Error_Handler_Debug */
+  /* USER CODE END Error_Handler_Debug */
 }
 
 #ifdef  USE_FULL_ASSERT

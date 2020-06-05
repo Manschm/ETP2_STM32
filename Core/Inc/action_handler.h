@@ -54,6 +54,8 @@ void ah_draw_cursor(uint8_t position);
 
 void ah_menu(menu_t type);
 
+void ah_setPWM(TIM_HandleTypeDef *htim, uint8_t red, uint8_t green, uint8_t blue, uint8_t white);
+
 void ah_setcolor(color_preset_t color);
 
 void ah_stop_led(TIM_HandleTypeDef *htim);
