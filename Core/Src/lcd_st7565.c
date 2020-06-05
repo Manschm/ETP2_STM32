@@ -415,13 +415,18 @@ void st7565_drawsnsymbol(uint8_t *LCD_Buffer) {
 // Draw date 
 //========================================================== 
 void st7565_drawdate(uint8_t *LCD_Buffer, uint8_t day, uint8_t month, uint8_t year) {
-    uint8_t day_s[1];
-    uint8_t month_s[1];
-    uint8_t year_s[1];
+    uint8_t day_s[2];
+    uint8_t month_s[2];
+    uint8_t year_s[2];
 
-    itoa(day, day_s, 10);
-    itoa(month, month_s, 10);
-    itoa(year, year_s, 10);
+    day_s[1] = (day & 0xF) + 0x30;
+    day_s[0] = (day >> 4U) + 0x30;
+
+    month_s[1] = (month & 0xF) + 0x30;
+    month_s[0] = (month >> 4U) + 0x30;
+
+    year_s[1] = (year & 0xF) + 0x30;
+    year_s[0] = (year >> 4U) + 0x30;
 
     st7565_drawstring(LCD_Buffer, 40, 5, day_s);
     st7565_drawstring(LCD_Buffer, 52, 5, "/");

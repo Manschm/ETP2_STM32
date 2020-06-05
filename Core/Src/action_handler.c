@@ -37,12 +37,15 @@ __  __                 _ _ _       _     _     ___   ___ ___   ___
 //RTC Draw Time on LCD
 //=================================================
 void ah_draw_time() {
-    RTC_TimeTypeDef sTime = {0};
-    HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BCD);
+    RTC_TimeTypeDef sTime;
+    RTC_DateTypeDef sDate;
 
-    uint8_t fhd = sTime.Hours >> 4;
+    HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BCD);
+    HAL_RTC_GetDate(&hrtc, &sDate, RTC_FORMAT_BCD);
+
+    uint8_t fhd = sTime.Hours >> 4U;
     uint8_t shd = sTime.Hours & 0xF;
-    uint8_t fmd = sTime.Minutes >> 4;
+    uint8_t fmd = sTime.Minutes >> 4U;
     uint8_t smd = sTime.Minutes & 0xF;
 
     // GET TIME FROM RTC, safe time in given variables or change
@@ -53,16 +56,19 @@ void ah_draw_time() {
     st7565_drawfmd(fmd, LCD_Buffer);
     st7565_drawsmd(smd, LCD_Buffer);
     st7565_write_buffer(LCD_Buffer);
-
 }
 
 //=================================================
 // Draw RTC Date on LCD
 //=================================================
 void ah_draw_date() {
-    RTC_DateTypeDef sDate = {0};
+    RTC_TimeTypeDef sTime;
+    RTC_DateTypeDef sDate;
+
+    HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BCD);
     HAL_RTC_GetDate(&hrtc, &sDate, RTC_FORMAT_BCD);
-    uint8_t year = (sDate.Year) - 12;
+
+    uint8_t year = (sDate.Year);
     uint8_t month = sDate.Month;
     uint8_t day = sDate.Date;
 
@@ -70,82 +76,33 @@ void ah_draw_date() {
 }
 
 //=================================================
-// SET RTC Time
+// Set RTC time and date
 //=================================================
-void ah_set_time(uint8_t hour, uint8_t minute) {
+void ah_set_TimeDate(uint8_t hour, uint8_t minute, uint8_t second, uint8_t day, uint8_t month, uint8_t year) {
     RTC_TimeTypeDef sTime;
+    RTC_DateTypeDef sDate;
     RTC_AlarmTypeDef sAlarm;
 
-    HAL_RTC_GetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
-    HAL_RTC_GetAlarm(&hrtc, &sAlarm, RTC_ALARM_A, RTC_FORMAT_BCD);
     HAL_RTC_DeactivateAlarm(&hrtc, RTC_ALARM_A);
-
-    sAlarm.AlarmTime.Hours = hour;
-    sAlarm.AlarmTime.Minutes = minute;
-    sAlarm.AlarmTime.Seconds = 0;
+    HAL_RTC_GetAlarm(&hrtc, &sAlarm, RTC_ALARM_A, RTC_FORMAT_BCD);
 
     sTime.Hours = hour;
     sTime.Minutes = minute;
-    sTime.Seconds = 0;
-    //sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
-    //sTime.StoreOperation = RTC_STOREOPERATION_RESET;
-
-    HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
-    HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BCD);
-}
-
-//=================================================
-// Set RTC Date
-//=================================================
-void ah_set_date(uint8_t day, uint8_t month, uint8_t year) {
-    RTC_DateTypeDef sDate = {0};
-    sDate.WeekDay = RTC_WEEKDAY_MONDAY;
-
-    switch (month) {
-        case 1:
-            sDate.Month = RTC_MONTH_JANUARY;
-            break;
-        case 2:
-            sDate.Month = RTC_MONTH_FEBRUARY;
-            break;
-        case 3:
-            sDate.Month = RTC_MONTH_MARCH;
-            break;
-        case 4:
-            sDate.Month = RTC_MONTH_APRIL;
-            break;
-        case 5:
-            sDate.Month = RTC_MONTH_MAY;
-            break;
-        case 6:
-            sDate.Month = RTC_MONTH_JUNE;
-            break;
-        case 7:
-            sDate.Month = RTC_MONTH_JULY;
-            break;
-        case 8:
-            sDate.Month = RTC_MONTH_AUGUST;
-            break;
-        case 9:
-            sDate.Month = RTC_MONTH_SEPTEMBER;
-            break;
-        case 10:
-            sDate.Month = RTC_MONTH_OCTOBER;
-            break;
-        case 11:
-            sDate.Month = RTC_MONTH_NOVEMBER;
-            break;
-        case 12:
-            sDate.Month = RTC_MONTH_DECEMBER;
-            break;
-    }
+    sTime.Seconds = second;
+    sTime.DayLightSaving = RTC_DAYLIGHTSAVING_NONE;
+    sTime.StoreOperation = RTC_STOREOPERATION_RESET;
 
     sDate.Date = day;
+    sDate.Month = month;
     sDate.Year = year;
+    sDate.WeekDay = RTC_WEEKDAY_MONDAY;
 
+    HAL_RTC_WaitForSynchro(&hrtc);
+
+    HAL_RTC_SetTime(&hrtc, &sTime, RTC_FORMAT_BIN);
     HAL_RTC_SetDate(&hrtc, &sDate, RTC_FORMAT_BIN);
+    HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BCD);
 }
-
 
 void ah_draw_sensor() {
     // Draw the temperature
@@ -190,7 +147,7 @@ void ah_menu(menu_t type) {
 //=================================================================================================
 // Set Color Preset
 //================================
-void ah_setPWM(TIM_HandleTypeDef *htim, uint8_t red, uint8_t green, uint8_t blue, uint8_t white) {
+void ah_setPWM(TIM_HandleTypeDef *htim, uint16_t red, uint16_t green, uint16_t blue, uint16_t white) {
     if (red == 0) {
         HAL_TIM_PWM_Stop(htim, PWM_CH_R);
         __HAL_TIM_SET_COMPARE(&htim1, PWM_CH_R, 0);

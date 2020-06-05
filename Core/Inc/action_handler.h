@@ -54,7 +54,7 @@ void ah_draw_cursor(uint8_t position);
 
 void ah_menu(menu_t type);
 
-void ah_setPWM(TIM_HandleTypeDef *htim, uint8_t red, uint8_t green, uint8_t blue, uint8_t white);
+void ah_setPWM(TIM_HandleTypeDef *htim, uint16_t red, uint16_t green, uint16_t blue, uint16_t white);
 
 void ah_setcolor(color_preset_t color);
 
@@ -62,8 +62,7 @@ void ah_stop_led(TIM_HandleTypeDef *htim);
 
 void ah_set_custom(uint8_t red, uint8_t green, uint8_t blue, uint8_t white);
 
-void ah_set_time(uint8_t hour, uint8_t minute);
+void ah_set_TimeDate(uint8_t hour, uint8_t minute, uint8_t second, uint8_t day, uint8_t month, uint8_t year);
 
-void ah_set_date(uint8_t day, uint8_t month, uint8_t year);
 
 #endif

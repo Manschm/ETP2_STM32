@@ -141,7 +141,7 @@ int main(void)
   MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
 
-    HAL_UART_Receive_DMA(&huart1, uartRxData, UART_DATA_LEN);
+    //HAL_UART_Receive_DMA(&huart1, uartRxData, UART_DATA_LEN);
 
     HAL_RTC_DeactivateAlarm(&hrtc, RTC_ALARM_A);
 
@@ -168,7 +168,7 @@ int main(void)
     //HAL_TIM_Base_Start_IT(&htim6);	// Sensor timer
 
     //HAL_I2C_Master_Transmit(&hi2c2, SHTC3_ADDR,
-/*
+
     st7565_init();
     st7565_backlight_enable();
     st7565_set_brightness(0);
@@ -185,7 +185,7 @@ int main(void)
     st7565_drawstring(LCD_Buffer, 85, 1, "Eugster");
     st7565_write_buffer(LCD_Buffer);
 
-    HAL_Delay(3000);
+    HAL_Delay(2000);
     st7565_clear_buffer(LCD_Buffer);
 
     event_t event;
@@ -194,7 +194,7 @@ int main(void)
     RTC_AlarmTypeDef sAlarm;
     HAL_RTC_GetAlarm(&hrtc, &sAlarm, RTC_ALARM_A, RTC_FORMAT_BCD);
     HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BCD);
-*/
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -203,12 +203,13 @@ int main(void)
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "EndlessLoop"
     while (1) {
-        /*
+
         event = eh_get_event();
         if (event != EV_NO_EVENT) {
             fsm_handle_event(event);
         }
-*/
+
+        /*
         if (updateFlags & (1U<<FLAG_UART)) {
             uint8_t lightSwitch = uartRxData[1];
 
@@ -259,7 +260,7 @@ int main(void)
 
             updateFlags &= ~(1U<<FLAG_UART);
         }
-
+*/
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
