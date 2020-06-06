@@ -141,7 +141,7 @@ int main(void)
   MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
 
-    //HAL_UART_Receive_DMA(&huart1, uartRxData, UART_DATA_LEN);
+    HAL_UART_Receive_DMA(&huart1, uartRxData, UART_DATA_LEN);
 
     HAL_RTC_DeactivateAlarm(&hrtc, RTC_ALARM_A);
 
@@ -159,11 +159,6 @@ int main(void)
     __HAL_TIM_SET_COMPARE(&htim3, LED_CH_RT, 900);
     HAL_TIM_PWM_Start(&htim3, LED_CH_RT);
 
-
-    //__HAL_TIM_SET_COMPARE(&htim1, PWM_CH_R, 200);
-    //HAL_TIM_PWM_Start(&htim1, PWM_CH_R);
-
-
     //HAL_TIM_Base_Start_IT(&htim3);	// UI timer
     //HAL_TIM_Base_Start_IT(&htim6);	// Sensor timer
 
@@ -177,7 +172,7 @@ int main(void)
 
     // Show startup screen
     st7565_clear_buffer(LCD_Buffer);
-    st7565_drawbitmap(LCD_Buffer, 0, 0, atom_symbol, 128, 64, 10);
+    //st7565_drawbitmap(LCD_Buffer, 0, 0, atom_symbol, 128, 64, 10);    //TODO: PUT IT BACK!
     st7565_drawstring(LCD_Buffer, 22, 7, "Moodlight 2020");
     st7565_drawstring(LCD_Buffer, 0, 0, "Manuel");
     st7565_drawstring(LCD_Buffer, 0, 1, "Schmid");
@@ -208,59 +203,6 @@ int main(void)
         if (event != EV_NO_EVENT) {
             fsm_handle_event(event);
         }
-
-        /*
-        if (updateFlags & (1U<<FLAG_UART)) {
-            uint8_t lightSwitch = uartRxData[1];
-
-            if ((previousRxData[0] != uartRxData[0]) || (previousRxData[2] != uartRxData[2]) || (previousRxData[3] != uartRxData[3])) {
-                float brightness = (float)uartRxData[0] / 100.0f;
-                uint8_t red = uartRxData[4];
-                uint8_t green = uartRxData[3];
-                uint8_t blue = uartRxData[2];
-                uint8_t white;
-
-                // Convert RGB to RGBW
-                if (red <= green) {
-                    if (red <= blue) {          // red <= (green && blue)
-                        white = red;
-                    } else {                    // blue < red <= green
-                        white = blue;
-                    }
-                } else if (green <= blue) {     // green <= (red && blue)
-                    white = green;
-                } else {                        // blue < green < red
-                    white = blue;
-                }
-
-                rgbwValues[0] = red - white;
-                rgbwValues[1] = green - white;
-                rgbwValues[2] = blue - white;
-                rgbwValues[3] = white;
-
-                // Adjust brightness
-                uint8_t i;
-                for (i = 0; i < 4; i++) {
-                    //rgbwValues[i] = (rgbwValues[i] * 5U) >> 1U;  // Adjust scale (max. value 255 becomes 637)
-                    rgbwValues[i] = rgbwValues[i] << 1U;    // Adjust scale (max. value 255 becomes 510)
-                    rgbwValues[i] *= brightness;            // Scale with brightness
-                }
-
-                previousRxData[0] = uartRxData[0];
-                previousRxData[2] = uartRxData[2];
-                previousRxData[3] = uartRxData[3];
-                previousRxData[4] = uartRxData[4];
-            }
-
-            if (lightSwitch) {
-                ah_setPWM(&htim1, rgbwValues[0], rgbwValues[1], rgbwValues[2], rgbwValues[3]);
-            } else {
-                ah_setPWM(&htim1, 0, 0, 0, 0);
-            }
-
-            updateFlags &= ~(1U<<FLAG_UART);
-        }
-*/
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -346,7 +288,68 @@ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc) {
 }
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
-    updateFlags |= (1U<<FLAG_UART);
+    uint8_t lightSwitch = uartRxData[1];
+
+    if ((previousRxData[0] != uartRxData[0]) || (previousRxData[2] != uartRxData[2]) || (previousRxData[3] != uartRxData[3])) {
+        uint8_t red = uartRxData[2];
+        uint8_t green = uartRxData[3];
+        uint8_t blue = uartRxData[4];
+        uint8_t white;  // Also min value
+        uint8_t max;
+
+        // Convert RGB to RGBW
+        if (red <= green) {
+            if (red <= blue) {          // red <= (green && blue)
+                white = red;
+            } else {                    // blue < red <= green
+                white = blue;
+                max = green;
+            }
+            if (blue >= green) {        // red <= green <= blue
+                max = blue;
+            } else {
+                max = green;            // red <= blue < green
+            }
+        } else if (green <= blue) {     // green <= (red && blue)
+            white = green;
+            if (blue >= red) {          // green <= red <= blue
+                max = blue;
+            } else {                    // green <= blue < red
+                max = red;
+            }
+        } else {                        // blue < green < red
+            white = blue;
+            max = red;
+        }
+
+        float multiplier = (float)white / 255.0f / (float)max + 1.0f;
+
+        rgbwValues[0] = multiplier * (float)red - (float)white;
+        rgbwValues[1] = multiplier * (float)green - (float)white;
+        rgbwValues[2] = multiplier * (float)blue - (float)white;
+        rgbwValues[3] = white;
+
+        // Adjust brightness
+        float brightness = (float)uartRxData[0] / 100.0f;
+
+        uint8_t i;
+        for (i = 0; i < 4; i++) {
+            //rgbwValues[i] = (rgbwValues[i] * 5U) >> 1U;  // Adjust scale (max. value 255 becomes 637)
+            rgbwValues[i] = rgbwValues[i] << 1U;    // Adjust scale (max. value 255 becomes 510)
+            rgbwValues[i] *= brightness;            // Scale with brightness
+        }
+
+        previousRxData[0] = uartRxData[0];
+        previousRxData[2] = uartRxData[2];
+        previousRxData[3] = uartRxData[3];
+        previousRxData[4] = uartRxData[4];
+    }
+
+    if (lightSwitch) {
+        ah_setPWM(&htim1, rgbwValues[0], rgbwValues[1], rgbwValues[2], rgbwValues[3]);
+    } else {
+        ah_setPWM(&htim1, 0, 0, 0, 0);
+    }
 }
 /* USER CODE END 4 */
 
