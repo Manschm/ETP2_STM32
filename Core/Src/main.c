@@ -141,14 +141,7 @@ int main(void)
   MX_TIM14_Init();
   /* USER CODE BEGIN 2 */
 
-    HAL_UART_Receive_DMA(&huart1, uartRxData, UART_DATA_LEN);
-
     HAL_RTC_DeactivateAlarm(&hrtc, RTC_ALARM_A);
-
-    //HAL_GPIO_WritePin(LEDUP_GPIO_Port, LEDUP_Pin, GPIO_PIN_RESET);
-    //HAL_GPIO_WritePin(LEDDN_GPIO_Port, LEDDN_Pin, GPIO_PIN_RESET);
-    //HAL_GPIO_WritePin(LEDLT_GPIO_Port, LEDLT_Pin, GPIO_PIN_RESET);
-    //HAL_GPIO_WritePin(LEDRT_GPIO_Port, LEDRT_Pin, GPIO_PIN_RESET);
 
     __HAL_TIM_SET_COMPARE(&htim3, LED_CH_UP, 900);
     HAL_TIM_PWM_Start(&htim3, LED_CH_UP);
@@ -189,6 +182,8 @@ int main(void)
     RTC_AlarmTypeDef sAlarm;
     HAL_RTC_GetAlarm(&hrtc, &sAlarm, RTC_ALARM_A, RTC_FORMAT_BCD);
     HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BCD);
+
+    HAL_UART_Receive_DMA(&huart1, uartRxData, UART_DATA_LEN);
 
   /* USER CODE END 2 */
 
@@ -334,7 +329,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 
         uint8_t i;
         for (i = 0; i < 4; i++) {
-            //rgbwValues[i] = (rgbwValues[i] * 5U) >> 1U;  // Adjust scale (max. value 255 becomes 637)
             rgbwValues[i] = rgbwValues[i] << 1U;    // Adjust scale (max. value 255 becomes 510)
             rgbwValues[i] *= brightness;            // Scale with brightness
         }

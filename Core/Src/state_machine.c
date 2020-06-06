@@ -31,11 +31,11 @@ uint8_t led_intens_w = 50;
 uint8_t led_intens_r = 50;
 uint8_t led_intens_g = 50;
 uint8_t led_intens_b = 50;
-uint8_t set_hour;
-uint8_t set_min;
-uint8_t set_day;
-uint8_t set_mon;
-uint8_t set_year;
+uint8_t set_hour = 0;
+uint8_t set_min = 0;
+uint8_t set_day = 1;
+uint8_t set_mon = 1;
+uint8_t set_year = 20;
 uint8_t set_al_hr;
 uint8_t set_al_min;
 
