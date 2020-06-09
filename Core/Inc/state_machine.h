@@ -24,7 +24,7 @@ __  __                 _ _ _       _     _     ___   ___ ___   ___
 // Standard includes
 #include <stdint.h>
 #include "event_handler.h"
-#include "lcd_st7565.h"
+#include "st7565.h"
 
 // Definition of FSM states
 

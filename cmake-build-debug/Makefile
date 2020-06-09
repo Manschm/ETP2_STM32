@@ -311,6 +311,33 @@ Core/Src/gpio.c.s:
 	$(MAKE) -f CMakeFiles\ETP2_STM32.elf.dir\build.make CMakeFiles/ETP2_STM32.elf.dir/Core/Src/gpio.c.s
 .PHONY : Core/Src/gpio.c.s
 
+Core/Src/graphics.obj: Core/Src/graphics.c.obj
+
+.PHONY : Core/Src/graphics.obj
+
+# target to build an object file
+Core/Src/graphics.c.obj:
+	$(MAKE) -f CMakeFiles\ETP2_STM32.elf.dir\build.make CMakeFiles/ETP2_STM32.elf.dir/Core/Src/graphics.c.obj
+.PHONY : Core/Src/graphics.c.obj
+
+Core/Src/graphics.i: Core/Src/graphics.c.i
+
+.PHONY : Core/Src/graphics.i
+
+# target to preprocess a source file
+Core/Src/graphics.c.i:
+	$(MAKE) -f CMakeFiles\ETP2_STM32.elf.dir\build.make CMakeFiles/ETP2_STM32.elf.dir/Core/Src/graphics.c.i
+.PHONY : Core/Src/graphics.c.i
+
+Core/Src/graphics.s: Core/Src/graphics.c.s
+
+.PHONY : Core/Src/graphics.s
+
+# target to generate assembly for a file
+Core/Src/graphics.c.s:
+	$(MAKE) -f CMakeFiles\ETP2_STM32.elf.dir\build.make CMakeFiles/ETP2_STM32.elf.dir/Core/Src/graphics.c.s
+.PHONY : Core/Src/graphics.c.s
+
 Core/Src/i2c.obj: Core/Src/i2c.c.obj
 
 .PHONY : Core/Src/i2c.obj
@@ -337,33 +364,6 @@ Core/Src/i2c.s: Core/Src/i2c.c.s
 Core/Src/i2c.c.s:
 	$(MAKE) -f CMakeFiles\ETP2_STM32.elf.dir\build.make CMakeFiles/ETP2_STM32.elf.dir/Core/Src/i2c.c.s
 .PHONY : Core/Src/i2c.c.s
-
-Core/Src/lcd_st7565.obj: Core/Src/lcd_st7565.c.obj
-
-.PHONY : Core/Src/lcd_st7565.obj
-
-# target to build an object file
-Core/Src/lcd_st7565.c.obj:
-	$(MAKE) -f CMakeFiles\ETP2_STM32.elf.dir\build.make CMakeFiles/ETP2_STM32.elf.dir/Core/Src/lcd_st7565.c.obj
-.PHONY : Core/Src/lcd_st7565.c.obj
-
-Core/Src/lcd_st7565.i: Core/Src/lcd_st7565.c.i
-
-.PHONY : Core/Src/lcd_st7565.i
-
-# target to preprocess a source file
-Core/Src/lcd_st7565.c.i:
-	$(MAKE) -f CMakeFiles\ETP2_STM32.elf.dir\build.make CMakeFiles/ETP2_STM32.elf.dir/Core/Src/lcd_st7565.c.i
-.PHONY : Core/Src/lcd_st7565.c.i
-
-Core/Src/lcd_st7565.s: Core/Src/lcd_st7565.c.s
-
-.PHONY : Core/Src/lcd_st7565.s
-
-# target to generate assembly for a file
-Core/Src/lcd_st7565.c.s:
-	$(MAKE) -f CMakeFiles\ETP2_STM32.elf.dir\build.make CMakeFiles/ETP2_STM32.elf.dir/Core/Src/lcd_st7565.c.s
-.PHONY : Core/Src/lcd_st7565.c.s
 
 Core/Src/main.obj: Core/Src/main.c.obj
 
@@ -418,6 +418,33 @@ Core/Src/rtc.s: Core/Src/rtc.c.s
 Core/Src/rtc.c.s:
 	$(MAKE) -f CMakeFiles\ETP2_STM32.elf.dir\build.make CMakeFiles/ETP2_STM32.elf.dir/Core/Src/rtc.c.s
 .PHONY : Core/Src/rtc.c.s
+
+Core/Src/st7565.obj: Core/Src/st7565.c.obj
+
+.PHONY : Core/Src/st7565.obj
+
+# target to build an object file
+Core/Src/st7565.c.obj:
+	$(MAKE) -f CMakeFiles\ETP2_STM32.elf.dir\build.make CMakeFiles/ETP2_STM32.elf.dir/Core/Src/st7565.c.obj
+.PHONY : Core/Src/st7565.c.obj
+
+Core/Src/st7565.i: Core/Src/st7565.c.i
+
+.PHONY : Core/Src/st7565.i
+
+# target to preprocess a source file
+Core/Src/st7565.c.i:
+	$(MAKE) -f CMakeFiles\ETP2_STM32.elf.dir\build.make CMakeFiles/ETP2_STM32.elf.dir/Core/Src/st7565.c.i
+.PHONY : Core/Src/st7565.c.i
+
+Core/Src/st7565.s: Core/Src/st7565.c.s
+
+.PHONY : Core/Src/st7565.s
+
+# target to generate assembly for a file
+Core/Src/st7565.c.s:
+	$(MAKE) -f CMakeFiles\ETP2_STM32.elf.dir\build.make CMakeFiles/ETP2_STM32.elf.dir/Core/Src/st7565.c.s
+.PHONY : Core/Src/st7565.c.s
 
 Core/Src/state_machine.obj: Core/Src/state_machine.c.obj
 
@@ -1241,18 +1268,21 @@ help:
 	@echo ... Core/Src/gpio.obj
 	@echo ... Core/Src/gpio.i
 	@echo ... Core/Src/gpio.s
+	@echo ... Core/Src/graphics.obj
+	@echo ... Core/Src/graphics.i
+	@echo ... Core/Src/graphics.s
 	@echo ... Core/Src/i2c.obj
 	@echo ... Core/Src/i2c.i
 	@echo ... Core/Src/i2c.s
-	@echo ... Core/Src/lcd_st7565.obj
-	@echo ... Core/Src/lcd_st7565.i
-	@echo ... Core/Src/lcd_st7565.s
 	@echo ... Core/Src/main.obj
 	@echo ... Core/Src/main.i
 	@echo ... Core/Src/main.s
 	@echo ... Core/Src/rtc.obj
 	@echo ... Core/Src/rtc.i
 	@echo ... Core/Src/rtc.s
+	@echo ... Core/Src/st7565.obj
+	@echo ... Core/Src/st7565.i
+	@echo ... Core/Src/st7565.s
 	@echo ... Core/Src/state_machine.obj
 	@echo ... Core/Src/state_machine.i
 	@echo ... Core/Src/state_machine.s

@@ -31,7 +31,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "shtc3.h"
-#include "lcd_st7565.h"
+#include "st7565.h"
 #include <string.h>
 #include "event_handler.h"
 #include "state_machine.h"
@@ -81,9 +81,6 @@ volatile uint8_t updateFlags = 0;
 // Data buffer
 //uint8_t shtc3RxBuf[6];
 //uint8_t shtc3TxBuf[2];
-
-// LCD buffer
-uint8_t LCD_Buffer[1024];
 
 // RTC ISR
 static uint8_t counter = 0;
@@ -164,17 +161,17 @@ int main(void)
     HAL_Delay(10);
 
     // Show startup screen
-    st7565_clear_buffer(LCD_Buffer);
-    //st7565_drawbitmap(LCD_Buffer, 0, 0, atom_symbol, 128, 64, 10);    //TODO: PUT IT BACK!
-    st7565_drawstring(LCD_Buffer, 22, 7, "Moodlight 2020");
-    st7565_drawstring(LCD_Buffer, 0, 0, "Manuel");
-    st7565_drawstring(LCD_Buffer, 0, 1, "Schmid");
-    st7565_drawstring(LCD_Buffer, 85, 0, "Lukas");
-    st7565_drawstring(LCD_Buffer, 85, 1, "Eugster");
-    st7565_write_buffer(LCD_Buffer);
+    st7565_clear_buffer();
+    //st7565_drawbitmap(0, 0, atom_symbol, 128, 64, 10);    //TODO: PUT IT BACK!
+    //st7565_drawstring(22, 7, "Moodlight 2020");
+    //st7565_drawstring(0, 0, "Manuel");
+    //st7565_drawstring(0, 1, "Schmid");
+    //st7565_drawstring(85, 0, "Lukas");
+    st7565_drawstring(85, 1, "Eugster");
+    st7565_write_buffer();
 
     HAL_Delay(2000);
-    st7565_clear_buffer(LCD_Buffer);
+    st7565_clear_buffer();
 
     event_t event;
     fsm_init();
@@ -183,6 +180,8 @@ int main(void)
     HAL_RTC_GetAlarm(&hrtc, &sAlarm, RTC_ALARM_A, RTC_FORMAT_BCD);
     HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BCD);
 
+    HAL_UART_Receive_DMA(&huart1, uartRxData, UART_DATA_LEN);
+    HAL_UART_DMAStop(&huart1);
     HAL_UART_Receive_DMA(&huart1, uartRxData, UART_DATA_LEN);
 
   /* USER CODE END 2 */
@@ -271,7 +270,7 @@ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc) {
         if (counter < 4) {
             counter += 1;
         } else {
-            st7565_clear_buffer(LCD_Buffer);
+            st7565_clear_buffer();
             ah_draw_time();
             ah_draw_date();
             ah_draw_sensor();

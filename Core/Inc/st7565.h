@@ -25,7 +25,7 @@ __  __                 _ _ _       _     _     ___   ___ ___   ___
 #ifndef __LCD_ST7565_H__
 #define __LCD_ST7565_H__
 
-#include "lcd_st7565_pinconf.h"
+#include "st7565_config.h"
 
 #include "font.h"
 #include "string.h"
@@ -63,7 +63,7 @@ typedef enum {
 #define ST7565_CMD_SET_BIAS_7             0xA3
 
 #define ST7565_CMD_RMW                    0xE0
-#define ST7565_CMD_RMW_CLEAR              0xEE
+#define ST7565_CMD_END                    0xEE
 #define ST7565_CMD_INTERNAL_RESET         0xE2
 #define ST7565_CMD_SET_COM_NORMAL         0xC0
 #define ST7565_CMD_SET_COM_REVERSE        0xC8
@@ -99,58 +99,58 @@ void st7565_sendbyte(uint8_t c);
 
 void st7565_clear_screen(void);
 
-void st7565_clear_buffer(uint8_t *buffer);
+void st7565_clear_buffer();
 
-void st7565_write_buffer(uint8_t *buffer);;
+void st7565_write_buffer();;
 
 //higher "draw"-prototypes
-void st7565_drawstring(uint8_t *buff, uint8_t x, uint8_t line, uint8_t *c);
+void st7565_drawstring(uint8_t x, uint8_t line, uint8_t *c);
 
-void st7565_drawchar(uint8_t *buff, uint8_t x, uint8_t line, uint8_t c);
+void st7565_drawchar(uint8_t x, uint8_t line, uint8_t c);
 
-void st7565_setpixel(uint8_t *buff, uint8_t x, uint8_t y, uint8_t color);
+void st7565_setpixel(uint8_t x, uint8_t y, uint8_t color);
 
-void st7565_clearpixel(uint8_t *buff, uint8_t x, uint8_t y);
+void st7565_clearpixel(uint8_t x, uint8_t y);
 
 //special "draw"-prototypes
-void st7565_drawbitmap(uint8_t *buff, uint8_t x, uint8_t y, const uint8_t *bitmap, uint8_t w, uint8_t h, uint8_t color);
+void st7565_drawbitmap(uint8_t x, uint8_t y, const uint8_t *bitmap, uint8_t w, uint8_t h, uint8_t color);
 
 
 // Added functions by Lukas Eugster
-void st7565_drawfhd(uint8_t fhd, uint8_t *LCD_Buffer);
+void st7565_drawfhd(uint8_t fhd);
 
-void st7565_drawshd(uint8_t shd, uint8_t *LCD_Buffer);
+void st7565_drawshd(uint8_t shd);
 
-void st7565_drawdts(uint8_t *LCD_Buffer);
+void st7565_drawdts();
 
-void st7565_drawfmd(uint8_t fmd, uint8_t *LCD_Buffer);
+void st7565_drawfmd(uint8_t fmd);
 
-void st7565_drawsmd(uint8_t smd, uint8_t *LCD_Buffer);
+void st7565_drawsmd(uint8_t smd);
 
-void st7565_drawtempsymbol(uint8_t *LCD_Buffer);
+void st7565_drawtempsymbol();
 
-void st7565_drawtemp(uint8_t temp[], uint8_t *LCD_Buffer);
+void st7565_drawtemp(uint8_t temp[]);
 
-void st7565_drawhumidsymbol(uint8_t *LCD_Buffer);
+void st7565_drawhumidsymbol();
 
-void st7565_drawhumid(uint8_t hum[], uint8_t *LCD_Buffer);
+void st7565_drawhumid(uint8_t hum[]);
 
-void st7565_drawalarmsymbol(uint8_t *LCD_Buffer);
+void st7565_drawalarmsymbol();
 
-void st7565_drawsnsymbol(uint8_t *LCD_Buffer);
+void st7565_drawsnsymbol();
 
-void st7565_drawcursor(uint8_t *LCD_Buffer, uint8_t position);
+void st7565_drawcursor(uint8_t position);
 
-void st7565_drawdate(uint8_t *LCD_Buffer, uint8_t day, uint8_t month, uint8_t year);
+void st7565_drawdate(uint8_t day, uint8_t month, uint8_t year);
 
-void st7565_drawmenu(uint8_t *LCD_Buffer, menu_t type);
+void st7565_drawmenu(menu_t type);
 
-void st7565_drawmenu_custom(uint8_t *LCD_Buffer, uint8_t led_intens_w, uint8_t led_intens_r, uint8_t led_intens_g,
+void st7565_drawmenu_custom(uint8_t led_intens_w, uint8_t led_intens_r, uint8_t led_intens_g,
                             uint8_t led_intens_b);
 
-void st7565_drawmenu_settime(uint8_t *LCD_Buffer, uint8_t set_hour, uint8_t set_min, uint8_t set_day, uint8_t set_mon,
+void st7565_drawmenu_settime(uint8_t set_hour, uint8_t set_min, uint8_t set_day, uint8_t set_mon,
                              uint8_t set_year);
 
-void st7565_drawmenu_setalarm(uint8_t *LCD_Buffer, uint8_t set_al_hr, uint8_t set_al_min);
+void st7565_drawmenu_setalarm(uint8_t set_al_hr, uint8_t set_al_min);
 
 #endif

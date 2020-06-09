@@ -117,13 +117,10 @@
 		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Inc/gpio.h">
 			<Option target="ETP2_STM32.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Inc/graphics.h">
+			<Option target="ETP2_STM32.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Inc/i2c.h">
-			<Option target="ETP2_STM32.elf"/>
-		</Unit>
-		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Inc/lcd_st7565.h">
-			<Option target="ETP2_STM32.elf"/>
-		</Unit>
-		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Inc/lcd_st7565_pinconf.h">
 			<Option target="ETP2_STM32.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Inc/main.h">
@@ -133,6 +130,12 @@
 			<Option target="ETP2_STM32.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Inc/shtc3.h">
+			<Option target="ETP2_STM32.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Inc/st7565.h">
+			<Option target="ETP2_STM32.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Inc/st7565_config.h">
 			<Option target="ETP2_STM32.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Inc/state_machine.h">
@@ -171,16 +174,19 @@
 		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/gpio.c">
 			<Option target="ETP2_STM32.elf"/>
 		</Unit>
-		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/i2c.c">
+		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/graphics.c">
 			<Option target="ETP2_STM32.elf"/>
 		</Unit>
-		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/lcd_st7565.c">
+		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/i2c.c">
 			<Option target="ETP2_STM32.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/main.c">
 			<Option target="ETP2_STM32.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/rtc.c">
+			<Option target="ETP2_STM32.elf"/>
+		</Unit>
+		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/st7565.c">
 			<Option target="ETP2_STM32.elf"/>
 		</Unit>
 		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/state_machine.c">

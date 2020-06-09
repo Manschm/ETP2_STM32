@@ -147,9 +147,22 @@ CMakeFiles/ETP2_STM32.elf.dir/Core/Src/gpio.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ETP2_STM32.elf.dir/Core/Src/gpio.c.s"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\gpio.c -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\gpio.c.s
 
+CMakeFiles/ETP2_STM32.elf.dir/Core/Src/graphics.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
+CMakeFiles/ETP2_STM32.elf.dir/Core/Src/graphics.c.obj: ../Core/Src/graphics.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/graphics.c.obj"
+	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\graphics.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\graphics.c
+
+CMakeFiles/ETP2_STM32.elf.dir/Core/Src/graphics.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ETP2_STM32.elf.dir/Core/Src/graphics.c.i"
+	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\graphics.c > CMakeFiles\ETP2_STM32.elf.dir\Core\Src\graphics.c.i
+
+CMakeFiles/ETP2_STM32.elf.dir/Core/Src/graphics.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ETP2_STM32.elf.dir/Core/Src/graphics.c.s"
+	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\graphics.c -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\graphics.c.s
+
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/i2c.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/i2c.c.obj: ../Core/Src/i2c.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/i2c.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/i2c.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\i2c.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\i2c.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/i2c.c.i: cmake_force
@@ -159,19 +172,6 @@ CMakeFiles/ETP2_STM32.elf.dir/Core/Src/i2c.c.i: cmake_force
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/i2c.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ETP2_STM32.elf.dir/Core/Src/i2c.c.s"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\i2c.c -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\i2c.c.s
-
-CMakeFiles/ETP2_STM32.elf.dir/Core/Src/lcd_st7565.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
-CMakeFiles/ETP2_STM32.elf.dir/Core/Src/lcd_st7565.c.obj: ../Core/Src/lcd_st7565.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/lcd_st7565.c.obj"
-	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\lcd_st7565.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\lcd_st7565.c
-
-CMakeFiles/ETP2_STM32.elf.dir/Core/Src/lcd_st7565.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ETP2_STM32.elf.dir/Core/Src/lcd_st7565.c.i"
-	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\lcd_st7565.c > CMakeFiles\ETP2_STM32.elf.dir\Core\Src\lcd_st7565.c.i
-
-CMakeFiles/ETP2_STM32.elf.dir/Core/Src/lcd_st7565.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ETP2_STM32.elf.dir/Core/Src/lcd_st7565.c.s"
-	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\lcd_st7565.c -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\lcd_st7565.c.s
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/main.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/main.c.obj: ../Core/Src/main.c
@@ -199,9 +199,22 @@ CMakeFiles/ETP2_STM32.elf.dir/Core/Src/rtc.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ETP2_STM32.elf.dir/Core/Src/rtc.c.s"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\rtc.c -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\rtc.c.s
 
+CMakeFiles/ETP2_STM32.elf.dir/Core/Src/st7565.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
+CMakeFiles/ETP2_STM32.elf.dir/Core/Src/st7565.c.obj: ../Core/Src/st7565.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/st7565.c.obj"
+	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\st7565.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\st7565.c
+
+CMakeFiles/ETP2_STM32.elf.dir/Core/Src/st7565.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ETP2_STM32.elf.dir/Core/Src/st7565.c.i"
+	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\st7565.c > CMakeFiles\ETP2_STM32.elf.dir\Core\Src\st7565.c.i
+
+CMakeFiles/ETP2_STM32.elf.dir/Core/Src/st7565.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ETP2_STM32.elf.dir/Core/Src/st7565.c.s"
+	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\st7565.c -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\st7565.c.s
+
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/state_machine.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/state_machine.c.obj: ../Core/Src/state_machine.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/state_machine.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/state_machine.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\state_machine.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\state_machine.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/state_machine.c.i: cmake_force
@@ -214,7 +227,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Core/Src/state_machine.c.s: cmake_force
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/stm32f0xx_hal_msp.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/stm32f0xx_hal_msp.c.obj: ../Core/Src/stm32f0xx_hal_msp.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/stm32f0xx_hal_msp.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/stm32f0xx_hal_msp.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\stm32f0xx_hal_msp.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\stm32f0xx_hal_msp.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/stm32f0xx_hal_msp.c.i: cmake_force
@@ -227,7 +240,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Core/Src/stm32f0xx_hal_msp.c.s: cmake_force
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/stm32f0xx_it.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/stm32f0xx_it.c.obj: ../Core/Src/stm32f0xx_it.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/stm32f0xx_it.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/stm32f0xx_it.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\stm32f0xx_it.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\stm32f0xx_it.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/stm32f0xx_it.c.i: cmake_force
@@ -240,7 +253,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Core/Src/stm32f0xx_it.c.s: cmake_force
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/syscalls.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/syscalls.c.obj: ../Core/Src/syscalls.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/syscalls.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/syscalls.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\syscalls.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\syscalls.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/syscalls.c.i: cmake_force
@@ -253,7 +266,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Core/Src/syscalls.c.s: cmake_force
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/sysmem.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/sysmem.c.obj: ../Core/Src/sysmem.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/sysmem.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/sysmem.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\sysmem.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\sysmem.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/sysmem.c.i: cmake_force
@@ -266,7 +279,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Core/Src/sysmem.c.s: cmake_force
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/system_stm32f0xx.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/system_stm32f0xx.c.obj: ../Core/Src/system_stm32f0xx.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/system_stm32f0xx.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/system_stm32f0xx.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\system_stm32f0xx.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\system_stm32f0xx.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/system_stm32f0xx.c.i: cmake_force
@@ -279,7 +292,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Core/Src/system_stm32f0xx.c.s: cmake_force
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/tim.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/tim.c.obj: ../Core/Src/tim.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/tim.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/tim.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\tim.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\tim.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/tim.c.i: cmake_force
@@ -292,7 +305,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Core/Src/tim.c.s: cmake_force
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/usart.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/usart.c.obj: ../Core/Src/usart.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/usart.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Core/Src/usart.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Core\Src\usart.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Src\usart.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Src/usart.c.i: cmake_force
@@ -305,12 +318,12 @@ CMakeFiles/ETP2_STM32.elf.dir/Core/Src/usart.c.s: cmake_force
 
 CMakeFiles/ETP2_STM32.elf.dir/Core/Startup/startup_stm32f030c8tx.s.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Core/Startup/startup_stm32f030c8tx.s.obj: ../Core/Startup/startup_stm32f030c8tx.s
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building ASM object CMakeFiles/ETP2_STM32.elf.dir/Core/Startup/startup_stm32f030c8tx.s.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building ASM object CMakeFiles/ETP2_STM32.elf.dir/Core/Startup/startup_stm32f030c8tx.s.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Core\Startup\startup_stm32f030c8tx.s.obj -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Core\Startup\startup_stm32f030c8tx.s
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.c.i: cmake_force
@@ -323,7 +336,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal.c.s
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_adc.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_adc.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc.c.i: cmake_force
@@ -336,7 +349,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc_ex.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc_ex.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc_ex.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc_ex.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_adc_ex.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_adc_ex.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc_ex.c.i: cmake_force
@@ -349,7 +362,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_adc
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_cortex.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_cortex.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cortex.c.i: cmake_force
@@ -362,7 +375,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_cor
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_dma.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_dma.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma.c.i: cmake_force
@@ -375,7 +388,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_dma
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_exti.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_exti.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_exti.c.i: cmake_force
@@ -388,7 +401,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_ext
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_flash.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_flash.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash.c.i: cmake_force
@@ -401,7 +414,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_fla
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_flash_ex.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_flash_ex.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_flash_ex.c.i: cmake_force
@@ -414,7 +427,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_fla
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_gpio.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_gpio.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpio.c.i: cmake_force
@@ -427,7 +440,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_gpi
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_i2c.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_i2c.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c.c.i: cmake_force
@@ -440,7 +453,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_i2c_ex.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_i2c_ex.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c_ex.c.i: cmake_force
@@ -453,7 +466,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_i2c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_pwr.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_pwr.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr.c.i: cmake_force
@@ -466,7 +479,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_pwr_ex.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_pwr_ex.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr_ex.c.i: cmake_force
@@ -479,7 +492,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_pwr
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_rcc.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_rcc.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc.c.i: cmake_force
@@ -492,7 +505,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_rcc_ex.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_rcc_ex.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc_ex.c.i: cmake_force
@@ -505,7 +518,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rcc
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rtc.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rtc.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rtc.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rtc.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rtc.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_rtc.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_rtc.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rtc.c.i: cmake_force
@@ -518,7 +531,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rtc
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rtc_ex.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rtc_ex.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rtc_ex.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rtc_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rtc_ex.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_rtc_ex.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_rtc_ex.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rtc_ex.c.i: cmake_force
@@ -531,7 +544,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_rtc
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_tim.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_tim.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim.c.i: cmake_force
@@ -544,7 +557,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_tim_ex.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_tim_ex.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim_ex.c.i: cmake_force
@@ -557,7 +570,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_tim
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_uart.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_uart.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart.c.i: cmake_force
@@ -570,7 +583,7 @@ CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uar
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart_ex.c.obj: CMakeFiles/ETP2_STM32.elf.dir/flags.make
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart_ex.c.obj: ../Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart_ex.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart_ex.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building C object CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart_ex.c.obj"
 	C:\PROGRA~2\GNUTOO~1\92019-~1\bin\AR19DD~1.EXE $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\ETP2_STM32.elf.dir\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_uart_ex.c.obj   -c C:\Users\Manuel\Documents\GitHub\ETP2_STM32\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_uart_ex.c
 
 CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart_ex.c.i: cmake_force
@@ -590,10 +603,11 @@ ETP2_STM32_elf_OBJECTS = \
 "CMakeFiles/ETP2_STM32.elf.dir/Core/Src/event_handler.c.obj" \
 "CMakeFiles/ETP2_STM32.elf.dir/Core/Src/font.c.obj" \
 "CMakeFiles/ETP2_STM32.elf.dir/Core/Src/gpio.c.obj" \
+"CMakeFiles/ETP2_STM32.elf.dir/Core/Src/graphics.c.obj" \
 "CMakeFiles/ETP2_STM32.elf.dir/Core/Src/i2c.c.obj" \
-"CMakeFiles/ETP2_STM32.elf.dir/Core/Src/lcd_st7565.c.obj" \
 "CMakeFiles/ETP2_STM32.elf.dir/Core/Src/main.c.obj" \
 "CMakeFiles/ETP2_STM32.elf.dir/Core/Src/rtc.c.obj" \
+"CMakeFiles/ETP2_STM32.elf.dir/Core/Src/st7565.c.obj" \
 "CMakeFiles/ETP2_STM32.elf.dir/Core/Src/state_machine.c.obj" \
 "CMakeFiles/ETP2_STM32.elf.dir/Core/Src/stm32f0xx_hal_msp.c.obj" \
 "CMakeFiles/ETP2_STM32.elf.dir/Core/Src/stm32f0xx_it.c.obj" \
@@ -635,10 +649,11 @@ ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/Core/Src/dma.c.obj
 ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/Core/Src/event_handler.c.obj
 ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/Core/Src/font.c.obj
 ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/Core/Src/gpio.c.obj
+ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/Core/Src/graphics.c.obj
 ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/Core/Src/i2c.c.obj
-ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/Core/Src/lcd_st7565.c.obj
 ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/Core/Src/main.c.obj
 ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/Core/Src/rtc.c.obj
+ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/Core/Src/st7565.c.obj
 ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/Core/Src/state_machine.c.obj
 ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/Core/Src/stm32f0xx_hal_msp.c.obj
 ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/Core/Src/stm32f0xx_it.c.obj
@@ -671,7 +686,7 @@ ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/s
 ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/Drivers/STM32F0xx_HAL_Driver/Src/stm32f0xx_hal_uart_ex.c.obj
 ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/build.make
 ETP2_STM32.elf: CMakeFiles/ETP2_STM32.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Linking C executable ETP2_STM32.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Manuel\Documents\GitHub\ETP2_STM32\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Linking C executable ETP2_STM32.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\ETP2_STM32.elf.dir\link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building C:/Users/Manuel/Documents/GitHub/ETP2_STM32/cmake-build-debug/ETP2_STM32.hex"
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building C:/Users/Manuel/Documents/GitHub/ETP2_STM32/cmake-build-debug/ETP2_STM32.bin"

@@ -17,25 +17,21 @@ __  __                 _ _ _       _     _     ___   ___ ___   ___
             |___/
 */
 //============================================================================================================
-/*******
- * Modified by schmim62
- * Date: 26.02.2020
- *******/
 
 #ifndef __LCD_ST7565_PINCONF_H__
 #define __LCD_ST7565_PINCONF_H__
 
-#include "main.h"
+// LCD Pins
+#define ST7565_PORT         GPIOA
+#define ST7565_BL_PIN       GPIO_PIN_2
+#define ST7565_CS_PIN       GPIO_PIN_3
+#define ST7565_RST_PIN      GPIO_PIN_4
+#define ST7565_A0_PIN       GPIO_PIN_5
+#define ST7565_SCL_PIN      GPIO_PIN_7
+#define ST7565_SDA_PIN      GPIO_PIN_6
 
-//LCD PORT
-#define ST7565_PORT                GPIOA
-//Backlight A+ - Pin
-#define ST7565_BL_PIN        GPIO_PIN_2        // Orange, LCD Pin 11
-//LCD SPI-Pin
-#define ST7565_CS_PIN        GPIO_PIN_3        // Yellow, LCD Pin 6
-#define ST7565_RST_PIN        GPIO_PIN_4        // Purple, LCD Pin 5
-#define ST7565_A0_PIN        GPIO_PIN_5        // Orange, LCD Pin 4
-#define ST7565_SCLK_PIN        GPIO_PIN_7        // White, LCD Pin 1
-#define ST7565_SDAT_PIN        GPIO_PIN_6        // Grey, LCD Pin 2
+// Screen constants
+#define SCREEN_WIDTH    128
+#define SCREEN_HEIGHT   64
 
 #endif

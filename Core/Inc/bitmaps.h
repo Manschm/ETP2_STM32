@@ -1,4 +1,7 @@
 
+#ifndef __BITMAPS_H__
+#define __BITMAPS_H__
+
 #include "main.h"
 
 
@@ -61,3 +64,4 @@ extern const uint8_t symbol_deg[1024];
 
 extern const uint8_t cursor[1024];
 
+#endif

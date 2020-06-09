@@ -23,7 +23,7 @@ __  __                 _ _ _       _     _     ___   ___ ___   ___
 
 #include <stdint.h>
 #include "main.h"
-#include "lcd_st7565.h"
+#include "st7565.h"
 
 //======================================================
 // Typedef for functions
