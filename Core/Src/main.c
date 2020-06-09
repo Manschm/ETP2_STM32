@@ -162,15 +162,15 @@ int main(void)
 
     // Show startup screen
     st7565_clear_buffer();
-    //st7565_drawbitmap(0, 0, atom_symbol, 128, 64, 10);    //TODO: PUT IT BACK!
-    //st7565_drawstring(22, 7, "Moodlight 2020");
-    //st7565_drawstring(0, 0, "Manuel");
-    //st7565_drawstring(0, 1, "Schmid");
-    //st7565_drawstring(85, 0, "Lukas");
+    st7565_drawbitmap(43, 5, atom_symbol, 43, 51, 10);
+    st7565_drawstring(22, 7, "Moodlight 2020");
+    st7565_drawstring(0, 0, "Manuel");
+    st7565_drawstring(0, 1, "Schmid");
+    st7565_drawstring(85, 0, "Lukas");
     st7565_drawstring(85, 1, "Eugster");
     st7565_write_buffer();
 
-    HAL_Delay(2000);
+    HAL_Delay(3000);
     st7565_clear_buffer();
 
     event_t event;

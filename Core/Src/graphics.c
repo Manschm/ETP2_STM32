@@ -1,10 +1,7 @@
-// stdlib.h for abs()
-#include <stdlib.h>
 
 #include "graphics.h"
-#include "main.h"
 
-bounding_box_t draw_text(char *string, unsigned char x, unsigned char y, unsigned char *font, unsigned char spacing) {
+bounding_box_t draw_text(uint8_t *string, uint8_t x, uint8_t y, uint8_t *font, uint8_t spacing) {
 	bounding_box_t ret;
 	bounding_box_t tmp;
 
@@ -27,9 +24,9 @@ bounding_box_t draw_text(char *string, unsigned char x, unsigned char y, unsigne
 	return ret;
 }
 
-bounding_box_t draw_char(unsigned char c, unsigned char x, unsigned char y, unsigned char *font) {
+bounding_box_t draw_char(uint8_t c, uint8_t x, uint8_t y, uint8_t *font) {
 	unsigned short pos;
-	unsigned char width;
+	uint8_t width;
 	bounding_box_t ret;
 
 	ret.x1 = x;
@@ -58,11 +55,11 @@ bounding_box_t draw_char(unsigned char c, unsigned char x, unsigned char y, unsi
 	width = font[pos];
 
 	// Draw left to right
-	unsigned char i;
+	uint8_t i;
 	for (i = 0; i < width; i++) {
 
 		// Draw top to bottom
-		for (unsigned char j = 0; j < font[FONT_HEADER_HEIGHT]; j++) {
+		for (uint8_t j = 0; j < font[FONT_HEADER_HEIGHT]; j++) {
 			// Increment one data byte every 8 bits, or
 			// at the start of a new column  HiTech optimizes
 			// the modulo, so no need to try and avoid it.
@@ -79,13 +76,13 @@ bounding_box_t draw_char(unsigned char c, unsigned char x, unsigned char y, unsi
 	ret.x2 = ret.x1 + width - 1;
 	// TODO: Return the actual height drawn, rather than the height of the
 	//		 font.
-	ret.y2 = ret.y1 + height;
+	//ret.y2 = ret.y1 + height;
 	ret.y2 = ret.y1 + font[FONT_HEADER_HEIGHT];
 
 	return ret;
 }
 
-unsigned char text_height(unsigned char *string, unsigned char *font) {
+uint8_t text_height(uint8_t *string, uint8_t *font) {
 	// TODO: Possibly work out the actual pixel height.  Letters with
 	//       descenders (like 'g') are taller than letters without (like 'k')
 
@@ -93,10 +90,10 @@ unsigned char text_height(unsigned char *string, unsigned char *font) {
 	return font[FONT_HEADER_HEIGHT];
 }
 
-unsigned char text_width(unsigned char *string, unsigned char *font, unsigned char spacing) {
-	unsigned char width = 0;
+uint8_t text_width(uint8_t *string, uint8_t *font, uint8_t spacing) {
+	uint8_t width = 0;
 	unsigned short pos;
-	unsigned char c;
+	uint8_t c;
 
 	// TODO: Implement for fixed width fonts
 
@@ -129,7 +126,7 @@ unsigned char text_width(unsigned char *string, unsigned char *font, unsigned ch
 	return width - spacing;
 }
 
-void draw_rectangle(int x1, int y1, int x2, int y2, char colour)
+void draw_rectangle(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t colour)
 {
 	// Top
 	draw_line(x1, y1, x2, y1, colour);
@@ -143,7 +140,7 @@ void draw_rectangle(int x1, int y1, int x2, int y2, char colour)
 
 
 // A rounded box
-void draw_box(int x1, int y1, int x2, int y2, char colour)
+void draw_box(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t colour)
 {
 	// Top
 	draw_line(x1 + 1, y1, x2 - 1, y1, colour);
@@ -159,14 +156,15 @@ void draw_box(int x1, int y1, int x2, int y2, char colour)
 //
 // This code credit Tom Ootjers, originally obtained from: 
 // http://tinyurl.com/czok7vx
-void draw_line(int x1, int y1, int x2, int y2, char colour)
+void draw_line(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t colour)
 {
-	int xinc1, yinc1, den, num, numadd, numpixels, curpixel, xinc2, yinc2;
+    uint8_t curpixel;
+	int8_t xinc1, yinc1, den, num, numadd, numpixels, xinc2, yinc2;
 
-	int deltax = abs(x2 - x1);    	// The difference between the x's
-	int deltay = abs(y2 - y1);    	// The difference between the y's
-	int x = x1;                   	// Start x off at the first pixel
-	int y = y1;                   	// Start y off at the first pixel
+	int8_t deltax = abs(x2 - x1);    	// The difference between the x's
+	int8_t deltay = abs(y2 - y1);    	// The difference between the y's
+	uint8_t x = x1;                   	// Start x off at the first pixel
+	uint8_t y = y1;                   	// Start y off at the first pixel
 	
 	if (x2 >= x1) {             	// The x-values are increasing
 	  xinc1 = 1;
@@ -224,11 +222,11 @@ void draw_line(int x1, int y1, int x2, int y2, char colour)
 
 
 // Implementation of Bresenham's circle algorithm
-void draw_circle(unsigned char centre_x, unsigned char centre_y, unsigned char radius, unsigned char colour)
+void draw_circle(uint8_t centre_x, uint8_t centre_y, uint8_t radius, uint8_t colour)
 {
-	signed char x = 0;
-	signed char y = radius;
-	signed char p = 1 - radius;
+	int8_t x = 0;
+	int8_t y = radius;
+	int8_t p = 1 - radius;
 
 	if (!radius) return;
 
@@ -252,11 +250,11 @@ void draw_circle(unsigned char centre_x, unsigned char centre_y, unsigned char r
 }
 
 // Implementation of Bresenham's circle algorithm, filled.
-void draw_filled_circle(unsigned char centre_x, unsigned char centre_y, unsigned char radius, unsigned char colour)
+void draw_filled_circle(uint8_t centre_x, uint8_t centre_y, uint8_t radius, uint8_t colour)
 {
-	signed char x = 0;
-	signed char y = radius;
-	signed char p = 1 - radius;
+	int8_t x = 0;
+	int8_t y = radius;
+	int8_t p = 1 - radius;
 
 	if (!radius) return;
 

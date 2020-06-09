@@ -34,6 +34,10 @@
 #ifndef _GRAPHICS_H_
 #define _GRAPHICS_H_
 
+#include <stdlib.h> // for abs()
+#include "main.h"
+
+
 #define FONT_HEADER_TYPE		0
 #define FONT_HEADER_ORIENTATION	1
 #define FONT_HEADER_START		2
@@ -46,10 +50,10 @@
 #define FONT_ORIENTATION_VERTICAL_CEILING	2
 
 typedef struct {
-	unsigned char x1;
-	unsigned char y1; 
-	unsigned char x2; 
-	unsigned char y2;
+	uint8_t x1;
+	uint8_t y1;
+	uint8_t x2;
+	uint8_t y2;
 } bounding_box_t;
 
 /**
@@ -61,7 +65,7 @@ typedef struct {
  * @param font		The font used to render the text
  * @param spacing	The gap in pixels between letters
  */
-bounding_box_t draw_text(char *string, unsigned char x, unsigned char y, unsigned char *font, unsigned char spacing);
+bounding_box_t draw_text(uint8_t *string, uint8_t x, uint8_t y, uint8_t *font, uint8_t spacing);
 /**
  * Draw a single character on the screen at a specific location.
  * 
@@ -70,7 +74,7 @@ bounding_box_t draw_text(char *string, unsigned char x, unsigned char y, unsigne
  * @param y			The y position, from 1 - SCREEN_HEIGHT
  * @param font		The font used to render the text
  */
-bounding_box_t draw_char(unsigned char c, unsigned char x, unsigned char y, unsigned char *font);
+bounding_box_t draw_char(uint8_t c, uint8_t x, uint8_t y, uint8_t *font);
 /**
  * Draw a simple rectangle.
  *
@@ -80,7 +84,7 @@ bounding_box_t draw_char(unsigned char c, unsigned char x, unsigned char y, unsi
  * @param y2 		The y2 position, from 1 - SCREEN_HEIGHT
  * @param colour 	0 = OFF, any other value = ON
  */
-void draw_rectangle(int x1, int y1, int x2, int y2, char colour);
+void draw_rectangle(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t colour);
 /**
  * Draw a box with rounded corners.  The same as draw_rectangle(), but with corners
  * that are not filled.
@@ -91,7 +95,7 @@ void draw_rectangle(int x1, int y1, int x2, int y2, char colour);
  * @param y2 		The y2 position, from 1 - SCREEN_HEIGHT
  * @param colour 	0 = OFF, any other value = ON
  */
-void draw_box(int x1, int y1, int x2, int y2, char colour);
+void draw_box(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t colour);
 /**
  * Obtain the width of a string in pixels.
  *
@@ -99,7 +103,7 @@ void draw_box(int x1, int y1, int x2, int y2, char colour);
  * @param font		The font used to render the text
  * @param spacing	The gap between letters, in pixels
  */
-unsigned char text_width(unsigned char *string, unsigned char *font, unsigned char spacing);
+uint8_t text_width(uint8_t *string, uint8_t *font, uint8_t spacing);
 /**
  * Obtain the height of a string in pixels.  
  *
@@ -110,7 +114,7 @@ unsigned char text_width(unsigned char *string, unsigned char *font, unsigned ch
  * @param string	The text to be measured
  * @param font		The font used to render the text
  */
-unsigned char text_height(unsigned char *string, unsigned char *font);
+uint8_t text_height(uint8_t *string, uint8_t *font);
 /**
  * Draw a line using Bresenham's algorithm.
  *
@@ -122,7 +126,7 @@ unsigned char text_height(unsigned char *string, unsigned char *font);
  * @param y2 		The y2 position, from 1 - SCREEN_HEIGHT
  * @param colour 	0 = OFF, any other value = ON
  */
-void draw_line(int x1, int y1, int x2, int y2, char colour);
+void draw_line(uint8_t x1, uint8_t y1, uint8_t x2, uint8_t y2, uint8_t colour);
 /**
  * Draw a circle using an efficient circle algorithm.
  *
@@ -131,7 +135,7 @@ void draw_line(int x1, int y1, int x2, int y2, char colour);
  * @param radius	The circle radius, in pixels
  * @param colour 	0 = OFF, any other value = ON
  */
-void draw_circle(unsigned char centre_x, unsigned char centre_y, unsigned char radius, unsigned char colour);
+void draw_circle(uint8_t centre_x, uint8_t centre_y, uint8_t radius, uint8_t colour);
 /**
  * Draw a filled circle using an efficient circle algorithm.
  *
@@ -143,7 +147,7 @@ void draw_circle(unsigned char centre_x, unsigned char centre_y, unsigned char r
  * @param radius	The circle radius, in pixels
  * @param colour 	0 = OFF, any other value = ON
  */
-void draw_filled_circle(unsigned char centre_x, unsigned char centre_y, unsigned char radius, unsigned char colour);
+void draw_filled_circle(uint8_t centre_x, uint8_t centre_y, uint8_t radius, uint8_t colour);
 
 /**
  * This function must be provided by the underlying graphics driver.  It will
@@ -153,7 +157,7 @@ void draw_filled_circle(unsigned char centre_x, unsigned char centre_y, unsigned
  * @param y			The y position, from 1 - SCREEN_HEIGHT
  * @param colour 	0 = OFF, any other value = ON
  */
-extern void glcd_pixel(unsigned char x, unsigned char y, unsigned char colour);
+extern void glcd_pixel(uint8_t x, uint8_t y, uint8_t colour);
 
 #endif // _GRAPHICS_H_
 

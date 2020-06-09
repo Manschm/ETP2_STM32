@@ -50,18 +50,18 @@ extern const uint8_t clock_nine[1024];
 
 extern const uint8_t clock_dots[1024];
 
-extern const uint8_t symbol_alarm[1024];
+extern const uint8_t symbol_humid[22];
 
-extern const uint8_t symbol_snooze[1024];
+extern const uint8_t symbol_temp[16];
 
-extern const uint8_t symbol_temp[1024];
+extern const uint8_t symbol_snooze[24];
 
-extern const uint8_t symbol_humid[1024];
+extern const uint8_t symbol_alarm[22];
 
-extern const uint8_t atom_symbol[1024];
+extern const uint8_t atom_symbol[301];
 
-extern const uint8_t symbol_deg[1024];
+extern const uint8_t symbol_deg[3];
 
-extern const uint8_t cursor[1024];
+extern const uint8_t cursor[4];
 
 #endif

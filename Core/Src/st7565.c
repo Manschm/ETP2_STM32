@@ -17,7 +17,8 @@ __  __                 _ _ _       _     _     ___   ___ ___   ___
             |___/
 */
 //============================================================================================================
-
+// Infos: https://edeca.net/pages/the-st7565-display-controller/
+// Datasheet: https://www.orientdisplay.com/pdf/ST7565.pdf
 #include "st7565.h"
 
 uint8_t buffer[SCREEN_WIDTH * SCREEN_WIDTH / 8];
@@ -189,9 +190,9 @@ void st7565_setpixel(uint8_t x, uint8_t y, uint8_t color) {
 // x is which column
 
     if (color) {
-        buffer[x + (y / 8) * 128] |= (1 << (7 - (y % 8)));
+        buffer[x + (y / 8) * 128] |= (1U << (7U - (y % 8)));
     } else {
-        buffer[x + (y / 8) * 128] &= ~(1 << (7 - (y % 8)));
+        buffer[x + (y / 8) * 128] &= ~(1U << (7U - (y % 8)));
     }
 }
 
@@ -200,7 +201,7 @@ void st7565_drawbitmap(uint8_t x, uint8_t y, const uint8_t *bitmap, uint8_t w, u
     uint8_t j, i;
     for (j = 0; j < h; j++) {
         for (i = 0; i < w; i++) {
-            if (*(bitmap + i + (j / 8) * w) & (1 << (j % 8))) {
+            if (*(bitmap + i + j / 8 * w) & (1U << (j % 8))) {
                 st7565_setpixel(x + i, y + j, color);
             }
         }
@@ -233,7 +234,7 @@ void st7565_drawchar(uint8_t x, uint8_t line, uint8_t c) {
 
 // Clear a single pixel
 void st7565_clearpixel(uint8_t x, uint8_t y) {
-    buffer[x + (y / 8) * 128] &= ~(1 << (7 - (y % 8)));
+    buffer[x + (y / 8) * 128] &= ~(1U << (7U - (y % 8)));
 }
 
 
@@ -367,13 +368,13 @@ void st7565_drawsmd(uint8_t smd) {
 //==========================================================
 // Draw temperature symbol
 void st7565_drawtempsymbol() {
-    st7565_drawbitmap(15, 47, symbol_temp, 128, 64, 10);
+    st7565_drawbitmap(19, 47, symbol_temp, 8, 16, 10);
 }
 
 //Draw temperature 
 void st7565_drawtemp(uint8_t temp[]) {
     st7565_drawstring(30, 7, temp);
-    st7565_drawbitmap(42, 53, symbol_deg, 128, 64, 10);
+    st7565_drawbitmap(42, 53, symbol_deg, 3, 3, 10);
 }
 
 //==========================================================
@@ -381,7 +382,7 @@ void st7565_drawtemp(uint8_t temp[]) {
 //==========================================================
 // Draw humidity symbol
 void st7565_drawhumidsymbol() {
-    st7565_drawbitmap(65, 47, symbol_humid, 128, 64, 10);
+    st7565_drawbitmap(67, 47, symbol_humid, 11, 16, 10);
 }
 
 // Draw humidity level
@@ -396,12 +397,12 @@ void st7565_drawhumid(uint8_t hum[]) {
 //==========================================================
 // Draw alarm symbol
 void st7565_drawalarmsymbol() {
-    st7565_drawbitmap(110, 20, symbol_alarm, 128, 64, 10);
+    st7565_drawbitmap(115, 20, symbol_alarm, 11, 15, 10);
 }
 
 // Draw snooze symbol 
 void st7565_drawsnsymbol() {
-    st7565_drawbitmap(113, 5, symbol_snooze, 128, 64, 10);
+    st7565_drawbitmap(115, 5, symbol_snooze, 12, 15, 10);
 
 }
 
@@ -436,25 +437,25 @@ void st7565_drawdate(uint8_t day, uint8_t month, uint8_t year) {
 void st7565_drawcursor(uint8_t position) {
     switch (position) {
         case 1:
-            st7565_drawbitmap(2, 7, cursor, 128, 64, 10);
+            st7565_drawbitmap(4, 7, cursor, 4, 6, 10);
             break;
         case 2:
-            st7565_drawbitmap(2, 15, cursor, 128, 64, 10);
+            st7565_drawbitmap(4, 15, cursor, 4, 6, 10);
             break;
         case 3:
-            st7565_drawbitmap(2, 23, cursor, 128, 64, 10);
+            st7565_drawbitmap(4, 23, cursor, 4, 6, 10);
             break;
         case 4:
-            st7565_drawbitmap(2, 31, cursor, 128, 64, 10);
+            st7565_drawbitmap(4, 31, cursor, 4, 6, 10);
             break;
         case 5:
-            st7565_drawbitmap(2, 39, cursor, 128, 64, 10);
+            st7565_drawbitmap(4, 39, cursor, 4, 6, 10);
             break;
         case 6:
-            st7565_drawbitmap(2, 47, cursor, 128, 64, 10);
+            st7565_drawbitmap(4, 47, cursor, 4, 6, 10);
             break;
         case 7:
-            st7565_drawbitmap(2, 55, cursor, 128, 64, 10);
+            st7565_drawbitmap(4, 55, cursor, 4, 6, 10);
             break;
     }
 }
