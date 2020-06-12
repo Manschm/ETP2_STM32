@@ -114,6 +114,9 @@
 		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Inc/font.h">
 			<Option target="ETP2_STM32.elf"/>
 		</Unit>
+		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Inc/font_tahoma.h">
+			<Option target="ETP2_STM32.elf"/>
+		</Unit>
 		<Unit filename="C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Inc/gpio.h">
 			<Option target="ETP2_STM32.elf"/>
 		</Unit>

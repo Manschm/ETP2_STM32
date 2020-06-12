@@ -45,12 +45,24 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define SMOOTH_LEN      64U  // Must have 2 as a base
+#define SMOOTH_SHIFT    6U  // Must be the exponent of SMOOTH_LEN
 
 // UART defines
 #define UART_DATA_LEN   5U
 
-// Interrupt flags
-#define FLAG_UART 0U
+// LED enums and structs
+typedef enum {
+    cRed = 0,
+    cGreen = 1,
+    cBlue = 2,
+    cBrightness = 3 // I know, this is not a color
+} colorInput;
+
+typedef struct {
+    uint8_t colors[4][SMOOTH_LEN];
+    uint8_t time[4];
+} Smoother_TypeDef;
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -63,22 +75,17 @@
 /* USER CODE BEGIN PV */
 
 // UART variables
-uint8_t uartRxData[UART_DATA_LEN];
-uint8_t previousRxData[UART_DATA_LEN];
+uint8_t uartRxData[UART_DATA_LEN];      // Most recent data
+uint8_t workingData[4];
+uint8_t setData[4];                     // Data currently displayed
+uint8_t tempData[4];
 
 // LED variables
 uint16_t rgbwValues[4];
+uint8_t lightSwitch = 0;
+Smoother_TypeDef smoother;
 
-/*===== Interrupt flags
- * Bit | Description
- *   0 | New UART data available
- *   1 | Temperature sensor TODO: define
- */
-//static uint8_t updateUI = 0;
-//static uint8_t updateSensor = 0;
-volatile uint8_t updateFlags = 0;
-
-// Data buffer
+// I2C buffer
 //uint8_t shtc3RxBuf[6];
 //uint8_t shtc3TxBuf[2];
 
@@ -90,7 +97,7 @@ static uint8_t counter = 0;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
+uint8_t ColorSmoother(Smoother_TypeDef *holder, uint8_t input, colorInput color);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -149,8 +156,7 @@ int main(void)
     __HAL_TIM_SET_COMPARE(&htim3, LED_CH_RT, 900);
     HAL_TIM_PWM_Start(&htim3, LED_CH_RT);
 
-    //HAL_TIM_Base_Start_IT(&htim3);	// UI timer
-    //HAL_TIM_Base_Start_IT(&htim6);	// Sensor timer
+    //HAL_TIM_Base_Start_IT(&htim6);	// Color change timer
 
     //HAL_I2C_Master_Transmit(&hi2c2, SHTC3_ADDR,
 
@@ -176,13 +182,24 @@ int main(void)
     event_t event;
     fsm_init();
 
+    // RTC init
     RTC_AlarmTypeDef sAlarm;
     HAL_RTC_GetAlarm(&hrtc, &sAlarm, RTC_ALARM_A, RTC_FORMAT_BCD);
     HAL_RTC_SetAlarm_IT(&hrtc, &sAlarm, RTC_FORMAT_BCD);
 
+    // UART init
     HAL_UART_Receive_DMA(&huart1, uartRxData, UART_DATA_LEN);
     HAL_UART_DMAStop(&huart1);
+    setData[0] = 0;
+    setData[1] = 0;
+    setData[2] = 0;
+    setData[3] = 0;
+    workingData[0] = 0;
+    workingData[1] = 0;
+    workingData[2] = 0;
+    workingData[3] = 0;
     HAL_UART_Receive_DMA(&huart1, uartRxData, UART_DATA_LEN);
+    HAL_TIM_Base_Start_IT(&htim6);
 
   /* USER CODE END 2 */
 
@@ -257,14 +274,81 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-/*void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	if (htim->Instance == TIM3)	{
-		updateUI = 1;
-	} else if (htim->Instance == TIM6) {
-		updateSensor = 1;
+	if (htim->Instance == TIM6) {
+        if (lightSwitch) {
+            tempData[0] = workingData[0];
+            tempData[1] = workingData[1];
+            tempData[2] = workingData[2];
+            tempData[3] = workingData[3];
+            uint8_t red     = ColorSmoother(&smoother, tempData[0], cRed);
+            uint8_t green   = ColorSmoother(&smoother, tempData[1], cGreen);
+            uint8_t blue    = ColorSmoother(&smoother, tempData[2], cBlue);
+            uint8_t bright  = ColorSmoother(&smoother, tempData[3], cBrightness);
+
+
+            // Convert RGB to RGBW
+            if ((setData[0] != red) || (setData[1] != green) || (setData[2] != blue) || (setData[3] != bright)) {
+                uint8_t white;  // Also min value
+                uint8_t max;
+
+                // Find min and max values
+                if (red <= green) {
+                    if (red <= blue) {          // red <= (green && blue)
+                        white = red;
+                        if (blue >= green) {    // red <= green <= blue
+                            max = blue;
+                        } else {
+                            max = green;        // red <= blue < green
+                        }
+                    } else {                    // blue < red <= green
+                        white = blue;
+                        max = green;
+                    }
+                } else if (green <= blue) {     // green <= (red && blue)
+                    white = green;
+                    if (blue >= red) {          // green <= red <= blue
+                        max = blue;
+                    } else {                    // green <= blue < red
+                        max = red;
+                    }
+                } else {                        // blue < green < red
+                    white = blue;
+                    max = red;
+                }
+
+                float multiplier = (float)white / 255.0f / (float)max + 1.0f;
+
+                rgbwValues[0] = multiplier * (float)red - (float)white;
+                rgbwValues[1] = multiplier * (float)green - (float)white;
+                rgbwValues[2] = multiplier * (float)blue - (float)white;
+                rgbwValues[3] = white;
+
+                float brightness = (float)bright / 100.0f;
+                for (uint8_t i = 0; i < 4; i++) {
+                    rgbwValues[i] = rgbwValues[i] << 1U;    // Adjust scale (max. value 255 becomes 510)
+                    rgbwValues[i] *= brightness;            // Scale with brightness
+                }
+
+                // Apply new RGBW values
+                ah_setPWM(&htim1, rgbwValues[0], rgbwValues[1], rgbwValues[2], rgbwValues[3]);
+
+                setData[0] = tempData[0];
+                setData[1] = tempData[1];
+                setData[2] = tempData[2];
+                setData[3] = tempData[3];
+            }
+        } else {
+            ColorSmoother(&smoother, 0, cRed);
+            ColorSmoother(&smoother, 0, cGreen);
+            ColorSmoother(&smoother, 0, cBlue);
+            ColorSmoother(&smoother, 0, cBrightness);
+            ah_setPWM(&htim1, 0, 0, 0, 0);
+        }
 	}
-}*/
+}
+
 void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc) {
     if (state == HOME_SCREEN) {
         if (counter < 4) {
@@ -282,67 +366,27 @@ void HAL_RTC_AlarmAEventCallback(RTC_HandleTypeDef *hrtc) {
 }
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
-    uint8_t lightSwitch = uartRxData[1];
+    lightSwitch = uartRxData[1];
+    workingData[0] = uartRxData[2]; // Red
+    workingData[1] = uartRxData[3]; // Green
+    workingData[2] = uartRxData[4]; // Blue
+    workingData[3] = uartRxData[0]; // Brightness
+}
 
-    if ((previousRxData[0] != uartRxData[0]) || (previousRxData[2] != uartRxData[2]) || (previousRxData[3] != uartRxData[3])) {
-        uint8_t red = uartRxData[2];
-        uint8_t green = uartRxData[3];
-        uint8_t blue = uartRxData[4];
-        uint8_t white;  // Also min value
-        uint8_t max;
-
-        // Convert RGB to RGBW
-        if (red <= green) {
-            if (red <= blue) {          // red <= (green && blue)
-                white = red;
-            } else {                    // blue < red <= green
-                white = blue;
-                max = green;
-            }
-            if (blue >= green) {        // red <= green <= blue
-                max = blue;
-            } else {
-                max = green;            // red <= blue < green
-            }
-        } else if (green <= blue) {     // green <= (red && blue)
-            white = green;
-            if (blue >= red) {          // green <= red <= blue
-                max = blue;
-            } else {                    // green <= blue < red
-                max = red;
-            }
-        } else {                        // blue < green < red
-            white = blue;
-            max = red;
-        }
-
-        float multiplier = (float)white / 255.0f / (float)max + 1.0f;
-
-        rgbwValues[0] = multiplier * (float)red - (float)white;
-        rgbwValues[1] = multiplier * (float)green - (float)white;
-        rgbwValues[2] = multiplier * (float)blue - (float)white;
-        rgbwValues[3] = white;
-
-        // Adjust brightness
-        float brightness = (float)uartRxData[0] / 100.0f;
-
-        uint8_t i;
-        for (i = 0; i < 4; i++) {
-            rgbwValues[i] = rgbwValues[i] << 1U;    // Adjust scale (max. value 255 becomes 510)
-            rgbwValues[i] *= brightness;            // Scale with brightness
-        }
-
-        previousRxData[0] = uartRxData[0];
-        previousRxData[2] = uartRxData[2];
-        previousRxData[3] = uartRxData[3];
-        previousRxData[4] = uartRxData[4];
+uint8_t ColorSmoother(Smoother_TypeDef *holder, uint8_t input, colorInput color) {
+    if (holder->time[color] >= SMOOTH_LEN) {
+        holder->time[color] = 0;
     }
 
-    if (lightSwitch) {
-        ah_setPWM(&htim1, rgbwValues[0], rgbwValues[1], rgbwValues[2], rgbwValues[3]);
-    } else {
-        ah_setPWM(&htim1, 0, 0, 0, 0);
+    holder->colors[color][holder->time[color]] = input;
+
+    uint16_t sum = 0;
+    for(uint8_t i = 0; i < SMOOTH_LEN; i++) {
+        sum += holder->colors[color][i];
     }
+
+    holder->time[color]++;
+    return (uint8_t)(sum >> SMOOTH_SHIFT);
 }
 /* USER CODE END 4 */
 

@@ -184,48 +184,31 @@ void ah_setPWM(TIM_HandleTypeDef *htim, uint16_t red, uint16_t green, uint16_t b
 void ah_setcolor(color_preset_t color) {
     switch (color) {
         case white:
-            ah_setPWM(&htim1, 0, 0, 0, 20);
+            ah_setPWM(&htim1, 0, 0, 0, 100);
             break;
 
         case red:
-            ah_setPWM(&htim1, 20, 0, 0, 0);
+            ah_setPWM(&htim1, 100, 0, 0, 0);
             break;
 
         case green:
-            ah_setPWM(&htim1, 0, 20, 0, 0);
+            ah_setPWM(&htim1, 0, 100, 0, 0);
             break;
 
         case blue:
-            ah_setPWM(&htim1, 0, 0, 20, 0);
+            ah_setPWM(&htim1, 0, 0, 100, 0);
             break;
 
         case yellow:
-            ah_setPWM(&htim1, 10, 10, 0, 0);
+            ah_setPWM(&htim1, 100>>2U, 100>>2U, 0, 0);
             break;
 
         case purple:
-            ah_setPWM(&htim1, 10, 0, 10, 0);
+            ah_setPWM(&htim1, 100>>2U, 0, 100>>2U, 0);
             break;
 
         default:
             ah_setPWM(&htim1, 0, 0, 0, 0);
             break;
     }
-}
-
-//=================================================
-// Set Color Custom
-//=================================================
-void ah_set_custom(uint8_t red, uint8_t green, uint8_t blue, uint8_t white) {
-    ah_setPWM(&htim1, red, green, blue, white);
-}
-
-//=================================================
-// Stop LEDs
-//=================================================
-void ah_stop_led(TIM_HandleTypeDef *htim) {
-    HAL_TIM_PWM_Stop(htim, PWM_CH_R);
-    HAL_TIM_PWM_Stop(htim, PWM_CH_G);
-    HAL_TIM_PWM_Stop(htim, PWM_CH_B);
-    HAL_TIM_PWM_Stop(htim, PWM_CH_W);
 }

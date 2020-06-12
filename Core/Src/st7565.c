@@ -570,9 +570,9 @@ void st7565_drawmenu_settime(uint8_t set_hour, uint8_t set_min, uint8_t set_day,
     itoa(set_year, year, 10);
 
     st7565_drawstring(40, 0, "SET TIME");
-    st7565_drawstring(8, 1, " Set hour:");
+    st7565_drawstring(8, 1, " Set Hour:");
     st7565_drawstring(80, 1, hour);
-    st7565_drawstring(8, 2, " Set minute:");
+    st7565_drawstring(8, 2, " Set Minute:");
     st7565_drawstring(80, 2, min);
     st7565_drawstring(8, 3, " Set Day:");
     st7565_drawstring(80, 3, day);
