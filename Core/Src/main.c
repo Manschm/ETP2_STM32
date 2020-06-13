@@ -45,8 +45,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define SMOOTH_LEN      64U  // Must have 2 as a base
-#define SMOOTH_SHIFT    6U  // Must be the exponent of SMOOTH_LEN
+#define SMOOTH_LEN      64U     // Must have 2 as a base
+#define SMOOTH_SHIFT    6U      // Must be the exponent of SMOOTH_LEN
 
 // UART defines
 #define UART_DATA_LEN   5U
@@ -75,15 +75,15 @@ typedef struct {
 /* USER CODE BEGIN PV */
 
 // UART variables
-uint8_t uartRxData[UART_DATA_LEN];      // Most recent data
-uint8_t workingData[4];
-uint8_t setData[4];                     // Data currently displayed
+uint8_t uartRxData[UART_DATA_LEN] = {0};    // Most recent data
+uint8_t workingData[4] = {0};
+uint8_t setData[4] = {0};                   // Data currently displayed
 uint8_t tempData[4];
 
 // LED variables
 uint16_t rgbwValues[4];
 uint8_t lightSwitch = 0;
-Smoother_TypeDef smoother;
+Smoother_TypeDef smoother = {0};
 
 // I2C buffer
 //uint8_t shtc3RxBuf[6];
@@ -190,14 +190,6 @@ int main(void)
     // UART init
     HAL_UART_Receive_DMA(&huart1, uartRxData, UART_DATA_LEN);
     HAL_UART_DMAStop(&huart1);
-    setData[0] = 0;
-    setData[1] = 0;
-    setData[2] = 0;
-    setData[3] = 0;
-    workingData[0] = 0;
-    workingData[1] = 0;
-    workingData[2] = 0;
-    workingData[3] = 0;
     HAL_UART_Receive_DMA(&huart1, uartRxData, UART_DATA_LEN);
     HAL_TIM_Base_Start_IT(&htim6);
 
@@ -232,11 +224,11 @@ void SystemClock_Config(void)
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
   RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
-  /** Configure LSE Drive Capability 
+  /** Configure LSE Drive Capability
   */
   HAL_PWR_EnableBkUpAccess();
   __HAL_RCC_LSEDRIVE_CONFIG(RCC_LSEDRIVE_HIGH);
-  /** Initializes the CPU, AHB and APB busses clocks 
+  /** Initializes the CPU, AHB and APB busses clocks
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI14|RCC_OSCILLATORTYPE_HSE
                               |RCC_OSCILLATORTYPE_LSE;
@@ -252,7 +244,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  /** Initializes the CPU, AHB and APB busses clocks 
+  /** Initializes the CPU, AHB and APB busses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1;
@@ -286,7 +278,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
             uint8_t green   = ColorSmoother(&smoother, tempData[1], cGreen);
             uint8_t blue    = ColorSmoother(&smoother, tempData[2], cBlue);
             uint8_t bright  = ColorSmoother(&smoother, tempData[3], cBrightness);
-
 
             // Convert RGB to RGBW
             if ((setData[0] != red) || (setData[1] != green) || (setData[2] != blue) || (setData[3] != bright)) {
@@ -411,7 +402,7 @@ void Error_Handler(void)
   * @retval None
   */
 void assert_failed(uint8_t *file, uint32_t line)
-{ 
+{
   /* USER CODE BEGIN 6 */
   /* User can add his own implementation to report the file name and line number,
      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
