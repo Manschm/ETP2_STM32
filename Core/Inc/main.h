@@ -43,6 +43,12 @@ extern "C" {
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
 extern uint8_t LCD_Buffer[1024];
+extern uint8_t userOverride;
+extern uint16_t userRed;
+extern uint16_t userGreen;
+extern uint16_t userBlue;
+extern uint16_t userWhite;
+
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/

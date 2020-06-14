@@ -84,6 +84,11 @@ uint8_t tempData[4];
 uint16_t rgbwValues[4];
 uint8_t lightSwitch = 0;
 Smoother_TypeDef smoother = {0};
+uint8_t userOverride = 0;
+uint16_t userRed = 0;
+uint16_t userGreen = 0;
+uint16_t userBlue = 0;
+uint16_t userWhite = 0;
 
 // I2C buffer
 //uint8_t shtc3RxBuf[6];
@@ -269,7 +274,7 @@ void SystemClock_Config(void)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if (htim->Instance == TIM6) {
-        if (lightSwitch) {
+        if (lightSwitch && !userOverride) {
             tempData[0] = workingData[0];
             tempData[1] = workingData[1];
             tempData[2] = workingData[2];
@@ -330,12 +335,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
                 setData[2] = tempData[2];
                 setData[3] = tempData[3];
             }
-        } else {
+        } else if (!lightSwitch && !userOverride) {
             ColorSmoother(&smoother, 0, cRed);
             ColorSmoother(&smoother, 0, cGreen);
             ColorSmoother(&smoother, 0, cBlue);
             ColorSmoother(&smoother, 0, cBrightness);
             ah_setPWM(&htim1, 0, 0, 0, 0);
+        } else if (userOverride) {
+            ah_setPWM(&htim1, userRed, userGreen, userBlue, userWhite);
         }
 	}
 }
@@ -362,6 +369,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
     workingData[1] = uartRxData[3]; // Green
     workingData[2] = uartRxData[4]; // Blue
     workingData[3] = uartRxData[0]; // Brightness
+    userOverride = 0;
 }
 
 uint8_t ColorSmoother(Smoother_TypeDef *holder, uint8_t input, colorInput color) {

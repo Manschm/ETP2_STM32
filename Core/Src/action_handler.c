@@ -181,34 +181,42 @@ void ah_setPWM(TIM_HandleTypeDef *htim, uint16_t red, uint16_t green, uint16_t b
     }
 }
 
+void ah_setValues(uint16_t red, uint16_t green, uint16_t blue, uint16_t white) {
+    userOverride = 1;
+    userRed = red;
+    userGreen = green;
+    userBlue = blue;
+    userWhite = white;
+}
+
 void ah_setcolor(color_preset_t color) {
     switch (color) {
         case white:
-            ah_setPWM(&htim1, 0, 0, 0, 100);
+            ah_setValues(0, 0, 0, 100);
             break;
 
         case red:
-            ah_setPWM(&htim1, 100, 0, 0, 0);
+            ah_setValues(100, 0, 0, 0);
             break;
 
         case green:
-            ah_setPWM(&htim1, 0, 100, 0, 0);
+            ah_setValues(0, 100, 0, 0);
             break;
 
         case blue:
-            ah_setPWM(&htim1, 0, 0, 100, 0);
+            ah_setValues(0, 0, 100, 0);
             break;
 
         case yellow:
-            ah_setPWM(&htim1, 100>>2U, 100>>2U, 0, 0);
+            ah_setValues(100U>>2U, 100U>>2U, 0, 0);
             break;
 
         case purple:
-            ah_setPWM(&htim1, 100>>2U, 0, 100>>2U, 0);
+            ah_setValues(100U>>2U, 0, 100U>>2U, 0);
             break;
 
         default:
-            ah_setPWM(&htim1, 0, 0, 0, 0);
+            ah_setValues(0, 0, 0, 0);
             break;
     }
 }

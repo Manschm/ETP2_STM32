@@ -14,15 +14,7 @@ main.h
 st7565.h
 ../Core/Inc/st7565.h
 
-../Core/Inc/adc.h
-main.h
-../Core/Inc/main.h
-
 ../Core/Inc/bitmaps.h
-main.h
-../Core/Inc/main.h
-
-../Core/Inc/dma.h
 main.h
 ../Core/Inc/main.h
 
@@ -36,23 +28,9 @@ stdbool.h
 stdint.h
 -
 
-../Core/Inc/gpio.h
-main.h
-../Core/Inc/main.h
-
-../Core/Inc/i2c.h
-main.h
-../Core/Inc/main.h
-
 ../Core/Inc/main.h
 stm32f0xx_hal.h
 ../Core/Inc/stm32f0xx_hal.h
-
-../Core/Inc/rtc.h
-main.h
-../Core/Inc/main.h
-
-../Core/Inc/shtc3.h
 
 ../Core/Inc/st7565.h
 st7565_config.h
@@ -133,10 +111,6 @@ stm32f0xx_hal_wwdg.h
 ../Core/Inc/stm32f0xx_hal_wwdg.h
 
 ../Core/Inc/tim.h
-main.h
-../Core/Inc/main.h
-
-../Core/Inc/usart.h
 main.h
 ../Core/Inc/main.h
 
@@ -348,33 +322,15 @@ stm32f0xx_hal_uart_ex.h
 stm32f0xx_hal_def.h
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h
 
-C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/main.c
-main.h
-C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/main.h
-adc.h
-C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/adc.h
-dma.h
-C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/dma.h
-i2c.h
-C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/i2c.h
-rtc.h
-C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/rtc.h
-tim.h
-C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/tim.h
-usart.h
-C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/usart.h
-gpio.h
-C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/gpio.h
-shtc3.h
-C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/shtc3.h
-st7565.h
-C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/st7565.h
-string.h
+C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/state_machine.c
+stdint.h
 -
-event_handler.h
-C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/event_handler.h
 state_machine.h
 C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/state_machine.h
 action_handler.h
 C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/action_handler.h
+st7565.h
+C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/st7565.h
+tim.h
+C:/Users/Manuel/Documents/GitHub/ETP2_STM32/Core/Src/tim.h
 

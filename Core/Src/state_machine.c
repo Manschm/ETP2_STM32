@@ -400,7 +400,7 @@ void fsm_handle_event(event_t event) {
                     ah_menu(moodlight);
                     ah_draw_cursor(3);
                     st7565_write_buffer();
-                    ah_setPWM(&htim1, 0, 0, 0, 0);
+                    ah_setValues(0, 0, 0, 0);
                     state = MENU_MOODL_OFF;
                     break;
 
@@ -641,7 +641,7 @@ void fsm_handle_event(event_t event) {
                     st7565_drawmenu_custom(led_intens_w, led_intens_r, led_intens_g, led_intens_b);
                     ah_draw_cursor(1);
                     st7565_write_buffer();
-                    ah_setPWM(&htim1, led_intens_r, led_intens_g, led_intens_b, led_intens_w);
+                    ah_setValues(led_intens_r, led_intens_g, led_intens_b, led_intens_w);
                     state = MENU_CUSTOM_WHITE;
                     break;
 
@@ -653,7 +653,7 @@ void fsm_handle_event(event_t event) {
                     st7565_drawmenu_custom(led_intens_w, led_intens_r, led_intens_g, led_intens_b);
                     ah_draw_cursor(1);
                     st7565_write_buffer();
-                    ah_setPWM(&htim1, led_intens_r, led_intens_g, led_intens_b, led_intens_w);
+                    ah_setValues(led_intens_r, led_intens_g, led_intens_b, led_intens_w);
                     state = MENU_CUSTOM_WHITE;
                     break;
 
@@ -688,7 +688,7 @@ void fsm_handle_event(event_t event) {
                     st7565_drawmenu_custom(led_intens_w, led_intens_r, led_intens_g, led_intens_b);
                     ah_draw_cursor(2);
                     st7565_write_buffer();
-                    ah_setPWM(&htim1, led_intens_r, led_intens_g, led_intens_b, led_intens_w);
+                    ah_setValues(led_intens_r, led_intens_g, led_intens_b, led_intens_w);
                     state = MENU_CUSTOM_RED;
                     break;
 
@@ -700,7 +700,7 @@ void fsm_handle_event(event_t event) {
                     st7565_drawmenu_custom(led_intens_w, led_intens_r, led_intens_g, led_intens_b);
                     ah_draw_cursor(2);
                     st7565_write_buffer();
-                    ah_setPWM(&htim1, led_intens_r, led_intens_g, led_intens_b, led_intens_w);
+                    ah_setValues(led_intens_r, led_intens_g, led_intens_b, led_intens_w);
                     state = MENU_CUSTOM_RED;
                     break;
 
@@ -735,7 +735,7 @@ void fsm_handle_event(event_t event) {
                     st7565_drawmenu_custom(led_intens_w, led_intens_r, led_intens_g, led_intens_b);
                     ah_draw_cursor(3);
                     st7565_write_buffer();
-                    ah_setPWM(&htim1, led_intens_r, led_intens_g, led_intens_b, led_intens_w);
+                    ah_setValues(led_intens_r, led_intens_g, led_intens_b, led_intens_w);
                     state = MENU_CUSTOM_GREEN;
                     break;
 
@@ -747,7 +747,7 @@ void fsm_handle_event(event_t event) {
                     st7565_drawmenu_custom(led_intens_w, led_intens_r, led_intens_g, led_intens_b);
                     ah_draw_cursor(3);
                     st7565_write_buffer();
-                    ah_setPWM(&htim1, led_intens_r, led_intens_g, led_intens_b, led_intens_w);
+                    ah_setValues(led_intens_r, led_intens_g, led_intens_b, led_intens_w);
                     state = MENU_CUSTOM_GREEN;
                     break;
 
@@ -782,7 +782,7 @@ void fsm_handle_event(event_t event) {
                     st7565_drawmenu_custom(led_intens_w, led_intens_r, led_intens_g, led_intens_b);
                     ah_draw_cursor(4);
                     st7565_write_buffer();
-                    ah_setPWM(&htim1, led_intens_r, led_intens_g, led_intens_b, led_intens_w);
+                    ah_setValues(led_intens_r, led_intens_g, led_intens_b, led_intens_w);
                     state = MENU_CUSTOM_BLUE;
                     break;
 
@@ -794,7 +794,7 @@ void fsm_handle_event(event_t event) {
                     st7565_drawmenu_custom(led_intens_w, led_intens_r, led_intens_g, led_intens_b);
                     ah_draw_cursor(4);
                     st7565_write_buffer();
-                    ah_setPWM(&htim1, led_intens_r, led_intens_g, led_intens_b, led_intens_w);
+                    ah_setValues(led_intens_r, led_intens_g, led_intens_b, led_intens_w);
                     state = MENU_CUSTOM_BLUE;
                     break;
 

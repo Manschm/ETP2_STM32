@@ -56,6 +56,8 @@ void ah_menu(menu_t type);
 
 void ah_setPWM(TIM_HandleTypeDef *htim, uint16_t red, uint16_t green, uint16_t blue, uint16_t white);
 
+void ah_setValues(uint16_t red, uint16_t green, uint16_t blue, uint16_t white);
+
 void ah_setcolor(color_preset_t color);
 
 void ah_set_TimeDate(uint8_t hour, uint8_t minute, uint8_t second, uint8_t day, uint8_t month, uint8_t year);
